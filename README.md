@@ -65,14 +65,15 @@ Sur un autre hébergeur, relier le formulaire à un service comme Formspree
 ## Animations
 - **Hero** : le décor apparaît en zoom arrière, le titre sort ligne par ligne ; au défilement,
   le décor zoome et s'assombrit, le texte s'efface et la fenêtre du projet vedette monte en se
-  redressant, rejointe par deux téléphones et des notifications. Mêmes effets sur mobile.
+  redressant, rejointe par deux téléphones ; chaque projet affiche sa propre notification et
+  ouvre sa fiche au clic. Mêmes effets sur mobile.
 - **Page** : défilement doux à la souris (Lenis), titres révélés mot à mot, texte du studio qui
   s'allume au défilement, compteurs, défilé des outils, défilé d'écrans qui accélère avec le
   défilement, carte vidéo qui s'ouvre, parallaxe du décor de contact, ligne de progression
   de la méthode, FAQ animée, cartes inclinables et boutons magnétiques (souris uniquement),
   menu mobile plein écran, grand logotype en pied de page.
 - **Projets** : chaque carte a sa signature d'apparition (`rise`, `develop`, `zoom`, `spring`,
-  `match`, `iris`, `curtain`), reprise à l'ouverture de sa fiche. Au survol, la page complète
+  `match`, `iris`, `curtain`, `scratch`, `door`), reprise à l'ouverture de sa fiche. Au survol, la page complète
   défile dans la fenêtre ; sur mobile, l'aperçu se joue tout seul quand la carte est à l'écran.
 - Si l'utilisateur demande à réduire les animations (réglage du système), tout est désactivé
   et la page reste complète et lisible.
@@ -112,7 +113,11 @@ Sources de l'animation : dépôt NewPortfolio, dossier `video/source-buildlaunch
 - **Retirer un projet** : supprimer son entrée dans `src/projects.mjs` et son dossier dans
   `src/projects/`, puis `npm run build` (les images devenues inutiles sont supprimées).
 - **Projet vedette / hero** : `featured: true` (grande carte + fenêtre du hero),
-  `heroPhone: true` sur deux projets pour les téléphones du hero.
+  `heroPhone: true` sur deux projets pour les téléphones du hero. Les trois projets du hero
+  ouvrent leur fiche au clic ; le champ `hero` (FR/EN) donne la notification affichée à côté
+  de chacun quand il apparaît.
+- **Lien « Voir en ligne »** : champ `url`, facultatif. Sans adresse, la carte et la fiche
+  n'affichent pas de lien (c'est le cas de Gratifia et d'Expulse Express pour l'instant).
 - Les captures montrent les produits avec des données de démonstration : n'y mettez jamais
   de code, d'architecture, d'identifiants, de vraies données clients ni de détails
   d'hébergement (évitez par exemple les pages de connexion ou de contact).

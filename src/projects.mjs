@@ -10,9 +10,11 @@
      2. ajouter une entrée ci-dessous (l'ordre = l'ordre d'affichage)
      3. npm run build
    Champs utiles : featured (grande carte + fenêtre du hero), heroPhone
-   (téléphone affiché dans le hero, 2 au maximum), live (en ligne ou non),
-   anim (signature d'animation : rise, develop, zoom, spring, match, iris,
-   curtain), acc (couleur d'accent), filter (ai, app, site).
+   (téléphone affiché dans le hero, 2 au maximum), hero (notification FR/EN
+   affichée à côté du projet dans le hero), live (en ligne ou non), url
+   (facultatif : sans adresse, pas de lien « Voir en ligne »), anim (signature
+   d'animation : rise, develop, zoom, spring, match, iris, curtain, scratch,
+   door), acc (couleur d'accent), filter (ai, app, site).
    Retirer un projet : supprimer son entrée (et son dossier d'images).
 
    Ne jamais y mettre de code, d'identifiants, d'architecture ni de
@@ -24,6 +26,7 @@ export default [
     id: 'crm', name: 'Nexus CRM', mono: 'NX.', acc: '#A78BFA', anim: 'rise', live: true, featured: true,
     filter: 'app ai', contactType: 'Web app',
     url: 'https://crmpower.netlify.app/', host: 'nexus-crm.app',
+    hero: { fr: 'Agent IA vocal : 3 relances prêtes', en: 'Voice AI agent: 3 follow-ups ready' },
     images: {
       cover: 'pipeline', mobile: 'dashboard-m',
       gallery: [
@@ -93,9 +96,42 @@ export default [
   },
 
   {
+    id: 'gift', name: 'Gratifia', mono: 'Gr.', acc: '#818CF8', anim: 'scratch', live: false,
+    filter: 'app', contactType: 'Web app',
+    host: 'gratifia.fr',
+    images: {
+      cover: 'home', scroll: 'home-full', mobile: 'gift-m',
+      gallery: [['home', 'Accueil', 'Home'], ['dashboard', 'Tableau de bord', 'Dashboard'], ['wizard', 'Nouvelle campagne', 'New campaign'], ['gift', 'Cadeau gratté', 'Scratched gift'], ['demo', 'Mode présentation', 'Presentation mode'], ['gift-m', 'Mobile', 'Mobile']]
+    },
+    fr: {
+      cat: 'SaaS · Prospection', chip: 'Gratter la carte',
+      desc: 'La machine à clients des indépendants et des TPE : des campagnes de prospection qui envoient un cadeau à gratter personnalisé et transforment les curieux en rendez-vous qualifiés.',
+      tagline: 'Votre prochain client est à un grattage de vous.',
+      challenge: 'Pour un artisan, un courtier ou une petite entreprise, trouver des clients prend un temps fou. L’e-mail de prospection classique finit à la corbeille, avec à peine 2 % de réponses.',
+      solution: 'On décrit ce qu’on vend et qui on veut toucher : Gratifia trouve les entreprises du secteur, leur envoie un e-mail avec un vrai cadeau à gratter à leur nom, et le prospect décrit son besoin en réservant son cadeau. Le premier rendez-vous commence déjà qualifié.',
+      features: [['Campagne en 3 étapes', 'Activité, cadeau, aperçu : la campagne est prête en quelques minutes.'], ['Carte à gratter', 'Une page cadeau personnalisée, à gratter du doigt ou à la souris.'], ['Prospects qualifiés', 'Pour réserver son cadeau, le prospect décrit son besoin.'], ['Suivi en direct', 'Envois, ouvertures, cartes grattées, rendez-vous : tout se suit en temps réel.']],
+      journey: ['Décrire son activité et sa cible', 'Choisir le cadeau offert', 'Les prospects grattent et réservent', 'Les rendez-vous arrivent qualifiés'],
+      goals: ['Remplir l’agenda sans démarcher', 'Se démarquer des e-mails de prospection', 'Mesurer le retour de chaque campagne'],
+      built: ['Conception produit', 'Conception UX/UI', 'Application SaaS', 'Mode démonstration']
+    },
+    en: {
+      cat: 'SaaS · Prospecting', chip: 'Scratch the card',
+      desc: 'The client machine for freelancers and small businesses: prospecting campaigns that send a personalized scratch-off gift and turn curious prospects into qualified meetings.',
+      tagline: 'Your next client is one scratch away.',
+      challenge: 'For a tradesperson, a broker or a small business, finding clients takes forever. Classic cold emails end up in the bin, with barely 2% replies.',
+      solution: 'Describe what you sell and who you want to reach: Gratifia finds businesses in the sector, sends them an email with a real scratch-off gift in their name, and prospects describe their needs when claiming it. The first meeting starts already qualified.',
+      features: [['3-step campaign', 'Business, gift, preview: the campaign is ready in minutes.'], ['Scratch card', 'A personalized gift page to scratch with a finger or a mouse.'], ['Qualified prospects', 'To claim the gift, prospects describe their needs.'], ['Live tracking', 'Sends, opens, scratched cards, meetings: all tracked in real time.']],
+      journey: ['Describe your business and target', 'Choose the gift', 'Prospects scratch and claim', 'Meetings arrive qualified'],
+      goals: ['Fill the calendar without cold calling', 'Stand out from prospecting emails', 'Measure the return of every campaign'],
+      built: ['Product design', 'UX/UI design', 'SaaS application', 'Demo mode']
+    }
+  },
+
+  {
     id: 'edu', name: 'Oumma Learn', mono: 'OL.', acc: '#D9A03A', anim: 'zoom', live: true, heroPhone: true,
     filter: 'app', contactType: 'Web app',
     url: 'https://oumahh.netlify.app/', host: 'oummalearn.app',
+    hero: { fr: 'Nouvelle leçon : l’alphabet arabe', en: 'New lesson: the Arabic alphabet' },
     images: {
       cover: 'home', scroll: 'home-full', mobile: 'alphabet-m',
       gallery: [['home', 'Accueil', 'Home'], ['alphabet', 'L’alphabet', 'The alphabet'], ['progression', 'Progression', 'Progress'], ['jeux', 'Jeux', 'Games'], ['home-m', 'Mobile', 'Mobile']]
@@ -128,6 +164,7 @@ export default [
     id: 'fit', name: 'FitTrack Pro', mono: 'Fit.', acc: '#14B8A6', anim: 'spring', live: false, heroPhone: true,
     filter: 'app ai', contactType: 'Web app',
     url: 'https://fit-trackp.netlify.app/', host: 'fittrack.pro',
+    hero: { fr: 'Objectif du jour atteint à 72 %', en: 'Daily goal 72% reached' },
     images: {
       cover: 'home', scroll: 'home-full', mobile: 'home-m',
       gallery: [['home', 'Accueil', 'Home'], ['sec1', 'Fonctionnalités', 'Features'], ['home-m', 'Mobile', 'Mobile']]
@@ -217,6 +254,38 @@ export default [
       journey: ['Create a free account', 'Find partners by area', 'Propose a partnership', 'Talk and sign'],
       goals: ['Faster partnerships', 'A relationship built on trust', 'A monetized network'],
       built: ['UX/UI design', 'SaaS platform', 'Messaging', 'Member area']
+    }
+  },
+
+  {
+    id: 'expulse', name: 'Expulse Express', mono: 'EE.', acc: '#EE6A1F', anim: 'door', live: false,
+    filter: 'site', contactType: 'Site',
+    host: 'expulse-express.fr',
+    images: {
+      cover: 'home', scroll: 'home-full', mobile: 'home-m',
+      gallery: [['home', 'Accueil', 'Home'], ['solutions', 'Solutions', 'Solutions'], ['services', 'Services', 'Services'], ['diagnostic', 'Diagnostic gratuit', 'Free assessment'], ['methode', 'Méthode', 'Method'], ['diagnostic-m', 'Mobile', 'Mobile']]
+    },
+    fr: {
+      cat: 'Site vitrine · Immobilier', chip: 'Ouvrir la porte',
+      desc: 'Le site d’une société qui accompagne les propriétaires face aux loyers impayés et aux squats : solutions expliquées pas à pas, diagnostic gratuit en quatre étapes et guides pratiques.',
+      tagline: 'Reprenez possession de votre logement, rapidement et légalement.',
+      challenge: 'Un propriétaire face à un loyer impayé ou à un squat est souvent perdu et pressé. Il doit comprendre sa situation, faire confiance et prendre contact rapidement.',
+      solution: 'Un site éditorial sobre et rassurant : chaque situation a sa page avec les étapes, les délais et les erreurs à éviter, un diagnostic gratuit guide le visiteur en quatre étapes, et des illustrations sur mesure racontent chaque situation.',
+      features: [['Solutions par situation', 'Loyers impayés, squat, occupant sans droit, procédure bloquée.'], ['Diagnostic en 4 étapes', 'Un formulaire guidé, clair et rassurant, pensé pour le mobile.'], ['Guides et FAQ', 'Des ressources pratiques et une FAQ avec recherche.'], ['Rapide et accessible', 'Site statique, sans cookie ni traceur, très bien noté par Lighthouse.']],
+      journey: ['Trouver sa situation', 'Comprendre la procédure', 'Faire son diagnostic gratuit', 'Être rappelé sous 24 heures'],
+      goals: ['Inspirer confiance dès la première visite', 'Transformer les visites en demandes', 'Être bien référencé sur chaque situation'],
+      built: ['Direction artistique', 'Conception UX/UI', 'Site vitrine', 'Illustrations sur mesure']
+    },
+    en: {
+      cat: 'Website · Real estate', chip: 'Open the door',
+      desc: 'The website of a company helping landlords with unpaid rent and squatters: solutions explained step by step, a free 4-step assessment and practical guides.',
+      tagline: 'Get your property back, quickly and legally.',
+      challenge: 'A landlord facing unpaid rent or squatters is often lost and in a hurry. They need to understand their situation, trust the company and get in touch quickly.',
+      solution: 'A calm, reassuring editorial website: each situation has its own page with steps, timelines and mistakes to avoid, a free assessment guides visitors in four steps, and custom illustrations tell each story.',
+      features: [['Solutions by situation', 'Unpaid rent, squatters, occupants without rights, blocked procedures.'], ['4-step assessment', 'A clear, reassuring guided form, designed for mobile.'], ['Guides and FAQ', 'Practical resources and a searchable FAQ.'], ['Fast and accessible', 'Static site, no cookies or trackers, top Lighthouse scores.']],
+      journey: ['Find your situation', 'Understand the procedure', 'Take the free assessment', 'Get a call back within 24 hours'],
+      goals: ['Build trust from the first visit', 'Turn visits into requests', 'Rank well for each situation'],
+      built: ['Art direction', 'UX/UI design', 'Website', 'Custom illustrations']
     }
   },
 

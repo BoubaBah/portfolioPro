@@ -73,7 +73,7 @@ function imgTag(id, name, im, { sizes, cls = '', lazy = true, alt = '', data = f
 /* ---------- validation ---------- */
 const ids = new Set();
 for (const p of projects) {
-  for (const k of ['id', 'name', 'mono', 'acc', 'anim', 'filter', 'contactType', 'url', 'host', 'images', 'fr', 'en']) {
+  for (const k of ['id', 'name', 'mono', 'acc', 'anim', 'filter', 'contactType', 'host', 'images', 'fr', 'en']) {
     if (p[k] == null) throw new Error(`Projet ${p.id || '?'} : champ « ${k} » manquant`);
   }
   if (ids.has(p.id)) throw new Error(`Identifiant en double : ${p.id}`);
@@ -93,7 +93,7 @@ for (const p of projects) {
   for (const n of names) await image(p.id, n);
   data.order.push(p.id);
   data.items[p.id] = {
-    name: p.name, mono: p.mono, acc: p.acc, anim: p.anim, live: !!p.live, url: p.url, host: p.host, type: p.contactType,
+    name: p.name, mono: p.mono, acc: p.acc, anim: p.anim, live: !!p.live, url: p.url || null, host: p.host, type: p.contactType,
     gallery: images.gallery.map(([n, fr, en]) => {
       const im = IMG[p.id][n];
       return { src: base(p.id, n), kind: im.kind, w: im.w, ratio: im.ratio, fr, en };
@@ -103,6 +103,8 @@ for (const p of projects) {
   EN[`pj.${p.id}.cat`] = p.en.cat;
   EN[`pj.${p.id}.desc`] = p.en.desc;
   (p.en.points || []).forEach((t, i) => (EN[`pj.${p.id}.l${i + 1}`] = t));
+  EN[`pj.${p.id}.open`] = `Explore the ${p.name} project`;
+  if (p.hero) EN[`pj.${p.id}.hero`] = p.hero.en;
 }
 
 /* ---------- cartes ---------- */
@@ -127,7 +129,8 @@ function card(p, i) {
     ? `<ul class="proj-points">${fr.points.map((t, k) => `<li class="tick" data-i18n="pj.${id}.l${k + 1}">${esc(t)}</li>`).join('')}</ul>`
     : '';
   const cta = `<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span>` +
-    `<a class="ext" href="${esc(p.url)}" target="_blank" rel="noopener"><span data-i18n="${p.live ? 'cta.live' : 'cta.demo'}">${p.live ? 'Voir en ligne' : 'Voir la démo'}</span> <span aria-hidden="true">↗</span></a></div>`;
+    (p.url ? `<a class="ext" href="${esc(p.url)}" target="_blank" rel="noopener"><span data-i18n="${p.live ? 'cta.live' : 'cta.demo'}">${p.live ? 'Voir en ligne' : 'Voir la démo'}</span> <span aria-hidden="true">↗</span></a>` : '') +
+    `</div>`;
   return [
     `<article class="proj p-${id}${feat ? ' is-feat' : ''}${mob ? ' has-phone' : ''}${full ? ' has-scroll' : ''}" data-project="${id}" data-cat="${esc(p.filter)}" data-anim="${p.anim}" style="--acc:${p.acc}">`,
     media,
@@ -143,15 +146,24 @@ function card(p, i) {
 }
 const cardsHtml = projects.map(card).join('\n\n');
 
-/* ---------- scène du hero ---------- */
+/* ---------- scène du hero ----------
+   Le projet vedette dans une fenêtre, deux projets sur téléphone : chacun ouvre
+   sa fiche au clic et porte sa propre notification (champ « hero »). */
 const featured = projects.find((p) => p.featured) || projects[0];
 const phones = projects.filter((p) => p.heroPhone && p.images.mobile && p !== featured).slice(0, 2);
 const fCover = IMG[featured.id][featured.images.cover];
+const heroChip = (p, cls) => p.hero
+  ? `<span class="stage-chip ${cls}" style="--c:${p.acc}" aria-hidden="true"><i></i><span><b>${esc(p.name)}</b><em data-i18n="pj.${p.id}.hero">${esc(p.hero.fr)}</em></span></span>`
+  : '';
+const openLabel = (p) => `<span class="sr-only" data-i18n="pj.${p.id}.open">Découvrir le projet ${esc(p.name)}</span>`;
 const stageHtml = [
-  `<div class="stage-win" style="--acc:${featured.acc}"><div class="bar"><i></i><i></i><i></i><span>${esc(featured.host)}</span></div>`,
+  `<button type="button" class="stage-win stage-item" data-open="${featured.id}" aria-haspopup="dialog" style="--acc:${featured.acc}">${openLabel(featured)}`,
+  `<span class="stage-screen"><span class="bar" aria-hidden="true"><i></i><i></i><i></i><span>${esc(featured.host)}</span></span>`,
   imgTag(featured.id, featured.images.cover, fCover, { sizes: '(min-width: 1280px) 1080px, 92vw', target: 1600, lazy: false, low: true }),
-  `</div>`,
-  ...phones.map((p, i) => `<div class="stage-ph stage-ph-${i ? 'r' : 'l'}" style="--acc:${p.acc}">${imgTag(p.id, p.images.mobile, IMG[p.id][p.images.mobile], { sizes: '(min-width: 1024px) 210px, 30vw', target: 640, low: true })}</div>`)
+  `</span>${heroChip(featured, 'sc-win')}</button>`,
+  ...phones.map((p, i) => `<button type="button" class="stage-ph stage-ph-${i ? 'r' : 'l'} stage-item" data-open="${p.id}" aria-haspopup="dialog" style="--acc:${p.acc}">${openLabel(p)}` +
+    `<span class="stage-phone">${imgTag(p.id, p.images.mobile, IMG[p.id][p.images.mobile], { sizes: '(min-width: 1024px) 210px, 30vw', target: 640, low: true })}</span>` +
+    `${heroChip(p, i ? 'sc-r' : 'sc-l')}</button>`)
 ].join('\n');
 
 /* ---------- défilé d'écrans ---------- */

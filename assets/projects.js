@@ -83,7 +83,7 @@
       }).join('') + '</ol></section>' +
       '<div class="cs-two"><section><h3 class="cs-h">' + u.goals + '</h3><ul class="cs-goals">' + t.goals.map(function (g) { return '<li class="tick">' + esc(g) + '</li>'; }).join('') + '</ul></section>' +
       '<section><h3 class="cs-h">' + u.built + '</h3><div class="cs-built">' + t.built.map(function (b) { return '<span class="tag">' + esc(b) + '</span>'; }).join('') + '</div></section></div>' +
-      '<div class="cs-cta"><a class="btn-ghost" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + (p.live ? u.live : u.demo) + ' <span aria-hidden="true">↗</span></a><button type="button" class="btn-primary" data-similar>' + u.similar + '</button></div>' +
+      '<div class="cs-cta">' + (p.url ? '<a class="btn-ghost" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + (p.live ? u.live : u.demo) + ' <span aria-hidden="true">↗</span></a>' : '') + '<button type="button" class="btn-primary" data-similar>' + u.similar + '</button></div>' +
       '</div>' +
       '<footer class="cs-foot"><button type="button" data-go="' + prevId + '"><span class="dir">← ' + u.prev + '</span><b>' + esc(P[prevId].name) + '</b></button>' +
       '<button type="button" data-go="' + nextId + '" class="nx"><span class="dir">' + u.next + ' →</span><b>' + esc(P[nextId].name) + '</b></button></footer>' +
@@ -250,6 +250,12 @@
     }
   });
 
+  /* ---------- projets du hero : chacun ouvre sa fiche ---------- */
+  var stageItems = $$('.stage [data-open]');
+  stageItems.forEach(function (b) {
+    b.addEventListener('click', function () { trigger = b; open(b.getAttribute('data-open'), b, true); });
+  });
+
   /* ---------- cartes ---------- */
   var cards = $$('#work .proj');
   cards.forEach(function (card) {
@@ -295,8 +301,8 @@
       chip.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
       raf = on || Math.abs(tx - x) + Math.abs(ty - y) > .5 ? requestAnimationFrame(loop) : 0;
     };
-    cards.forEach(function (card) {
-      var id = card.getAttribute('data-project'), rect = null;
+    cards.concat(stageItems).forEach(function (card) {
+      var id = card.getAttribute('data-project') || card.getAttribute('data-open'), rect = null;
       card.addEventListener('pointerenter', function (e) {
         rect = card.getBoundingClientRect();
         chip.textContent = P[id][L()].chip;

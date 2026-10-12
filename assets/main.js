@@ -134,7 +134,7 @@
     'hero.eyebrow': 'AI · Automation · Web studio', 'hero.t1': 'Your ideas,', 'hero.t2': 'built and launched.',
     'hero.lead': 'Custom AI apps, automations and web products — to save your team time and get your business off the ground.',
     'hero.label': 'Your email', 'hero.video': 'Watch the video · 45 s',
-    'stg.c1': 'Voice AI agent · online', 'stg.c2': 'Follow-up sent automatically', 'stg.c3': 'New lead qualified',
+    'stg.label': 'Featured projects',
     'man.k': 'The studio', 'man.t': 'We design custom AI apps, automations and web products. Tools your team adopts from day one — and that save time, every day.',
     'vid.k': 'Video', 'vid.h': 'The studio in 45 seconds.', 'vid.sub': 'What we build and how we work, at a glance.', 'vid.play': 'Play video · 0:45',
     'vid.desc': 'Build & Launch presentation video: services, demos of AI apps and automations, work and process. Music, no voice-over.', 'hero.ph': 'Your work email', 'hero.btn': 'Start a project', 'hero.note': 'Fast reply · Clear quote · English or French', 'hero.scroll': 'Discover',

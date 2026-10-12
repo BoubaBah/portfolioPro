@@ -92,11 +92,14 @@
       phones.forEach(function (ph, i) {
         var e = outBack(range(p, .3 + i * .06, .66 + i * .06)), d = i ? 1 : -1;
         ph.style.opacity = clamp(e * 1.5, 0, 1).toFixed(3);
+        // invisible = ni cliquable ni atteignable au clavier
+        ph.style.visibility = e <= 0 ? 'hidden' : '';
+        ph.style.pointerEvents = e < .6 ? 'none' : '';
         ph.style.transform = 'translate3d(' + (d * (1 - e) * 45).toFixed(1) + '%,' + ((1 - e) * 55).toFixed(1) + '%,0) rotate(' + (d * (1 - e) * 12).toFixed(2) + 'deg)';
       });
-      // les notifications apparaissent une à une
+      // chaque notification apparaît juste après son projet (fenêtre, puis téléphones)
       chips.forEach(function (ch, i) {
-        var e = outCubic(range(p, .48 + i * .07, .68 + i * .07));
+        var e = outCubic(range(p, .4 + i * .12, .58 + i * .12));
         ch.style.opacity = e.toFixed(3);
         ch.style.transform = 'translate3d(0,' + ((1 - e) * 28).toFixed(1) + 'px,0) scale(' + (.88 + .12 * e).toFixed(4) + ')';
       });
