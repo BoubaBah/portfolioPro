@@ -17,6 +17,7 @@ merci.html            confirmation après envoi du formulaire
 src/input.css         SOURCE des styles : Tailwind v4 + @theme (tokens du DESIGN.md)
 assets/styles.css     CSS compilé (généré — ne pas modifier à la main)
 assets/main.js        interactions + traductions anglaises (objet EN)
+assets/projects.js    fiches projets : contenu FR/EN, écrans d'aperçu, ouverture animée
 assets/fonts/         Inter (substitut d'« arcadia ») + Archivo étendu figé en 480 / 112 %
                       (substitut d'« arcadiaDisplay »), auto-hébergées
 assets/img/           paysages « heure bleue » : WebP 960 / 1600 / 2400 px + JPG 1600 de repli,
@@ -72,6 +73,18 @@ défilement à 60 images/s. Pour garder ces résultats :
 ## Modifier le contenu
 - Textes français : directement dans `index.html`.
 - Textes anglais : objet `EN` dans `assets/main.js` (même clé `data-i18n`).
-- Ajouter un projet : dupliquer un `<article class="proj …">` dans `#realisations` ;
-  `data-cat` accepte `ai`, `app`, `site` (plusieurs séparés par un espace).
+- **Projets** : chaque projet a sa propre identité —
+  couleur (`--acc`), monogramme, étiquette qui suit le curseur, animation au survol,
+  animation d'ouverture et fiche détaillée (défi, solution, fonctionnalités, parcours,
+  trois écrans d'aperçu). Lien direct partageable : `/#projet-crm`, `#projet-ai`,
+  `#projet-edu`, `#projet-fit`, `#projet-match`, `#projet-club`, `#projet-site`.
+- **Ajouter un projet** :
+  1. dupliquer un `<article class="proj p-xxx" data-project="xxx" style="--acc:#…">` dans
+     `#realisations` (`data-cat` : `ai`, `app`, `site`, plusieurs séparés par un espace) ;
+  2. ajouter l'entrée `xxx` dans l'objet `P` de `assets/projects.js` (textes FR/EN,
+     couleur, animation d'ouverture parmi `rise`, `develop`, `zoom`, `spring`, `match`,
+     `iris`, `curtain`, et les écrans d'aperçu), puis l'ajouter à `ORDER` ;
+  3. `npm run build`.
+- Les aperçus sont des illustrations avec des données fictives : n'y mettez jamais de
+  code, d'architecture, d'identifiants ni de détails d'hébergement.
 - Après tout ajout de classes Tailwind : `npm run build`.

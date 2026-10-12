@@ -11,7 +11,18 @@
 <meta property="og:description" content="Applications IA, automatisations et produits web sur-mesure — de l'idée au lancement.">
 <meta property="og:image" content="assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<script>document.documentElement.classList.add('js')</script>
+<script>
+  // Langue détectée avant le premier affichage : évite l'éclair de français et le saut de mise en page
+  (function (d) {
+    d.classList.add('js');
+    try {
+      var q = new URLSearchParams(location.search).get('lang'), s = null;
+      try { s = localStorage.getItem('bl-lang'); } catch (e) {}
+      var l = q || s || ((navigator.language || 'fr').slice(0, 2) === 'fr' ? 'fr' : 'en');
+      if (l === 'en') { d.classList.add('i18n-wait'); setTimeout(function () { d.classList.remove('i18n-wait'); }, 2000); }
+    } catch (e) {}
+  })(document.documentElement);
+</script>
 <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -204,85 +215,85 @@
 
     <div id="work" class="mt-56 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
 
-      <!-- Featured -->
-      <article class="proj reveal card grid items-center gap-32 p-24 md:col-span-2 md:p-40 lg:col-span-3 lg:grid-cols-[1fr_1.35fr] lg:gap-56" data-cat="app">
+      <!-- Projet vedette -->
+      <article class="proj p-crm reveal card relative grid items-center gap-32 p-24 md:col-span-2 md:p-40 lg:col-span-3 lg:grid-cols-[1fr_1.35fr] lg:gap-56" data-project="crm" data-cat="app" style="--acc:#F5B83D">
         <div class="order-2 lg:order-1">
-          <div class="flex flex-wrap items-center gap-8"><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.crm">CRM · Énergie</span></div>
-          <h3 class="display mt-20 text-heading-sm md:text-heading">CRM Power</h3>
+          <div class="flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">CRM.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.crm">CRM · Énergie</span></div>
+          <h3 class="display mt-20 text-heading-sm md:text-heading"><button type="button" class="proj-open" data-open="crm" aria-haspopup="dialog">CRM Power</button></h3>
           <p class="mt-12 text-ash-text" data-i18n="p.crm">CRM pour courtiers en énergie : gestion centralisée des prospects, suivi des contrats, relances automatisées et tableau de bord analytique pour les équipes commerciales.</p>
           <ul class="mt-24 space-y-12"><li class="tick" data-i18n="p.crm.l1">Relances automatisées</li><li class="tick" data-i18n="p.crm.l2">Tableau de bord analytique</li><li class="tick" data-i18n="p.crm.l3">Suivi des contrats</li></ul>
-          <div class="mt-32 flex flex-wrap items-center gap-8"><a class="btn-ghost-sm" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a><span class="tag">Web app</span><span class="tag">JavaScript</span></div>
+          <div class="mt-32 flex flex-wrap items-center gap-16"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
         </div>
-        <a class="shot order-1 block lg:order-2" href="https://crmpower.netlify.app/" target="_blank" rel="noopener" aria-label="CRM Power" tabindex="-1">
+        <div class="shot order-1 block lg:order-2" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>crmpower.app</span></div>
-          <div class="ui ui-crm"><div class="sb"><i class="a"></i><i></i><i></i><i></i><i></i></div><div class="col"><div class="row"><div class="kc"><s>Prospects</s><b>1 284</b></div><div class="kc"><s>Contrats</s><b>342</b></div><div class="kc"><s>Relances auto</s><b>96%</b></div></div><div class="row grow"><div class="panel"><s>Pipeline</s><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i class="a" style="height:92%"></i><i style="height:74%"></i></div></div><div class="panel list"><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p><p><i></i><em>Nouveau</em></p><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p></div></div></div></div>
-        </a>
+          <div class="ui ui-crm"><div class="sb"><i class="a"></i><i></i><i></i><i></i><i></i></div><div class="col"><div class="row"><div class="kc"><s>Prospects</s><b>1 284</b></div><div class="kc"><s>Contrats</s><b>342</b></div><div class="kc"><s>Relances auto</s><b class="acc">96%</b></div></div><div class="row grow"><div class="panel"><s>Pipeline</s><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i class="a" style="height:92%"></i><i style="height:74%"></i></div></div><div class="panel list"><p><i></i><em class="a">Signé</em></p><p><i></i><em>Relancé</em></p><p><i></i><em>Nouveau</em></p><p><i></i><em class="a">Signé</em></p><p><i></i><em>Relancé</em></p></div></div></div></div>
+        </div>
       </article>
 
-      <article class="proj reveal card flex flex-col p-24" data-cat="ai">
-        <a class="shot block" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener" aria-label="IA Hub" tabindex="-1">
+      <article class="proj p-ai reveal card relative flex flex-col p-24" data-project="ai" data-cat="ai" style="--acc:#A78BFA">
+        <div class="shot block" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>iahub.app</span></div>
-          <div class="ui ui-ai"><div class="sb"><i class="a"></i><i></i><i></i></div><div class="col end"><div class="q">Generate misty mountains at blue hour</div><div class="img"></div><div class="pills"><em>Chat</em><em>Research</em><em>Images</em><em>Docs</em></div></div></div>
-        </a>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.ai">Agent IA</span></div>
-        <h3 class="h-card mt-16">IA Hub</h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.ai">Agent IA tout-en-un : chat, recherche approfondie, génération d'images et extraction de documents — propulsé par LLM et Supabase.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">React</span><span class="tag">LLM</span></div>
+          <div class="ui ui-ai"><div class="sb"><i class="a"></i><i></i><i></i></div><div class="col end"><div class="q">Montagnes dans la brume, heure bleue</div><div class="img"></div><div class="pills"><em class="a">Images</em><em>Chat</em><em>Recherche</em><em>Docs</em></div></div></div>
+        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">IA.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.ai">Agent IA</span></div>
+        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="ai" aria-haspopup="dialog">IA Hub</button></h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.ai">Agent IA tout-en-un : chat, recherche approfondie, génération d'images et extraction de documents, réunis dans une seule interface.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <article class="proj reveal card flex flex-col p-24" data-cat="app">
-        <a class="shot block" href="https://oumahh.netlify.app/" target="_blank" rel="noopener" aria-label="Oumahh" tabindex="-1">
+      <article class="proj p-edu reveal card relative flex flex-col p-24" data-project="edu" data-cat="app" style="--acc:#34D399">
+        <div class="shot block" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>oumahh.app</span></div>
-          <div class="ui ui-edu"><div class="phone"><s>Leçon 4 / 12</s><b>Les bases</b><div class="prog"><i></i></div><p></p><p class="a"></p><p></p><p></p></div><div class="side"><div class="notif">Nouvelle leçon disponible</div><div class="panel"><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:72%"></i><i class="a" style="height:88%"></i></div></div><em>PWA · offline</em></div></div>
-        </a>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text">EdTech · PWA</span></div>
-        <h3 class="h-card mt-16">Oumahh</h3>
+          <div class="ui ui-edu"><div class="phone"><s>Leçon 4 / 12</s><b>Les bases</b><div class="prog"><i></i></div><p class="d"></p><p class="a"></p><p></p><p></p></div><div class="side"><div class="notif"><u></u>Nouvelle leçon disponible</div><div class="panel"><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:72%"></i><i class="a" style="height:88%"></i></div></div><em>PWA · hors ligne</em></div></div>
+        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">Oum.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text">EdTech · PWA</span></div>
+        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="edu" aria-haspopup="dialog">Oumahh</button></h3>
         <p class="mt-12 text-ash-text" data-i18n="p.edu">Plateforme d'apprentissage moderne : PWA avec notifications push, navigation intuitive et contenu pédagogique structuré pas à pas.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a><span class="tag">PWA</span><span class="tag">Vite</span></div>
+        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <article class="proj reveal card flex flex-col p-24" data-cat="app">
-        <a class="shot block" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener" aria-label="FitTrack Pro" tabindex="-1">
+      <article class="proj p-fit reveal card relative flex flex-col p-24" data-project="fit" data-cat="app" style="--acc:#FB7185">
+        <div class="shot block" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>fittrack.pro</span></div>
-          <div class="ui ui-fit"><div class="ring"><b>72%</b></div><div class="col"><div class="kc"><s>Calories</s><b>1 840</b></div><div class="kc"><s>Jeûne</s><b>14:32</b></div><div class="panel"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polyline points="0,70 40,62 80,64 120,48 160,44 200,32 240,26 300,8" fill="none" stroke="#ededf3" stroke-width="2"/></svg></div></div></div>
-        </a>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text">Health · App</span></div>
-        <h3 class="h-card mt-16">FitTrack Pro</h3>
+          <div class="ui ui-fit"><div class="ring"><b>72%</b></div><div class="col"><div class="kc"><s>Calories</s><b>1 840</b></div><div class="kc"><s>Jeûne</s><b class="acc">14:32</b></div><div class="panel"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polyline points="0,70 40,62 80,64 120,48 160,44 200,32 240,26 300,8" fill="none" stroke="var(--acc)" stroke-width="2.5" pathLength="1"/></svg></div></div></div>
+        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">Fit.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.fit">Sport · Nutrition</span></div>
+        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="fit" aria-haspopup="dialog">FitTrack Pro</button></h3>
         <p class="mt-12 text-ash-text" data-i18n="p.fit">Coach fitness &amp; nutrition : programmes d'entraînement, suivi nutritionnel, jeûne intermittent, records personnels et défis entre amis.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">React</span><span class="tag">Supabase</span></div>
+        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <article class="proj reveal card flex flex-col p-24" data-cat="ai app">
-        <a class="shot block" href="https://energymatch.netlify.app/" target="_blank" rel="noopener" aria-label="EnergiMatch" tabindex="-1">
+      <article class="proj p-match reveal card relative flex flex-col p-24" data-project="match" data-cat="ai app" style="--acc:#38BDF8">
+        <div class="shot block" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>energimatch.app</span></div>
-          <div class="ui ui-match"><div class="panel"><s>Étape 3 / 4</s><div class="prog"><i></i></div><p class="a">Électricité</p><p>Gaz</p><p>Multi-sites</p></div><div class="col"><div class="panel brief"><s>Brief généré par IA</s><i></i><i></i><i></i></div><div class="panel list"><p><u></u>Courtier A<em>98%</em></p><p><u></u>Courtier B<em>91%</em></p><p><u></u>Courtier C<em>86%</em></p></div></div></div>
-        </a>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text">Marketplace · IA</span></div>
-        <h3 class="h-card mt-16">EnergiMatch</h3>
+          <div class="ui ui-match"><div class="panel"><s>Étape 3 / 4</s><div class="prog"><i></i></div><p class="a">Électricité</p><p>Gaz</p><p>Multi-sites</p></div><div class="col"><div class="panel brief"><s class="acc">Brief généré par IA</s><i></i><i></i><i></i></div><div class="panel list"><p><u></u>Courtier A<em class="a">98%</em></p><p><u></u>Courtier B<em>91%</em></p><p><u></u>Courtier C<em>86%</em></p></div></div></div>
+        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">EM.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text">Marketplace · IA</span></div>
+        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="match" aria-haspopup="dialog">EnergiMatch</button></h3>
         <p class="mt-12 text-ash-text" data-i18n="p.match">Mise en relation clients ↔ courtiers en énergie : parcours de qualification intelligent, brief généré automatiquement et tableau de bord courtier en temps réel.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">JavaScript</span></div>
+        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <article class="proj reveal card flex flex-col p-24" data-cat="app">
-        <a class="shot block" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener" aria-label="EnergyClub" tabindex="-1">
+      <article class="proj p-club reveal card relative flex flex-col p-24" data-project="club" data-cat="app" style="--acc:#E879F9">
+        <div class="shot block" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>energyclub.app</span></div>
           <div class="ui ui-club"><div class="hero2"><b>Le club des pros<br>de l'énergie</b><em>Rejoindre</em></div><div class="row"><div class="plan"><s>Membre</s><b>Essentiel</b></div><div class="plan a"><s>Membre</s><b>Pro</b></div><div class="plan"><s>Équipe</s><b>Business</b></div></div></div>
-        </a>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.club">SaaS · Communauté</span></div>
-        <h3 class="h-card mt-16">EnergyClub</h3>
+        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">EC.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.club">SaaS · Communauté</span></div>
+        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="club" aria-haspopup="dialog">EnergyClub</button></h3>
         <p class="mt-12 text-ash-text" data-i18n="p.club">Plateforme communautaire pour les professionnels de l'énergie : espace membres, contenus exclusifs, abonnements et paiements en ligne.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">React</span><span class="tag">SaaS</span></div>
+        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
       </article>
 
-      <article class="proj reveal card flex flex-col p-24" data-cat="site">
-        <a class="shot block" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener" aria-label="Portfolio Vicken" tabindex="-1">
+      <article class="proj p-site reveal card relative flex flex-col p-24" data-project="site" data-cat="site" style="--acc:#D6B98C">
+        <div class="shot block" aria-hidden="true">
           <div class="bar"><i></i><i></i><i></i><span>portfolio.site</span></div>
           <div class="ui ui-site"><div class="nav2"><b>V.</b><span></span><span></span><span></span><em>FR / EN</em></div><div class="hero3"><div><i class="l1"></i><i class="l2"></i><i class="l3"></i><u></u></div><div class="pic"></div></div><div class="row"><p></p><p></p><p></p></div></div>
-        </a>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.site">Site vitrine</span></div>
-        <h3 class="h-card mt-16">Portfolio Vicken</h3>
+        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">Vic.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.site">Site vitrine</span></div>
+        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="site" aria-haspopup="dialog">Portfolio Vicken</button></h3>
         <p class="mt-12 text-ash-text" data-i18n="p.site">Site vitrine élégant et multilingue (FR / EN) : présentation, réalisations et contact, avec une expérience fluide sur mobile comme sur ordinateur.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a><span class="tag" data-i18n="tag.multi">Multilingue</span></div>
+        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
       </article>
 
     </div>
@@ -416,6 +427,10 @@
 </section>
 </main>
 
+<!-- ================= FICHE PROJET (remplie par assets/projects.js) ================= -->
+<dialog id="case" class="case" aria-labelledby="cs-title"></dialog>
+<div class="cursor-chip" aria-hidden="true"></div>
+
 <!-- ================= FOOTER ================= -->
 <footer class="border-t border-slate-border/25">
   <div class="wrap flex flex-col gap-32 py-56 md:flex-row md:items-center">
@@ -434,5 +449,6 @@
 </footer>
 
 <script src="assets/main.js" defer></script>
+<script src="assets/projects.js" defer></script>
 </body>
 </html>

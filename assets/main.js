@@ -108,10 +108,10 @@
     'work.k': 'Work', 'work.h': 'Real products, built and shipped.', 'work.sub': 'Live projects and products in final development. Detailed demos on request.',
     'work.f0': 'All', 'work.f1': 'AI', 'work.f2': 'Web apps & SaaS', 'work.f3': 'Websites',
     'st.live': 'Live', 'st.dev': 'In development', 'cat.crm': 'CRM · Energy', 'cat.ai': 'AI agent', 'cat.site': 'Website', 'cat.club': 'SaaS · Community',
-    'cta.live': 'View live', 'cta.demo': 'View demo', 'tag.multi': 'Multilingual',
+    'cta.live': 'View live', 'cta.demo': 'View demo', 'cta.case': 'Explore the project', 'cat.fit': 'Fitness · Nutrition',
     'p.crm': 'CRM for energy brokers: centralized lead management, contract tracking, automated follow-ups and an analytics dashboard for sales teams.',
     'p.crm.l1': 'Automated follow-ups', 'p.crm.l2': 'Analytics dashboard', 'p.crm.l3': 'Contract tracking',
-    'p.ai': 'All-in-one AI agent: chat, deep research, image generation and document extraction — powered by LLMs and Supabase.',
+    'p.ai': 'All-in-one AI agent: chat, deep research, image generation and document extraction, brought together in a single interface.',
     'p.edu': 'Modern learning platform: a PWA with push notifications, intuitive navigation and step-by-step learning content.',
     'p.fit': 'Fitness & nutrition coach: training programs, nutrition tracking, intermittent fasting, personal records and challenges with friends.',
     'p.match': 'Matching energy clients with brokers: smart qualification flow, auto-generated brief and a real-time broker dashboard.',
@@ -168,6 +168,7 @@
     btn.textContent = l === 'en' ? 'FR' : 'EN';
     btn.setAttribute('aria-label', l === 'en' ? 'FR — version française' : 'EN — English version');
     try { localStorage.setItem('bl-lang', l); } catch (e) {}
+    document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
   }
   btn.addEventListener('click', function () { setLang(document.documentElement.lang === 'en' ? 'fr' : 'en'); });
   var saved = null;
@@ -175,4 +176,5 @@
   var q = new URLSearchParams(location.search).get('lang');
   var start = q || saved || ((navigator.language || 'fr').slice(0, 2) === 'fr' ? 'fr' : 'en');
   if (start === 'en') setLang('en');
+  document.documentElement.classList.remove('i18n-wait');
 })();
