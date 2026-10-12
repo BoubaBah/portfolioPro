@@ -68,54 +68,37 @@
     });
   }
 
-  /* ---------- scène 1 — hero : le décor zoome, les besoins arrivent un à un ---------- */
+  /* ---------- scène 1 — hero : le décor zoome, les besoins se déroulent le long d'une ligne ---------- */
   var hero = $('#top');
   if (hero && !reduce) {
     var hpin = $('.scene-pin', hero), bg = $('.hero-bg', hero), shade = $('.hero-shade', hero),
-      copy = $('.hero-copy', hero), board = $('.needs', hero), track = $('.needs-in', hero), grid = $('.needs-grid', hero),
-      needs = $$('.need', hero), npaths = $$('.needs-path path', hero), nsvg = $('.needs-path', hero), ndot = $('.np-dot', hero),
-      cue = $('.hero-cue', hero), H = { p: -1, len: [] };
+      copy = $('.hero-copy', hero), board = $('.needs', hero), track = $('.needs-in', hero), tl = $('.tl', hero),
+      steps = $$('.tl-step', hero), rail = $('.tl-rail', hero), fill = $('.tl-fill', hero), dot = $('.tl-head', hero),
+      cue = $('.hero-cue', hero), H = { p: -1 };
+    var parts = steps.map(function (st) { return { st: st, node: $('.tl-node', st), branch: $('.tl-branch', st), txt: $('.tl-txt', st) }; });
     html.classList.add('hero-live');
-    // chaque carte a sa fenêtre de temps ; la ligne vers la carte suivante se dessine juste avant
+    // chaque étape a sa fenêtre de temps dans le défilement
     var win = function (i) { var a = .12 + i * .16; return [a, a + .2]; };
-    npaths.forEach(function (pa) { pa.setAttribute('pathLength', '1'); });
-    // relie deux cartes : à côté (courbe horizontale) ou l'une sous l'autre (courbe verticale)
-    var link = function (a, b) {
-      var x1, y1, x2, y2, d;
-      if (b.y >= a.y + a.h - 8) {
-        x1 = a.x + a.w / 2; y1 = a.y + a.h; x2 = b.x + b.w / 2; y2 = b.y; d = (y2 - y1) / 2 + 24;
-        return 'M' + x1 + ' ' + y1 + 'C' + x1 + ' ' + (y1 + d) + ' ' + x2 + ' ' + (y2 - d) + ' ' + x2 + ' ' + y2;
-      }
-      var r = b.x > a.x;
-      x1 = r ? a.x + a.w : a.x; y1 = a.y + a.h * .3; x2 = r ? b.x : b.x + b.w; y2 = b.y + b.h * .3; d = (x2 - x1) / 2;
-      return 'M' + x1 + ' ' + y1 + 'C' + (x1 + d) + ' ' + y1 + ' ' + (x2 - d) + ' ' + y2 + ' ' + x2 + ' ' + y2;
-    };
     onMeasure.push(function () {
       var h = hpin.offsetHeight;
-      // mobile : cartes empilées, la scène défile en continu ; ordinateur : une étape par carte
-      H.flow = innerWidth < 768;
+      H.mobile = innerWidth < 768;
       var copyBottom = copy.offsetTop + copy.offsetHeight;
       var peek = clamp(h - copyBottom - 12, 0, h * .16);
       H.y0 = h - board.offsetTop - peek;
       H.over = Math.max(0, board.offsetTop + board.offsetHeight + 24 - h);
-      // sur mobile, la longueur de la scène suit la hauteur des cartes (défilement au rythme du doigt)
-      hero.style.height = H.flow ? Math.round(h + (H.over + h * .35) / .86) + 'px' : '';
       H.top = absTop(hero); H.dist = Math.max(1, hero.offsetHeight - h); H.h = h;
-      // décalage voulu quand chaque carte arrive : la carte entière à l'écran, sous la barre de navigation
-      var base = board.offsetTop + grid.offsetTop, prev = 0;
-      H.base = base; H.tops = needs.map(function (n) { return n.offsetTop; });
-      H.shift = needs.map(function (n) {
-        var top = base + n.offsetTop, want = Math.min(top + n.offsetHeight - (h - 20), top - 84);
+      // positions dans la frise : haut de chaque étape et centre de son point
+      H.base = board.offsetTop + tl.offsetTop;
+      H.tops = steps.map(function (st) { return st.offsetTop; });
+      H.nodes = parts.map(function (q) { return q.st.offsetTop + q.node.offsetTop + q.node.offsetHeight / 2; });
+      // la ligne s'arrête au dernier point
+      H.rail = Math.max(1, H.nodes[H.nodes.length - 1] - 8);
+      rail.style.bottom = 'auto'; rail.style.height = H.rail + 'px';
+      var prev = 0;
+      H.shift = steps.map(function (st, i) {
+        var top = H.base + H.tops[i], want = Math.min(top + st.offsetHeight - (h - 40), top - 120);
         prev = Math.max(prev, clamp(want, 0, H.over));
         return prev;
-      });
-      H.side = innerWidth < 768 ? 28 : 70;
-      var rects = needs.map(function (n) { return { x: n.offsetLeft, y: n.offsetTop, w: n.offsetWidth, h: n.offsetHeight }; });
-      nsvg.setAttribute('viewBox', '0 0 ' + grid.offsetWidth + ' ' + grid.offsetHeight);
-      npaths.forEach(function (pa, i) {
-        if (!rects[i + 1]) return;
-        pa.setAttribute('d', link(rects[i], rects[i + 1]));
-        H.len[i] = pa.getTotalLength();
       });
       H.p = -1;
     });
@@ -128,49 +111,41 @@
       copy.style.opacity = (1 - c).toFixed(3);
       copy.style.transform = 'translate3d(0,' + (-c * H.h * .12).toFixed(1) + 'px,0) scale(' + (1 - c * .06).toFixed(4) + ')';
       copy.style.pointerEvents = c > .4 ? 'none' : '';
-      // le décor zoome et s'assombrit pour laisser la place aux besoins
+      // le décor zoome et s'assombrit pour laisser la place au texte
       var b = inOut(p);
       bg.style.transform = 'scale(' + (1 + .32 * b).toFixed(4) + ') translate3d(0,' + (-3 * b).toFixed(2) + '%,0)';
-      shade.style.setProperty('--dark', (range(p, .04, .4) * .8).toFixed(3));
-      // le tableau des besoins monte et se redresse, puis suit les cartes vers le bas
+      shade.style.setProperty('--dark', (range(p, .04, .4) * .84).toFixed(3));
+      // la frise monte et se redresse
       var s = outCubic(range(p, .05, .26)), z = inOut(range(p, .86, 1));
-      board.style.transform = 'perspective(1600px) translate3d(0,' + (H.y0 * (1 - s)).toFixed(1) + 'px,0) rotateX(' + (18 * (1 - s)).toFixed(2) + 'deg) scale(' + (.92 + .08 * s + .03 * z).toFixed(4) + ')';
-      // le tableau glisse vers le haut pour accompagner chaque nouvelle carte
+      board.style.transform = 'perspective(1600px) translate3d(0,' + (H.y0 * (1 - s)).toFixed(1) + 'px,0) rotateX(' + (16 * (1 - s)).toFixed(2) + 'deg) scale(' + (.94 + .06 * s + .02 * z).toFixed(4) + ')';
+      // progression de chaque étape et décalage de la frise pour garder l'étape en cours à l'écran
       var sh = 0, k, es = [];
-      if (H.flow) {
-        sh = H.over * range(p, .1, .97);
-        // chaque carte s'anime en entrant par le bas de l'écran
-        for (k = 0; k < needs.length; k++) {
-          var vt = H.y0 * (1 - s) + H.base + H.tops[k] - sh;
-          es[k] = outCubic(clamp((H.h - vt) / (H.h * .3), 0, 1));
-        }
-      } else {
-        for (k = 0; k < needs.length; k++) {
-          var wk = win(k), from = k ? H.shift[k - 1] : 0;
-          sh = from + (H.shift[k] - from) * inOut(range(p, wk[0] - .05, wk[1] - .02));
-          if (p < wk[1] - .02) break;
-        }
-        for (k = 0; k < needs.length; k++) es[k] = outCubic(range(p, win(k)[0], win(k)[1]));
+      for (k = 0; k < steps.length; k++) {
+        var wk = win(k), from = k ? H.shift[k - 1] : 0;
+        sh = from + (H.shift[k] - from) * inOut(range(p, wk[0] - .05, wk[1] - .02));
+        if (p < wk[1] - .02) break;
       }
+      for (k = 0; k < steps.length; k++) es[k] = range(p, win(k)[0], win(k)[1]);
       track.style.transform = 'translate3d(0,' + (-sh).toFixed(1) + 'px,0)';
-      // chaque besoin arrive de son côté : 1 à gauche, 2 à droite…
-      needs.forEach(function (n, i) {
-        var e = es[i], d = i % 2 ? 1 : -1;
-        n.style.opacity = e.toFixed(3);
-        n.style.visibility = e <= 0 ? 'hidden' : '';
-        n.style.transform = 'perspective(1200px) translate3d(' + (d * (1 - e) * H.side).toFixed(1) + 'px,' + ((1 - e) * 90).toFixed(1) + 'px,0) rotateX(' + (22 * (1 - e)).toFixed(2) + 'deg) scale(' + (.9 + .1 * e).toFixed(4) + ')';
-        var on = e > .92;
-        if (on !== n.classList.contains('on')) n.classList.toggle('on', on);
+      // la ligne se remplit jusqu'au point de l'étape qui arrive
+      var fy = 0;
+      parts.forEach(function (q, i) {
+        var e = es[i], d = H.mobile ? 1 : (i % 2 ? 1 : -1);
+        var a = outCubic(range(e, .15, 1)), n = outBack(range(e, 0, .45));
+        q.node.style.opacity = clamp(n * 1.4, 0, 1).toFixed(3);
+        q.node.style.transform = 'scale(' + (.4 + .6 * n).toFixed(4) + ')';
+        q.branch.style.transform = 'scaleX(' + outCubic(range(e, .2, .7)).toFixed(4) + ')';
+        q.txt.style.opacity = a.toFixed(3);
+        q.txt.style.transform = 'translate3d(' + (-d * (1 - a) * 36).toFixed(1) + 'px,' + ((1 - a) * 18).toFixed(1) + 'px,0)';
+        q.st.style.visibility = e <= 0 ? 'hidden' : '';
+        var on = e > .55;
+        if (on !== q.st.classList.contains('on')) q.st.classList.toggle('on', on);
+        if (e > 0) { var from = i ? H.nodes[i - 1] : 0; fy = Math.max(fy, from + (H.nodes[i] - from) * outCubic(range(e, 0, .45))); }
       });
-      // la ligne se dessine d'une carte à l'autre, un point lumineux à sa tête
-      var head = null;
-      npaths.forEach(function (pa, i) {
-        var w = win(i + 1), k = H.flow ? range(es[i + 1], 0, .6) : range(p, w[0] - .07, w[0] + .05);
-        pa.style.strokeDashoffset = (1 - k).toFixed(4);
-        if (k > 0 && k < 1) head = pa.getPointAtLength(H.len[i] * k);
-      });
-      if (head) { ndot.setAttribute('cx', head.x.toFixed(1)); ndot.setAttribute('cy', head.y.toFixed(1)); }
-      ndot.style.opacity = head ? 1 : 0;
+      fill.style.transform = 'scaleY(' + clamp((fy - 8) / H.rail, 0, 1).toFixed(4) + ')';
+      var moving = fy > 1 && fy < H.nodes[H.nodes.length - 1] - 1;
+      dot.style.transform = 'translate3d(0,' + (fy - 8).toFixed(1) + 'px,0)';
+      dot.style.opacity = fy > 1 ? (moving ? 1 : .6) : 0;
       if (cue) cue.style.opacity = (1 - range(p, 0, .05)).toFixed(3);
     });
   }

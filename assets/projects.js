@@ -253,7 +253,7 @@
   /* ---------- scène des projets et exemples des besoins : chacun ouvre sa fiche ---------- */
   var stageItems = $$('.stage [data-open]'), needLinks = $$('.needs [data-open]');
   needLinks.forEach(function (b) {
-    b.addEventListener('click', function () { trigger = b; open(b.getAttribute('data-open'), b.closest('.need'), true); });
+    b.addEventListener('click', function () { trigger = b; open(b.getAttribute('data-open'), b.closest('.tl-step'), true); });
   });
   stageItems.forEach(function (b) {
     b.addEventListener('click', function () { trigger = b; open(b.getAttribute('data-open'), b, true); });
