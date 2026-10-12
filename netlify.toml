@@ -1,4 +1,4 @@
-# Site statique : aucune étape de build (le CSS compilé est versionné).
+# Site statique : aucune étape de build (CSS, images et données des projets sont versionnés).
 [build]
   publish = "."
 
@@ -11,6 +11,17 @@
 # Images : cache 30 jours (revalidation en arrière-plan)
 [[headers]]
   for = "/assets/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+# Captures des projets et bibliothèque de défilement : cache 30 jours
+[[headers]]
+  for = "/assets/projects/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/assets/vendor/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000, stale-while-revalidate=86400"
 

@@ -4,17 +4,28 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function scrollToEl(el) { if (window.BL_scrollTo) window.BL_scrollTo(el); else el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' }); }
 
   /* ---------- nav ---------- */
   var nav = $('#nav'), burger = $('#burger'), menu = $('#menu');
   // état « scrollé » sans écouteur de scroll (évite les recalculs de mise en page forcés)
   new IntersectionObserver(function (es) { nav.classList.toggle('scrolled', !es[0].isIntersecting); }).observe($('#top-sentinel'));
-  function closeMenu() { menu.classList.remove('open'); nav.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); }
+  function lockScroll(on) {
+    document.documentElement.classList.toggle('menu-lock', on);
+    if (window.BL_lenis) window.BL_lenis[on ? 'stop' : 'start']();
+  }
+  function closeMenu() {
+    if (!menu.classList.contains('open')) return;
+    menu.classList.remove('open'); nav.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false');
+    lockScroll(false);
+  }
   burger.addEventListener('click', function () {
     var open = !menu.classList.contains('open');
     menu.classList.toggle('open', open); nav.classList.toggle('menu-open', open);
     burger.setAttribute('aria-expanded', String(open));
+    lockScroll(open);
   });
+  addEventListener('resize', function () { if (innerWidth >= 1024) closeMenu(); });
   $$('#menu a').forEach(function (a) { a.addEventListener('click', closeMenu); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMenu(); });
 
@@ -24,14 +35,15 @@
       if (e.isIntersecting) links.forEach(function (l) { l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id); });
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
-  ['services', 'realisations', 'process', 'pourquoi', 'faq'].forEach(function (id) { var el = document.getElementById(id); if (el) secObs.observe(el); });
+  // toutes les sections : celles sans lien éteignent la navigation
+  $$('main > section').forEach(function (el) { secObs.observe(el); });
 
   /* ---------- hero capture → formulaire de contact ---------- */
   $('#quick').addEventListener('submit', function (e) {
     e.preventDefault();
     $('#contact-email').value = $('#quick-email').value;
-    $('#contact').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-    setTimeout(function () { $('#contact-msg').focus({ preventScroll: true }); }, reduce ? 0 : 700);
+    scrollToEl($('#contact'));
+    setTimeout(function () { $('#contact-msg').focus({ preventScroll: true }); }, reduce ? 0 : 1100);
   });
 
   /* ---------- apparition au défilement ---------- */
@@ -47,8 +59,9 @@
       var f = b.dataset.f;
       $$('#work .proj').forEach(function (p) {
         var show = f === 'all' || p.dataset.cat.split(' ').indexOf(f) > -1;
+        var was = !p.classList.contains('hide');
         p.classList.toggle('hide', !show);
-        if (show) p.classList.add('in');
+        if (show) { p.classList.add('in'); if (!was && !reduce) { p.classList.remove('pop'); void p.offsetWidth; p.classList.add('pop'); } }
       });
     });
   });
@@ -75,9 +88,6 @@
     });
   }, { threshold: .35 }).observe($('#flow'));
 
-  new IntersectionObserver(function (es, o) {
-    es.forEach(function (e) { if (e.isIntersecting) { $('#procfill').style.width = '100%'; o.disconnect(); } });
-  }, { threshold: .4 }).observe($('.proc'));
 
   $('#yr').textContent = new Date().getFullYear();
 
@@ -111,8 +121,8 @@
     new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { if (!posterOn) setPoster(); o.disconnect(); } }, { rootMargin: '600px 0px' }).observe(video);
     $$('.vid-link[data-play-video]').forEach(function (b) {
       b.addEventListener('click', function () {
-        $('#video').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
-        setTimeout(playVideo, reduce ? 0 : 650);
+        scrollToEl($('#video'));
+        setTimeout(playVideo, reduce ? 0 : 1000);
       });
     });
   }
@@ -124,13 +134,10 @@
     'hero.eyebrow': 'AI · Automation · Web studio', 'hero.t1': 'Your ideas,', 'hero.t2': 'built and launched.',
     'hero.lead': 'Custom AI apps, automations and web products — to save your team time and get your business off the ground.',
     'hero.label': 'Your email', 'hero.video': 'Watch the video · 45 s',
+    'stg.c1': 'Voice AI agent · online', 'stg.c2': 'Follow-up sent automatically', 'stg.c3': 'New lead qualified',
+    'man.k': 'The studio', 'man.t': 'We design custom AI apps, automations and web products. Tools your team adopts from day one — and that save time, every day.',
     'vid.k': 'Video', 'vid.h': 'The studio in 45 seconds.', 'vid.sub': 'What we build and how we work, at a glance.', 'vid.play': 'Play video · 0:45',
     'vid.desc': 'Build & Launch presentation video: services, demos of AI apps and automations, work and process. Music, no voice-over.', 'hero.ph': 'Your work email', 'hero.btn': 'Start a project', 'hero.note': 'Fast reply · Clear quote · English or French', 'hero.scroll': 'Discover',
-    'ws.nav1': 'Dashboard', 'ws.nav2': 'Automations', 'ws.nav3': 'AI agents', 'ws.nav4': 'Leads', 'ws.nav5': 'Reports',
-    'ws.k1': 'Qualified leads', 'ws.k1s': 'this quarter', 'ws.k2': 'Automated tasks', 'ws.k2s': 'since go-live', 'ws.k3': 'Response time', 'ws.k3s': 'to new leads',
-    'ws.chart': 'Automated activity', 'ws.auto': 'Active automations', 'ws.a1': 'Lead qualification · AI', 'ws.a2': 'Personalized email follow-ups', 'ws.a3': 'CRM sync',
-    'ws.q': 'Which leads should I follow up today?', 'ws.a': '3 hot leads: brief ready, emails drafted. Shall I send them?',
-    'ws.caption': 'Example workspace: AI agents, automations and dashboard in one place.',
     'st.1': 'products designed and delivered', 'st.2': 'areas of expertise: AI, automation, web', 'st.3': 'automations that never stop',
     'tools.k': 'Tools we master',
     'svc.k': 'Services', 'svc.h': 'What we build for you.', 'svc.sub': 'Three core areas of expertise, one goal: save you time and money — measurably.',
@@ -145,16 +152,8 @@
     'svc.m3.t': 'AI audit & consulting', 'svc.m3.p': 'We find what costs you time and what AI can truly change.',
     'work.k': 'Work', 'work.h': 'Real products, built and shipped.', 'work.sub': 'Live projects and products in final development. Detailed demos on request.',
     'work.f0': 'All', 'work.f1': 'AI', 'work.f2': 'Web apps & SaaS', 'work.f3': 'Websites',
-    'st.live': 'Live', 'st.dev': 'In development', 'cat.crm': 'CRM · Energy', 'cat.ai': 'AI agent', 'cat.site': 'Website', 'cat.club': 'SaaS · Community',
-    'cta.live': 'View live', 'cta.demo': 'View demo', 'cta.case': 'Explore the project', 'cat.fit': 'Fitness · Nutrition',
-    'p.crm': 'CRM for energy brokers: centralized lead management, contract tracking, automated follow-ups and an analytics dashboard for sales teams.',
-    'p.crm.l1': 'Automated follow-ups', 'p.crm.l2': 'Analytics dashboard', 'p.crm.l3': 'Contract tracking',
-    'p.ai': 'All-in-one AI agent: chat, deep research, image generation and document extraction, brought together in a single interface.',
-    'p.edu': 'Modern learning platform: a PWA with push notifications, intuitive navigation and step-by-step learning content.',
-    'p.fit': 'Fitness & nutrition coach: training programs, nutrition tracking, intermittent fasting, personal records and challenges with friends.',
-    'p.match': 'Matching energy clients with brokers: smart qualification flow, auto-generated brief and a real-time broker dashboard.',
-    'p.club': 'Community platform for energy professionals: member area, exclusive content, subscriptions and online payments.',
-    'p.site': 'Elegant multilingual website (FR / EN): profile, work and contact, with a smooth experience on mobile and desktop.',
+    'st.live': 'Live', 'st.dev': 'In development',
+    'cta.live': 'View live', 'cta.demo': 'View demo', 'cta.case': 'Explore the project',
     'demo.k': 'In action', 'demo.h': 'An automation, in practice.', 'demo.sub': 'A prospect fills in your form. Within seconds, with nobody behind the screen:',
     'demo.l1': 'AI analyzes and qualifies the request', 'demo.l2': 'Your CRM is updated (score, tags, owner)', 'demo.l3': 'A personalized email goes out instantly', 'demo.l4': 'Your team is notified, reporting updates itself',
     'demo.cta': 'Automate my processes',
@@ -184,8 +183,10 @@
     'f.name': 'Name', 'f.email': 'Email', 'f.company': 'Company (optional)', 'f.type': 'Project type',
     'f.t1': 'AI app', 'f.t2': 'Automation', 'f.t3': 'Web app / SaaS', 'f.t4': 'Website', 'f.t5': 'Audit / consulting',
     'f.msg': 'Your project in a few lines', 'f.note': 'Fast reply guaranteed · Clear, detailed quote', 'f.send': 'Send my request',
-    'ft.tag': 'We build. You launch.', 'ft.disc': 'AI, automation & web studio. Interface visuals illustrate the projects; full demos on request.'
+    'ft.tag': 'We build. You launch.', 'ft.disc': 'AI, automation & web studio. Screens taken from the projects, with sample data.'
   };
+  // traductions des projets, générées avec les cartes (assets/projects-data.js)
+  if (window.BL_EN) for (var k in window.BL_EN) EN[k] = window.BL_EN[k];
   var META = {
     fr: { title: document.title, desc: $('meta[name=description]').content },
     en: { title: 'Build & Launch — AI apps, automation & web products', desc: 'Build & Launch designs and launches custom AI apps, automations and web products: LLM agents, RAG, n8n, Make, CRMs, SaaS. From idea to launch.' }

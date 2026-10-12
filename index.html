@@ -36,6 +36,7 @@
 <!-- ================= NAV ================= -->
 <div id="top-sentinel" aria-hidden="true"></div>
 <header id="nav" class="nav fixed inset-x-0 top-0 z-50">
+  <span class="nav-progress" aria-hidden="true"></span>
   <div class="wrap flex h-[72px] items-center gap-24">
     <a href="#top" class="flex shrink-0 items-center gap-12" aria-label="Build & Launch — accueil">
       <img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto">
@@ -47,10 +48,11 @@
       <a href="#process" class="navlink" data-i18n="nav.process">Méthode</a>
       <a href="#pourquoi" class="navlink" data-i18n="nav.why">Pourquoi nous</a>
       <a href="#faq" class="navlink" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" class="btn-primary menu-cta lg:hidden" data-i18n="nav.cta">Démarrer un projet</a>
     </nav>
     <div class="ml-auto flex items-center gap-8 lg:ml-0">
       <button id="lang" type="button" class="navlink text-body-sm" aria-label="EN — English version">EN</button>
-      <a href="#contact" class="btn-primary hidden h-[40px] px-20 sm:inline-flex" data-i18n="nav.cta">Démarrer un projet</a>
+      <a href="#contact" class="btn-primary magnet hidden h-[40px] px-20 sm:inline-flex" data-i18n="nav.cta">Démarrer un projet</a>
       <button id="burger" type="button" class="burger relative h-[44px] w-[44px] rounded-3xl-2 border border-ivory-text/30 lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     </div>
   </div>
@@ -59,86 +61,68 @@
 <main id="main">
 
 <!-- ================= HERO ================= -->
-<section id="top" class="relative flex min-h-[680px] h-[100svh] items-center justify-center overflow-hidden">
-  <picture>
-    <source type="image/webp" srcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw">
-    <img src="assets/img/hero-1600.jpg" alt="" width="1600" height="900" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]" fetchpriority="high">
-  </picture>
-  <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(23_23_33/.55)_0%,rgb(23_23_33/.15)_35%,rgb(23_23_33/.25)_70%,#171721_100%)]"></div>
-  <div class="hero-in relative z-10 flex w-full max-w-[980px] flex-col items-center px-24 pb-72 text-center">
-    <span class="tag mb-24 bg-onyx-canvas/50 text-ivory-text backdrop-blur-[8px]" data-i18n="hero.eyebrow">Studio IA · Automatisation · Web</span>
-    <h1 class="h-hero">
-      <span data-i18n="hero.t1">Vos idées,</span><br>
-      <span data-i18n="hero.t2">construites et lancées.</span>
-    </h1>
-    <p class="mt-24 max-w-[540px] text-body-lg font-w480 text-ivory-text" data-i18n="hero.lead">Applications IA, automatisations et produits web sur-mesure — pour faire gagner du temps à vos équipes et faire décoller votre activité.</p>
-    <form id="quick" class="capture mt-40" action="#contact">
-      <label for="quick-email" class="sr-only" data-i18n="hero.label">Votre e-mail</label>
-      <input id="quick-email" name="email" type="email" required autocomplete="email" placeholder="Votre e-mail professionnel" data-i18n-ph="hero.ph">
-      <button type="submit" data-i18n="hero.btn">Démarrer un projet</button>
-    </form>
-    <p class="mt-16 text-body-sm text-ash-text" data-i18n="hero.note">Réponse rapide · Devis clair · Français ou anglais</p>
-    <button type="button" class="vid-link mt-24" data-play-video><span class="vid-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span><span data-i18n="hero.video">Voir la vidéo · 45 s</span></button>
+<section id="top" class="hero">
+  <div class="hero-pin">
+    <div class="hero-bg">
+      <picture>
+        <source type="image/webp" srcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw">
+        <img src="assets/img/hero-1600.jpg" alt="" width="1600" height="900" class="hero-img" fetchpriority="high">
+      </picture>
+    </div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <span class="tag hero-tag" data-i18n="hero.eyebrow">Studio IA · Automatisation · Web</span>
+      <h1 class="h-hero">
+        <span class="ln"><span data-i18n="hero.t1">Vos idées,</span></span>
+        <span class="ln"><span data-i18n="hero.t2">construites et lancées.</span></span>
+      </h1>
+      <p class="hero-lead" data-i18n="hero.lead">Applications IA, automatisations et produits web sur-mesure — pour faire gagner du temps à vos équipes et faire décoller votre activité.</p>
+      <form id="quick" class="capture" action="#contact">
+        <label for="quick-email" class="sr-only" data-i18n="hero.label">Votre e-mail</label>
+        <input id="quick-email" name="email" type="email" required autocomplete="email" placeholder="Votre e-mail professionnel" data-i18n-ph="hero.ph">
+        <button type="submit" data-i18n="hero.btn">Démarrer un projet</button>
+      </form>
+      <div class="hero-sub">
+        <p class="text-body-sm text-ash-text" data-i18n="hero.note">Réponse rapide · Devis clair · Français ou anglais</p>
+        <button type="button" class="vid-link magnet" data-play-video><span class="vid-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span><span data-i18n="hero.video">Voir la vidéo · 45 s</span></button>
+      </div>
+    </div>
+    <div class="stage" aria-hidden="true">
+      <div class="stage-in">
+<!-- STAGE:START -->
+<div class="stage-win" style="--acc:#A78BFA"><div class="bar"><i></i><i></i><i></i><span>nexus-crm.app</span></div>
+<img src="assets/projects/crm/pipeline-1600.webp" srcset="assets/projects/crm/pipeline-480.webp 480w, assets/projects/crm/pipeline-1024.webp 1024w, assets/projects/crm/pipeline-1600.webp 1600w" sizes="(min-width: 1280px) 1080px, 92vw" width="1600" height="1000" alt="" fetchpriority="low" decoding="async">
+</div>
+<div class="stage-ph stage-ph-l" style="--acc:#D9A03A"><img src="assets/projects/edu/alphabet-m-640.webp" srcset="assets/projects/edu/alphabet-m-320.webp 320w, assets/projects/edu/alphabet-m-640.webp 640w" sizes="(min-width: 1024px) 210px, 30vw" width="640" height="1385" alt="" loading="lazy" fetchpriority="low" decoding="async"></div>
+<div class="stage-ph stage-ph-r" style="--acc:#14B8A6"><img src="assets/projects/fit/home-m-640.webp" srcset="assets/projects/fit/home-m-320.webp 320w, assets/projects/fit/home-m-640.webp 640w" sizes="(min-width: 1024px) 210px, 30vw" width="640" height="1385" alt="" loading="lazy" fetchpriority="low" decoding="async"></div>
+<!-- STAGE:END -->
+        <div class="stage-chip sc1"><i></i><span data-i18n="stg.c1">Agent IA vocal · en ligne</span></div>
+        <div class="stage-chip sc2"><i></i><span data-i18n="stg.c2">Relance envoyée automatiquement</span></div>
+        <div class="stage-chip sc3"><i></i><span data-i18n="stg.c3">Nouveau prospect qualifié</span></div>
+      </div>
+    </div>
+    <a href="#apercu" class="hero-cue"><span data-i18n="hero.scroll">Découvrir</span><i aria-hidden="true"></i></a>
   </div>
-  <a href="#apercu" class="absolute bottom-32 left-1/2 z-10 -translate-x-1/2 text-caption tracking-[0.12em] text-ash-text uppercase hover:text-ivory-text" data-i18n="hero.scroll">Découvrir</a>
 </section>
 
-<!-- ================= PRODUCT SHOT ================= -->
-<section id="apercu" class="relative pb-72">
+<!-- ================= MANIFESTE + CHIFFRES ================= -->
+<section id="apercu" class="section">
   <div class="wrap">
-    <figure class="reveal card p-12 md:p-24">
-      <div class="shot" aria-hidden="true">
-        <div class="bar"><i></i><i></i><i></i><span>app.buildandlaunch</span></div>
-        <div class="ui ui-ws">
-          <div class="sb">
-            <div class="nm"><img src="assets/logo-mark-96.png" alt="" width="131" height="96" loading="lazy">Workspace</div>
-            <a class="a" data-i18n="ws.nav1">Tableau de bord</a>
-            <a data-i18n="ws.nav2">Automatisations</a>
-            <a data-i18n="ws.nav3">Agents IA</a>
-            <a data-i18n="ws.nav4">Prospects</a>
-            <a data-i18n="ws.nav5">Rapports</a>
-          </div>
-          <div class="col">
-            <div class="row">
-              <div class="kc"><s data-i18n="ws.k1">Leads qualifiés</s><b>1 284</b><small data-i18n="ws.k1s">ce trimestre</small></div>
-              <div class="kc"><s data-i18n="ws.k2">Tâches automatisées</s><b>9 870</b><small data-i18n="ws.k2s">depuis la mise en ligne</small></div>
-              <div class="kc"><s data-i18n="ws.k3">Temps de réponse</s><b>&lt; 2 min</b><small data-i18n="ws.k3s">aux nouveaux prospects</small></div>
-            </div>
-            <div class="row grow">
-              <div class="panel chart"><s data-i18n="ws.chart">Activité automatisée</s>
-                <svg viewBox="0 0 400 140" preserveAspectRatio="none"><path d="M0 120 C 40 112, 60 100, 90 96 S 150 70, 190 74 S 250 46, 290 40 S 360 18, 400 10" fill="none" stroke="#ededf3" stroke-width="2"/><path d="M0 120 C 40 112, 60 100, 90 96 S 150 70, 190 74 S 250 46, 290 40 S 360 18, 400 10 L400 140 L0 140Z" fill="#ededf3" opacity=".06"/><path d="M0 130 C 60 126, 120 118, 180 116 S 300 104, 400 96" fill="none" stroke="#70707d" stroke-width="1.5" stroke-dasharray="4 5"/></svg>
-              </div>
-              <div class="col" style="flex:.85">
-                <div class="panel auto" style="flex:none"><s data-i18n="ws.auto">Automatisations actives</s>
-                  <p><span data-i18n="ws.a1">Qualification des leads · IA</span><i class="sw"></i></p>
-                  <p><span data-i18n="ws.a2">Relances e-mail personnalisées</span><i class="sw"></i></p>
-                  <p><span data-i18n="ws.a3">Synchronisation CRM</span><i class="sw"></i></p>
-                </div>
-                <div class="panel chat">
-                  <div class="m u" data-i18n="ws.q">Quels prospects relancer aujourd'hui ?</div>
-                  <div class="m a" data-i18n="ws.a">3 prospects chauds : brief prêt, e-mails rédigés. Je les envoie ?</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <figcaption class="mt-16 text-center text-caption text-ash-text" data-i18n="ws.caption">Exemple d'espace de travail : agents IA, automatisations et tableau de bord réunis.</figcaption>
-    </figure>
-
-    <dl class="reveal mt-56 grid grid-cols-1 gap-32 border-t border-slate-border/40 pt-40 sm:grid-cols-3">
-      <div class="flex flex-col-reverse"><dt class="mt-8 text-body text-ash-text" data-i18n="st.1">produits conçus et livrés</dt><dd class="display text-heading-lg text-ivory-text">7</dd></div>
-      <div class="flex flex-col-reverse"><dt class="mt-8 text-body text-ash-text" data-i18n="st.2">expertises : IA, automatisation, web</dt><dd class="display text-heading-lg text-ivory-text">3</dd></div>
-      <div class="flex flex-col-reverse"><dt class="mt-8 text-body text-ash-text" data-i18n="st.3">des automatisations qui ne s'arrêtent jamais</dt><dd class="display text-heading-lg text-ivory-text">24/7</dd></div>
+    <p class="kicker reveal" data-i18n="man.k">Le studio</p>
+    <p class="manifesto mt-24" data-scrub data-i18n="man.t">Nous concevons des applications IA, des automatisations et des produits web sur-mesure. Des outils que vos équipes adoptent dès le premier jour — et qui font gagner du temps, chaque jour.</p>
+    <dl class="stats mt-72 grid grid-cols-1 gap-32 border-t border-slate-border/40 pt-40 sm:grid-cols-3">
+      <div class="reveal flex flex-col-reverse"><dt class="mt-12 text-body text-ash-text" data-i18n="st.1">produits conçus et livrés</dt><dd class="stat-n display"><span data-count data-count-projects data-to="7">7</span></dd></div>
+      <div class="reveal flex flex-col-reverse"><dt class="mt-12 text-body text-ash-text" data-i18n="st.2">expertises : IA, automatisation, web</dt><dd class="stat-n display"><span data-count data-to="3">3</span></dd></div>
+      <div class="reveal flex flex-col-reverse"><dt class="mt-12 text-body text-ash-text" data-i18n="st.3">des automatisations qui ne s'arrêtent jamais</dt><dd class="stat-n display"><span data-count data-to="24">24</span>/7</dd></div>
     </dl>
   </div>
 </section>
 
 <!-- ================= TOOLS ================= -->
-<section class="border-y border-slate-border/25 py-40">
-  <div class="wrap flex flex-col items-center gap-24 md:flex-row md:gap-40">
-    <p class="shrink-0 text-body-sm text-ash-text" data-i18n="tools.k">Les outils que nous maîtrisons</p>
-    <ul class="flex flex-wrap justify-center gap-x-32 gap-y-12 text-body-lg font-w480 text-ivory-text/80 md:justify-start">
+<section class="tools border-y border-slate-border/25 py-32" aria-labelledby="tools-k">
+  <p id="tools-k" class="wrap mb-20 text-body-sm text-ash-text" data-i18n="tools.k">Les outils que nous maîtrisons</p>
+  <div class="marquee">
+    <ul class="marquee-track">
       <li>OpenAI</li><li>Claude</li><li>n8n</li><li>Make</li><li>Zapier</li><li>Python</li><li>React</li><li>TypeScript</li><li>Supabase</li><li>PHP · MySQL</li><li>WordPress</li><li>Shopify</li>
     </ul>
   </div>
@@ -152,7 +136,7 @@
       <h2 class="h-section mt-16" data-i18n="vid.h">Le studio en 45 secondes.</h2>
       <p class="lead mt-20" data-i18n="vid.sub">Ce que nous construisons et comment nous travaillons, en un coup d'œil.</p>
     </div>
-    <div class="reveal card mt-56 p-12 md:p-24">
+    <div class="vid-card card mt-56 p-12 md:p-24">
       <div class="vid">
         <video id="studio-video" preload="none" playsinline controls width="1920" height="1080" data-lang="fr" aria-describedby="vid-desc">
           <source src="assets/video/bl-studio-fr.mp4" type="video/mp4">
@@ -175,7 +159,7 @@
     </div>
 
     <div class="mt-56 grid gap-12 md:grid-cols-3">
-      <article class="reveal card flex flex-col">
+      <article class="reveal rv-tilt card spot tilt flex flex-col">
         <svg class="h-[28px] w-[28px] stroke-ivory-text" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 8v4l3 2"/><circle cx="19" cy="5" r="2"/></svg>
         <h3 class="h-card mt-32" data-i18n="svc.1.t">Applications IA &amp; agents LLM</h3>
         <p class="mt-12 text-ash-text" data-i18n="svc.1.p">Assistants, chatbots et agents IA branchés sur vos données et vos outils : ils répondent, recherchent, extraient et agissent à votre place.</p>
@@ -186,7 +170,7 @@
         </ul>
         <div class="mt-auto flex flex-wrap gap-8 pt-32"><span class="tag">OpenAI</span><span class="tag">Claude</span><span class="tag">RAG</span><span class="tag">Prompt engineering</span></div>
       </article>
-      <article class="reveal card flex flex-col">
+      <article class="reveal rv-tilt card spot tilt flex flex-col">
         <svg class="h-[28px] w-[28px] stroke-ivory-text" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M4 12h16M4 17h7"/><circle cx="18" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg>
         <h3 class="h-card mt-32" data-i18n="svc.2.t">Automatisation de processus</h3>
         <p class="mt-12 text-ash-text" data-i18n="svc.2.p">Vos tâches répétitives tournent toutes seules : relances, reporting, qualification de prospects, synchronisation d'outils. Vos équipes récupèrent des heures chaque semaine.</p>
@@ -197,7 +181,7 @@
         </ul>
         <div class="mt-auto flex flex-wrap gap-8 pt-32"><span class="tag">n8n</span><span class="tag">Make</span><span class="tag">Python</span><span class="tag">API REST</span></div>
       </article>
-      <article class="reveal card flex flex-col">
+      <article class="reveal rv-tilt card spot tilt flex flex-col">
         <svg class="h-[28px] w-[28px] stroke-ivory-text" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h4"/></svg>
         <h3 class="h-card mt-32" data-i18n="svc.3.t">Applications web &amp; SaaS</h3>
         <p class="mt-12 text-ash-text" data-i18n="svc.3.p">CRM, tableaux de bord, marketplaces, plateformes SaaS : des outils à forte identité, pensés pour être adoptés dès le premier jour.</p>
@@ -211,9 +195,9 @@
     </div>
 
     <div class="mt-12 grid gap-12 md:grid-cols-3">
-      <div class="reveal rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m1.t">CRM &amp; tableaux de bord</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m1.p">Pilotez prospects, contrats et équipes en temps réel.</p></div>
-      <div class="reveal rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m2.t">Sites vitrines &amp; portfolios</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m2.p">Élégants, rapides, multilingues — WordPress, Shopify ou sur-mesure.</p></div>
-      <div class="reveal rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m3.t">Audit &amp; conseil IA</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m3.p">On identifie ce qui vous coûte du temps et ce que l'IA peut vraiment changer.</p></div>
+      <div class="reveal spot mini rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m1.t">CRM &amp; tableaux de bord</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m1.p">Pilotez prospects, contrats et équipes en temps réel.</p></div>
+      <div class="reveal spot mini rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m2.t">Sites vitrines &amp; portfolios</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m2.p">Élégants, rapides, multilingues — WordPress, Shopify ou sur-mesure.</p></div>
+      <div class="reveal spot mini rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m3.t">Audit &amp; conseil IA</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m3.p">On identifie ce qui vous coûte du temps et ce que l'IA peut vraiment changer.</p></div>
     </div>
   </div>
 </section>
@@ -235,92 +219,96 @@
       </div>
     </div>
 
-    <div id="work" class="mt-56 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+    <div id="work" class="work mt-56">
+<!-- PROJECTS:START -->
+<article class="proj p-crm is-feat has-phone" data-project="crm" data-cat="app ai" data-anim="rise" style="--acc:#A78BFA">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>nexus-crm.app</span></div><div class="pm-view"><img src="assets/projects/crm/pipeline-1024.webp" srcset="assets/projects/crm/pipeline-480.webp 480w, assets/projects/crm/pipeline-1024.webp 1024w, assets/projects/crm/pipeline-1600.webp 1600w" sizes="(min-width: 1024px) 680px, (min-width: 768px) 90vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/crm/dashboard-m-320.webp" srcset="assets/projects/crm/dashboard-m-320.webp 320w, assets/projects/crm/dashboard-m-640.webp 640w" sizes="(min-width: 1024px) 170px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">NX.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="proj-cat" data-i18n="pj.crm.cat">CRM · Énergie · IA</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="crm" aria-haspopup="dialog">Nexus CRM</button></h3>
+<p class="proj-desc" data-i18n="pj.crm.desc">Le CRM des courtiers en énergie : pipeline visuel, relances intelligentes, analyses, marchés de l’énergie en temps réel et un agent IA vocal qui dicte la prochaine action.</p>
+<ul class="proj-points"><li class="tick" data-i18n="pj.crm.l1">Pipeline Kanban et score de santé</li><li class="tick" data-i18n="pj.crm.l2">Agent IA vocal et brief du jour</li><li class="tick" data-i18n="pj.crm.l3">Marchés de l’énergie en temps réel</li></ul>
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
 
-      <!-- Projet vedette -->
-      <article class="proj p-crm reveal card relative grid items-center gap-32 p-24 md:col-span-2 md:p-40 lg:col-span-3 lg:grid-cols-[1fr_1.35fr] lg:gap-56" data-project="crm" data-cat="app" style="--acc:#F5B83D">
-        <div class="order-2 lg:order-1">
-          <div class="flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">CRM.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.crm">CRM · Énergie</span></div>
-          <h3 class="display mt-20 text-heading-sm md:text-heading"><button type="button" class="proj-open" data-open="crm" aria-haspopup="dialog">CRM Power</button></h3>
-          <p class="mt-12 text-ash-text" data-i18n="p.crm">CRM pour courtiers en énergie : gestion centralisée des prospects, suivi des contrats, relances automatisées et tableau de bord analytique pour les équipes commerciales.</p>
-          <ul class="mt-24 space-y-12"><li class="tick" data-i18n="p.crm.l1">Relances automatisées</li><li class="tick" data-i18n="p.crm.l2">Tableau de bord analytique</li><li class="tick" data-i18n="p.crm.l3">Suivi des contrats</li></ul>
-          <div class="mt-32 flex flex-wrap items-center gap-16"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
-        </div>
-        <div class="shot order-1 block lg:order-2" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>crmpower.app</span></div>
-          <div class="ui ui-crm"><div class="sb"><i class="a"></i><i></i><i></i><i></i><i></i></div><div class="col"><div class="row"><div class="kc"><s>Prospects</s><b>1 284</b></div><div class="kc"><s>Contrats</s><b>342</b></div><div class="kc"><s>Relances auto</s><b class="acc">96%</b></div></div><div class="row grow"><div class="panel"><s>Pipeline</s><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i class="a" style="height:92%"></i><i style="height:74%"></i></div></div><div class="panel list"><p><i></i><em class="a">Signé</em></p><p><i></i><em>Relancé</em></p><p><i></i><em>Nouveau</em></p><p><i></i><em class="a">Signé</em></p><p><i></i><em>Relancé</em></p></div></div></div></div>
-        </div>
-      </article>
+<article class="proj p-ai has-phone has-scroll" data-project="ai" data-cat="ai" data-anim="develop" style="--acc:#E4E4E7">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>iahub.app</span></div><div class="pm-view"><img src="assets/projects/ai/home-1024.webp" srcset="assets/projects/ai/home-480.webp 480w, assets/projects/ai/home-1024.webp 1024w, assets/projects/ai/home-1600.webp 1600w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/projects/ai/home-full-640.webp" data-srcset="assets/projects/ai/home-full-640.webp 640w, assets/projects/ai/home-full-1024.webp 1024w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="640" height="1254" alt="" class="pm-scroll" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/ai/home-m-320.webp" srcset="assets/projects/ai/home-m-320.webp 320w, assets/projects/ai/home-m-640.webp 640w" sizes="(min-width: 768px) 120px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">IA.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="proj-cat" data-i18n="pj.ai.cat">Agent IA</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="ai" aria-haspopup="dialog">IA Hub</button></h3>
+<p class="proj-desc" data-i18n="pj.ai.desc">Un assistant IA tout-en-un pour le marketing, l’automatisation et la productivité : conversations, recherche, génération d’images et un espace pour connecter ses propres agents.</p>
 
-      <article class="proj p-ai reveal card relative flex flex-col p-24" data-project="ai" data-cat="ai" style="--acc:#A78BFA">
-        <div class="shot block" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>iahub.app</span></div>
-          <div class="ui ui-ai"><div class="sb"><i class="a"></i><i></i><i></i></div><div class="col end"><div class="q">Montagnes dans la brume, heure bleue</div><div class="img"></div><div class="pills"><em class="a">Images</em><em>Chat</em><em>Recherche</em><em>Docs</em></div></div></div>
-        </div>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">IA.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.ai">Agent IA</span></div>
-        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="ai" aria-haspopup="dialog">IA Hub</button></h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.ai">Agent IA tout-en-un : chat, recherche approfondie, génération d'images et extraction de documents, réunis dans une seule interface.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
-      </article>
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
 
-      <article class="proj p-edu reveal card relative flex flex-col p-24" data-project="edu" data-cat="app" style="--acc:#34D399">
-        <div class="shot block" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>oumahh.app</span></div>
-          <div class="ui ui-edu"><div class="phone"><s>Leçon 4 / 12</s><b>Les bases</b><div class="prog"><i></i></div><p class="d"></p><p class="a"></p><p></p><p></p></div><div class="side"><div class="notif"><u></u>Nouvelle leçon disponible</div><div class="panel"><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:72%"></i><i class="a" style="height:88%"></i></div></div><em>PWA · hors ligne</em></div></div>
-        </div>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">Oum.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text">EdTech · PWA</span></div>
-        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="edu" aria-haspopup="dialog">Oumahh</button></h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.edu">Plateforme d'apprentissage moderne : PWA avec notifications push, navigation intuitive et contenu pédagogique structuré pas à pas.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
-      </article>
+<article class="proj p-edu has-phone has-scroll" data-project="edu" data-cat="app" data-anim="zoom" style="--acc:#D9A03A">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>oummalearn.app</span></div><div class="pm-view"><img src="assets/projects/edu/home-1024.webp" srcset="assets/projects/edu/home-480.webp 480w, assets/projects/edu/home-1024.webp 1024w, assets/projects/edu/home-1600.webp 1600w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/projects/edu/home-full-640.webp" data-srcset="assets/projects/edu/home-full-640.webp 640w, assets/projects/edu/home-full-1024.webp 1024w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="640" height="870" alt="" class="pm-scroll" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/edu/alphabet-m-320.webp" srcset="assets/projects/edu/alphabet-m-320.webp 320w, assets/projects/edu/alphabet-m-640.webp 640w" sizes="(min-width: 768px) 120px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">OL.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="proj-cat" data-i18n="pj.edu.cat">EdTech · PWA</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="edu" aria-haspopup="dialog">Oumma Learn</button></h3>
+<p class="proj-desc" data-i18n="pj.edu.desc">Une application pour apprendre à lire l’arabe et le Coran pas à pas : leçons avec audio, quiz interactifs, jeux de mémorisation et suivi de progression.</p>
 
-      <article class="proj p-fit reveal card relative flex flex-col p-24" data-project="fit" data-cat="app" style="--acc:#FB7185">
-        <div class="shot block" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>fittrack.pro</span></div>
-          <div class="ui ui-fit"><div class="ring"><b>72%</b></div><div class="col"><div class="kc"><s>Calories</s><b>1 840</b></div><div class="kc"><s>Jeûne</s><b class="acc">14:32</b></div><div class="panel"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polyline points="0,70 40,62 80,64 120,48 160,44 200,32 240,26 300,8" fill="none" stroke="var(--acc)" stroke-width="2.5" pathLength="1"/></svg></div></div></div>
-        </div>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">Fit.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.fit">Sport · Nutrition</span></div>
-        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="fit" aria-haspopup="dialog">FitTrack Pro</button></h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.fit">Coach fitness &amp; nutrition : programmes d'entraînement, suivi nutritionnel, jeûne intermittent, records personnels et défis entre amis.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
-      </article>
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
 
-      <article class="proj p-match reveal card relative flex flex-col p-24" data-project="match" data-cat="ai app" style="--acc:#38BDF8">
-        <div class="shot block" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>energimatch.app</span></div>
-          <div class="ui ui-match"><div class="panel"><s>Étape 3 / 4</s><div class="prog"><i></i></div><p class="a">Électricité</p><p>Gaz</p><p>Multi-sites</p></div><div class="col"><div class="panel brief"><s class="acc">Brief généré par IA</s><i></i><i></i><i></i></div><div class="panel list"><p><u></u>Courtier A<em class="a">98%</em></p><p><u></u>Courtier B<em>91%</em></p><p><u></u>Courtier C<em>86%</em></p></div></div></div>
-        </div>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">EM.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text">Marketplace · IA</span></div>
-        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="match" aria-haspopup="dialog">EnergiMatch</button></h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.match">Mise en relation clients ↔ courtiers en énergie : parcours de qualification intelligent, brief généré automatiquement et tableau de bord courtier en temps réel.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
-      </article>
+<article class="proj p-fit has-phone has-scroll" data-project="fit" data-cat="app ai" data-anim="spring" style="--acc:#14B8A6">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>fittrack.pro</span></div><div class="pm-view"><img src="assets/projects/fit/home-1024.webp" srcset="assets/projects/fit/home-480.webp 480w, assets/projects/fit/home-1024.webp 1024w, assets/projects/fit/home-1600.webp 1600w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/projects/fit/home-full-640.webp" data-srcset="assets/projects/fit/home-full-640.webp 640w, assets/projects/fit/home-full-1024.webp 1024w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="640" height="1045" alt="" class="pm-scroll" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/fit/home-m-320.webp" srcset="assets/projects/fit/home-m-320.webp 320w, assets/projects/fit/home-m-640.webp 640w" sizes="(min-width: 768px) 120px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">Fit.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="proj-cat" data-i18n="pj.fit.cat">Sport · Nutrition · IA</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="fit" aria-haspopup="dialog">FitTrack Pro</button></h3>
+<p class="proj-desc" data-i18n="pj.fit.desc">Le coach sport et nutrition qui s’adapte à chacun : séances sur mesure, journal alimentaire en un clic, santé connectée, coach IA et défis entre amis.</p>
 
-      <article class="proj p-club reveal card relative flex flex-col p-24" data-project="club" data-cat="app" style="--acc:#E879F9">
-        <div class="shot block" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>energyclub.app</span></div>
-          <div class="ui ui-club"><div class="hero2"><b>Le club des pros<br>de l'énergie</b><em>Rejoindre</em></div><div class="row"><div class="plan"><s>Membre</s><b>Essentiel</b></div><div class="plan a"><s>Membre</s><b>Pro</b></div><div class="plan"><s>Équipe</s><b>Business</b></div></div></div>
-        </div>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">EC.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.club">SaaS · Communauté</span></div>
-        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="club" aria-haspopup="dialog">EnergyClub</button></h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.club">Plateforme communautaire pour les professionnels de l'énergie : espace membres, contenus exclusifs, abonnements et paiements en ligne.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
-      </article>
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
 
-      <article class="proj p-site reveal card relative flex flex-col p-24" data-project="site" data-cat="site" style="--acc:#D6B98C">
-        <div class="shot block" aria-hidden="true">
-          <div class="bar"><i></i><i></i><i></i><span>portfolio.site</span></div>
-          <div class="ui ui-site"><div class="nav2"><b>V.</b><span></span><span></span><span></span><em>FR / EN</em></div><div class="hero3"><div><i class="l1"></i><i class="l2"></i><i class="l3"></i><u></u></div><div class="pic"></div></div><div class="row"><p></p><p></p><p></p></div></div>
-        </div>
-        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="pmono" aria-hidden="true">Vic.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.site">Site vitrine</span></div>
-        <h3 class="h-card mt-16"><button type="button" class="proj-open" data-open="site" aria-haspopup="dialog">Portfolio Vicken</button></h3>
-        <p class="mt-12 text-ash-text" data-i18n="p.site">Site vitrine élégant et multilingue (FR / EN) : présentation, réalisations et contact, avec une expérience fluide sur mobile comme sur ordinateur.</p>
-        <div class="mt-auto flex flex-wrap items-center gap-16 pt-24"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
-      </article>
+<article class="proj p-match has-phone has-scroll" data-project="match" data-cat="ai app" data-anim="match" style="--acc:#F59E0B">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>energymatch.app</span></div><div class="pm-view"><img src="assets/projects/match/home-1024.webp" srcset="assets/projects/match/home-480.webp 480w, assets/projects/match/home-1024.webp 1024w, assets/projects/match/home-1600.webp 1600w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/projects/match/home-full-640.webp" data-srcset="assets/projects/match/home-full-640.webp 640w, assets/projects/match/home-full-1024.webp 1024w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="640" height="2048" alt="" class="pm-scroll" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/match/wizard-m-320.webp" srcset="assets/projects/match/wizard-m-320.webp 320w, assets/projects/match/wizard-m-640.webp 640w" sizes="(min-width: 768px) 120px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">EM.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="proj-cat" data-i18n="pj.match.cat">Marketplace · IA</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="match" aria-haspopup="dialog">EnergyMatch</button></h3>
+<p class="proj-desc" data-i18n="pj.match.desc">La marketplace qui met en relation clients et experts de l’énergie : brief en 3 minutes, analyse et mise en relation par IA, tableau de bord expert en temps réel.</p>
 
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
+
+<article class="proj p-club has-phone" data-project="club" data-cat="app" data-anim="iris" style="--acc:#5FE33E">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>energyconnect.app</span></div><div class="pm-view"><img src="assets/projects/club/home-1024.webp" srcset="assets/projects/club/home-480.webp 480w, assets/projects/club/home-1024.webp 1024w, assets/projects/club/home-1600.webp 1600w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/club/home-m-320.webp" srcset="assets/projects/club/home-m-320.webp 320w, assets/projects/club/home-m-640.webp 640w" sizes="(min-width: 768px) 120px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">EC.</span><span class="tag" data-i18n="st.dev">En développement</span><span class="proj-cat" data-i18n="pj.club.cat">SaaS · Mise en relation</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="club" aria-haspopup="dialog">Energy Connect</button></h3>
+<p class="proj-desc" data-i18n="pj.club.desc">La plateforme où apporteurs d’affaires, courtiers et entreprises de l’énergie se trouvent par zone et par métier, échangent en direct et signent leurs partenariats.</p>
+
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
+
+<article class="proj p-site has-phone has-scroll" data-project="site" data-cat="site" data-anim="curtain" style="--acc:#D6C7A1">
+<div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>vickenmian.com</span></div><div class="pm-view"><img src="assets/projects/site/home-1024.webp" srcset="assets/projects/site/home-480.webp 480w, assets/projects/site/home-1024.webp 1024w, assets/projects/site/home-1600.webp 1600w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"><img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="assets/projects/site/work-full-640.webp" data-srcset="assets/projects/site/work-full-640.webp 640w, assets/projects/site/work-full-1024.webp 1024w" sizes="(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw" width="640" height="1267" alt="" class="pm-scroll" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/site/home-m-320.webp" srcset="assets/projects/site/home-m-320.webp 320w, assets/projects/site/home-m-640.webp 640w" sizes="(min-width: 768px) 120px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
+<div class="proj-body">
+<div class="proj-meta"><span class="pmono" aria-hidden="true">VM.</span><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="proj-cat" data-i18n="pj.site.cat">Site vitrine · Photographe</span></div>
+<h3 class="proj-title"><button type="button" class="proj-open" data-open="site" aria-haspopup="dialog">Vicken Mian</button></h3>
+<p class="proj-desc" data-i18n="pj.site.desc">Le portfolio d’un photographe et réalisateur documentaire : chaque projet raconté comme un récit d’images et de texte, en français et en anglais.</p>
+
+<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span><a class="ext" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a></div>
+</div>
+</article>
+<!-- PROJECTS:END -->
     </div>
   </div>
 </section>
+
+<!-- ================= DÉFILÉ D'ÉCRANS ================= -->
+<section class="reel-wrap" aria-hidden="true"><div class="reel">
+<!-- REEL:START -->
+<div class="reel-row" data-dir="1"><ul class="reel-track"><li class="reel-desk" style="--acc:#A78BFA"><img src="assets/projects/crm/pipeline-480.webp" srcset="assets/projects/crm/pipeline-480.webp 480w, assets/projects/crm/pipeline-1024.webp 1024w, assets/projects/crm/pipeline-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#A78BFA"><img src="assets/projects/crm/analytics-480.webp" srcset="assets/projects/crm/analytics-480.webp 480w, assets/projects/crm/analytics-1024.webp 1024w, assets/projects/crm/analytics-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#E4E4E7"><img src="assets/projects/ai/home-480.webp" srcset="assets/projects/ai/home-480.webp 480w, assets/projects/ai/home-1024.webp 1024w, assets/projects/ai/home-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#E4E4E7"><img src="assets/projects/ai/sec2-480.webp" srcset="assets/projects/ai/sec2-480.webp 480w, assets/projects/ai/sec2-1024.webp 1024w, assets/projects/ai/sec2-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#D9A03A"><img src="assets/projects/edu/home-480.webp" srcset="assets/projects/edu/home-480.webp 480w, assets/projects/edu/home-1024.webp 1024w, assets/projects/edu/home-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#D9A03A"><img src="assets/projects/edu/alphabet-480.webp" srcset="assets/projects/edu/alphabet-480.webp 480w, assets/projects/edu/alphabet-1024.webp 1024w, assets/projects/edu/alphabet-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#14B8A6"><img src="assets/projects/fit/home-480.webp" srcset="assets/projects/fit/home-480.webp 480w, assets/projects/fit/home-1024.webp 1024w, assets/projects/fit/home-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li></ul></div>
+<div class="reel-row" data-dir="-1"><ul class="reel-track"><li class="reel-desk" style="--acc:#14B8A6"><img src="assets/projects/fit/sec1-480.webp" srcset="assets/projects/fit/sec1-480.webp 480w, assets/projects/fit/sec1-1024.webp 1024w, assets/projects/fit/sec1-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#A78BFA"><img src="assets/projects/crm/dashboard-m-640.webp" srcset="assets/projects/crm/dashboard-m-320.webp 320w, assets/projects/crm/dashboard-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#F59E0B"><img src="assets/projects/match/home-480.webp" srcset="assets/projects/match/home-480.webp 480w, assets/projects/match/home-1024.webp 1024w, assets/projects/match/home-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#E4E4E7"><img src="assets/projects/ai/home-m-640.webp" srcset="assets/projects/ai/home-m-320.webp 320w, assets/projects/ai/home-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#F59E0B"><img src="assets/projects/match/wizard-480.webp" srcset="assets/projects/match/wizard-480.webp 480w, assets/projects/match/wizard-1024.webp 1024w, assets/projects/match/wizard-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#D9A03A"><img src="assets/projects/edu/alphabet-m-640.webp" srcset="assets/projects/edu/alphabet-m-320.webp 320w, assets/projects/edu/alphabet-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#5FE33E"><img src="assets/projects/club/home-480.webp" srcset="assets/projects/club/home-480.webp 480w, assets/projects/club/home-1024.webp 1024w, assets/projects/club/home-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#14B8A6"><img src="assets/projects/fit/home-m-640.webp" srcset="assets/projects/fit/home-m-320.webp 320w, assets/projects/fit/home-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#5FE33E"><img src="assets/projects/club/sec3-480.webp" srcset="assets/projects/club/sec3-480.webp 480w, assets/projects/club/sec3-1024.webp 1024w, assets/projects/club/sec3-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#F59E0B"><img src="assets/projects/match/wizard-m-640.webp" srcset="assets/projects/match/wizard-m-320.webp 320w, assets/projects/match/wizard-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#D6C7A1"><img src="assets/projects/site/home-480.webp" srcset="assets/projects/site/home-480.webp 480w, assets/projects/site/home-1024.webp 1024w, assets/projects/site/home-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#5FE33E"><img src="assets/projects/club/home-m-640.webp" srcset="assets/projects/club/home-m-320.webp 320w, assets/projects/club/home-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li><li class="reel-desk" style="--acc:#D6C7A1"><img src="assets/projects/site/work-480.webp" srcset="assets/projects/site/work-480.webp 480w, assets/projects/site/work-1024.webp 1024w, assets/projects/site/work-1600.webp 1600w" sizes="384px" width="480" height="300" alt="" loading="lazy" decoding="async"></li><li class="reel-mob" style="--acc:#D6C7A1"><img src="assets/projects/site/home-m-640.webp" srcset="assets/projects/site/home-m-320.webp 320w, assets/projects/site/home-m-640.webp 640w" sizes="130px" width="640" height="1385" alt="" loading="lazy" decoding="async"></li></ul></div>
+<!-- REEL:END -->
+</div></section>
 
 <!-- ================= DEMO ================= -->
 <section id="demo" class="section bg-graphite-card/40">
@@ -335,7 +323,7 @@
         <li class="flex gap-16"><span class="w-[28px] shrink-0 text-body-sm text-ash-text">03</span><span data-i18n="demo.l3">Un e-mail personnalisé part immédiatement</span></li>
         <li class="flex gap-16"><span class="w-[28px] shrink-0 text-body-sm text-ash-text">04</span><span data-i18n="demo.l4">Votre équipe est notifiée, le reporting se met à jour</span></li>
       </ol>
-      <a href="#contact" class="btn-ghost mt-40" data-i18n="demo.cta">Automatiser mes process</a>
+      <a href="#contact" class="btn-ghost magnet mt-40" data-i18n="demo.cta">Automatiser mes process</a>
     </div>
     <div id="flow" class="reveal card p-24 md:p-32" aria-hidden="true">
       <div class="grid gap-12 sm:grid-cols-2">
@@ -363,7 +351,7 @@
       <p class="lead mt-20" data-i18n="proc.sub">Une méthode simple et transparente : vous savez toujours où en est votre projet.</p>
     </div>
     <div class="proc relative mt-56 grid gap-40 md:grid-cols-4 md:gap-24">
-      <div class="absolute inset-x-0 top-0 hidden h-px bg-slate-border/40 md:block"><div id="procfill" class="proc-fill h-full w-0 bg-ivory-text"></div></div>
+      <div class="absolute inset-x-0 top-0 hidden h-px bg-slate-border/40 md:block"><div id="procfill" class="proc-fill h-full w-full bg-ivory-text"></div></div>
       <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">01</p><h3 class="h-card mt-16" data-i18n="proc.1.t">Écouter</h3><p class="mt-12 text-ash-text" data-i18n="proc.1.p">On comprend votre métier, vos irritants et ce qui vous coûte du temps — avant de parler technologie.</p></div>
       <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">02</p><h3 class="h-card mt-16" data-i18n="proc.2.t">Concevoir</h3><p class="mt-12 text-ash-text" data-i18n="proc.2.p">La solution la plus simple qui fonctionne : ni usine à gaz, ni gadget. Chaque brique a une raison d'être.</p></div>
       <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">03</p><h3 class="h-card mt-16" data-i18n="proc.3.t">Construire</h3><p class="mt-12 text-ash-text" data-i18n="proc.3.p">Développement, intégration à vos outils existants et tests en conditions réelles avec vos équipes.</p></div>
@@ -380,12 +368,12 @@
       <h2 class="h-section mt-16" data-i18n="why.h">Du code solide, pensé pour votre activité.</h2>
     </div>
     <div class="mt-56 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.1.t">Double culture tech &amp; business</p><p class="mt-12 text-ash-text" data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
-      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.2.t">Expertise IA appliquée</p><p class="mt-12 text-ash-text" data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
-      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.3.t">Simple &amp; efficace</p><p class="mt-12 text-ash-text" data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
-      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.4.t">Impact mesurable</p><p class="mt-12 text-ash-text" data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
-      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.5.t">Adopté dès le premier jour</p><p class="mt-12 text-ash-text" data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
-      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.6.t">Réactivité garantie</p><p class="mt-12 text-ash-text" data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.1.t">Double culture tech &amp; business</p><p class="mt-12 text-ash-text" data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.2.t">Expertise IA appliquée</p><p class="mt-12 text-ash-text" data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.3.t">Simple &amp; efficace</p><p class="mt-12 text-ash-text" data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.4.t">Impact mesurable</p><p class="mt-12 text-ash-text" data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.5.t">Adopté dès le premier jour</p><p class="mt-12 text-ash-text" data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.6.t">Réactivité garantie</p><p class="mt-12 text-ash-text" data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
     </div>
   </div>
 </section>
@@ -413,12 +401,12 @@
 <section id="contact" class="relative overflow-hidden py-112 md:py-128">
   <picture>
     <source type="image/webp" srcset="assets/img/horizon-960.webp 960w, assets/img/horizon-1600.webp 1600w, assets/img/horizon-2400.webp 2400w" sizes="100vw">
-    <img src="assets/img/horizon-1600.jpg" alt="" width="1600" height="733" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover object-bottom">
+    <img src="assets/img/horizon-1600.jpg" alt="" width="1600" height="733" loading="lazy" decoding="async" class="parallax absolute inset-0 h-full w-full object-cover object-bottom">
   </picture>
   <div class="absolute inset-0 bg-[linear-gradient(180deg,#171721_0%,rgb(23_23_33/.45)_30%,rgb(23_23_33/.6)_75%,#171721_100%)]"></div>
   <div class="wrap relative">
     <div class="reveal mx-auto max-w-[920px] text-center">
-      <h2 class="display text-heading md:text-heading-lg lg:text-display text-pure-white"><span data-i18n="ct.h1">Prêt à décoller ?</span><br><span data-i18n="ct.h2">Parlons de votre projet.</span></h2>
+      <h2 class="h-split display text-heading md:text-heading-lg lg:text-display text-pure-white"><span data-i18n="ct.h1">Prêt à décoller ?</span><br><span data-i18n="ct.h2">Parlons de votre projet.</span></h2>
       <p class="mx-auto mt-24 max-w-[560px] text-body-lg font-w480 text-ivory-text" data-i18n="ct.sub">Un processus à automatiser, une idée d'outil, un projet IA ? Décrivez-le en quelques lignes : vous recevez une réponse rapide et un premier avis sur la meilleure approche.</p>
     </div>
     <form class="reveal card mx-auto mt-56 grid max-w-[720px] gap-20 bg-graphite-card/95 md:p-40" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html">
@@ -442,7 +430,7 @@
       <label><span class="label" data-i18n="f.msg">Votre projet en quelques lignes</span><textarea class="field" id="contact-msg" name="message" rows="5" required></textarea></label>
       <div class="flex flex-col items-center gap-16 pt-8 sm:flex-row sm:justify-between">
         <p class="text-body-sm text-ash-text" data-i18n="f.note">Réponse rapide garantie · Devis clair et détaillé</p>
-        <button class="btn-primary w-full sm:w-auto" type="submit" data-i18n="f.send">Envoyer ma demande</button>
+        <button class="btn-primary magnet w-full sm:w-auto" type="submit" data-i18n="f.send">Envoyer ma demande</button>
       </div>
     </form>
   </div>
@@ -455,6 +443,7 @@
 
 <!-- ================= FOOTER ================= -->
 <footer class="border-t border-slate-border/25">
+  <div class="ft-word wrap" aria-hidden="true"><span>Build</span><span>&amp;</span><span>Launch</span></div>
   <div class="wrap flex flex-col gap-32 py-56 md:flex-row md:items-center">
     <a href="#top" class="flex items-center gap-12"><img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto"><span class="text-body-lg font-w480">Build &amp; Launch</span></a>
     <p class="text-ash-text" data-i18n="ft.tag">On construit. Vous décollez.</p>
@@ -466,11 +455,14 @@
     </nav>
   </div>
   <div class="border-t border-slate-border/25">
-    <p class="wrap py-24 text-caption font-w480 tracking-[0.01em] text-ash-text">© <span id="yr">2026</span> Build &amp; Launch — <span data-i18n="ft.disc">Studio IA, automatisation &amp; web. Les visuels d'interface illustrent les projets ; démonstrations complètes sur demande.</span></p>
+    <p class="wrap py-24 text-caption font-w480 tracking-[0.01em] text-ash-text">© <span id="yr">2026</span> Build &amp; Launch — <span data-i18n="ft.disc">Studio IA, automatisation &amp; web. Captures issues des projets, avec des données de démonstration.</span></p>
   </div>
 </footer>
 
+<script src="assets/projects-data.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/main.js" defer></script>
 <script src="assets/projects.js" defer></script>
+<script src="assets/fx.js" defer></script>
 </body>
 </html>
