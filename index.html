@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Build &amp; Launch — Applications IA, automatisation &amp; produits web</title>
+<meta name="description" content="Build & Launch conçoit et lance vos applications IA, vos automatisations et vos produits web sur-mesure : agents LLM, RAG, n8n, Make, CRM, SaaS. De l'idée au lancement.">
+<meta name="theme-color" content="#04070F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Build & Launch — On construit. Vous décollez.">
+<meta property="og:description" content="Applications IA, automatisations et produits web sur-mesure — de l'idée au lancement.">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" href="assets/fonts/PlusJakartaSans-latin-5.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand" aria-label="Build & Launch — accueil">
+      <img src="assets/logo-mark.png" alt="" width="54" height="40">
+      <span>Build <b>&amp;</b> Launch</span>
+    </a>
+    <nav class="menu" id="menu" aria-label="Navigation principale">
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#realisations" data-i18n="nav.work">Réalisations</a>
+      <a href="#process" data-i18n="nav.process">Méthode</a>
+      <a href="#pourquoi" data-i18n="nav.why">Pourquoi nous</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    </nav>
+    <div class="nav-r">
+      <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
+      <a href="#contact" class="btn btn-sm" data-i18n="nav.cta">Démarrer un projet</a>
+      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <p class="eyebrow reveal"><span class="dot"></span><span data-i18n="hero.eyebrow">Studio IA · Automatisation · Web</span></p>
+      <h1 class="reveal">
+        <span data-i18n="hero.t1">Vos idées,</span><br>
+        <span class="grad" data-i18n="hero.t2">construites et lancées.</span>
+      </h1>
+      <p class="lead reveal" data-i18n="hero.lead">Applications IA, automatisations et produits web sur-mesure — conçus pour faire gagner du temps à vos équipes et décoller votre activité.</p>
+      <div class="cta-row reveal">
+        <a href="#contact" class="btn" data-i18n="hero.cta1">Parlons de votre projet</a>
+        <a href="#realisations" class="btn btn-ghost" data-i18n="hero.cta2">Voir les réalisations</a>
+      </div>
+      <ul class="hero-stats reveal">
+        <li><b data-count="7">7</b><span data-i18n="hero.s1">produits conçus</span></li>
+        <li><b>3</b><span data-i18n="hero.s2">expertises clés</span></li>
+        <li><b>24/7</b><span data-i18n="hero.s3">automatisations actives</span></li>
+      </ul>
+    </div>
+
+    <!-- hero visual: mission control -->
+    <div class="hero-vis reveal" aria-hidden="true">
+      <svg class="trail" viewBox="0 0 600 600" preserveAspectRatio="none">
+        <defs><linearGradient id="tg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2F5BFF" stop-opacity="0"/><stop offset=".5" stop-color="#0A84FF"/><stop offset="1" stop-color="#00CAFE"/></linearGradient></defs>
+        <path d="M-20 560 C 180 520, 380 380, 560 60" stroke="url(#tg)" stroke-width="3" fill="none" class="trail-path"/>
+      </svg>
+      <div class="hv-card hv-chat">
+        <div class="hv-head"><i></i><i></i><i></i><span>assistant-ia</span></div>
+        <div class="bubble u" data-i18n="hv.q">Résume ce contrat et liste les échéances.</div>
+        <div class="bubble a"><span class="mono acc">IA</span> <span data-i18n="hv.a">3 ans · révision au 1er janvier · préavis 3 mois · prochaine échéance →</span> <b class="acc" data-i18n="hv.d">15 mars</b></div>
+      </div>
+      <div class="hv-card hv-flow">
+        <div class="hv-title mono" data-i18n="hv.flow">workflow · nouveau lead</div>
+        <div class="flow-row">
+          <span class="fn on">⚡</span><span class="fl"></span><span class="fn">✦</span><span class="fl"></span><span class="fn">▤</span><span class="fl"></span><span class="fn">✉</span>
+        </div>
+        <div class="hv-log mono"><span class="acc">✓</span> <span data-i18n="hv.log">lead qualifié · CRM à jour · e-mail envoyé</span></div>
+      </div>
+      <div class="hv-card hv-kpi">
+        <span class="mono" data-i18n="hv.kpi">tâches manuelles</span>
+        <b class="grad">−80%</b>
+        <div class="spark"><i style="height:90%"></i><i style="height:75%"></i><i style="height:60%"></i><i style="height:42%"></i><i style="height:30%"></i><i style="height:18%"></i></div>
+        <small data-i18n="hv.kpinote">exemple d'objectif</small>
+      </div>
+      <img class="hv-rocket" src="assets/logo-mark.png" alt="">
+    </div>
+  </div>
+
+  <div class="marquee" aria-label="Technologies">
+    <div class="marquee-in">
+      <span>OpenAI</span><span>Claude</span><span>RAG</span><span>n8n</span><span>Make</span><span>Zapier</span><span>Python</span><span>React</span><span>TypeScript</span><span>Supabase</span><span>Vite</span><span>PHP · MySQL</span><span>API REST</span><span>WordPress</span><span>Shopify</span><span>Webflow</span>
+      <span aria-hidden="true">OpenAI</span><span aria-hidden="true">Claude</span><span aria-hidden="true">RAG</span><span aria-hidden="true">n8n</span><span aria-hidden="true">Make</span><span aria-hidden="true">Zapier</span><span aria-hidden="true">Python</span><span aria-hidden="true">React</span><span aria-hidden="true">TypeScript</span><span aria-hidden="true">Supabase</span><span aria-hidden="true">Vite</span><span aria-hidden="true">PHP · MySQL</span><span aria-hidden="true">API REST</span><span aria-hidden="true">WordPress</span><span aria-hidden="true">Shopify</span><span aria-hidden="true">Webflow</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker mono">01 — <span data-i18n="svc.k">Services</span></p>
+      <h2 data-i18n="svc.h">Ce qu'on construit pour vous.</h2>
+      <p class="sub" data-i18n="svc.sub">Trois expertises au cœur, pensées pour un seul objectif : vous faire gagner du temps et de l'argent, de façon mesurable.</p>
+    </div>
+    <div class="svc-grid">
+      <article class="svc svc-main reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 8v4l3 2"/><circle cx="19" cy="5" r="2"/></svg></div>
+        <h3 data-i18n="svc.1.t">Applications IA &amp; agents LLM</h3>
+        <p data-i18n="svc.1.p">Assistants, chatbots et agents IA branchés sur vos données et vos outils : ils répondent, recherchent, extraient et agissent à votre place.</p>
+        <ul class="ticks">
+          <li data-i18n="svc.1.l1">Chatbots &amp; assistants métier</li>
+          <li data-i18n="svc.1.l2">RAG : l'IA qui connaît vos documents</li>
+          <li data-i18n="svc.1.l3">Extraction &amp; génération de contenu</li>
+        </ul>
+        <div class="tags"><span>OpenAI</span><span>Claude</span><span>RAG</span><span>Prompt Engineering</span></div>
+      </article>
+      <article class="svc svc-main reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h16M4 17h7"/><circle cx="18" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></div>
+        <h3 data-i18n="svc.2.t">Automatisation de processus</h3>
+        <p data-i18n="svc.2.p">Vos tâches répétitives tournent toutes seules : relances, reporting, qualification de prospects, synchronisation d'outils. Vos équipes récupèrent des heures chaque semaine.</p>
+        <ul class="ticks">
+          <li data-i18n="svc.2.l1">Workflows n8n, Make, Zapier</li>
+          <li data-i18n="svc.2.l2">Intégrations API &amp; scripts sur-mesure</li>
+          <li data-i18n="svc.2.l3">IA intégrée dans vos process</li>
+        </ul>
+        <div class="tags"><span>n8n</span><span>Make</span><span>Python</span><span>API REST</span></div>
+      </article>
+      <article class="svc svc-main reveal">
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h4"/></svg></div>
+        <h3 data-i18n="svc.3.t">Applications web &amp; SaaS</h3>
+        <p data-i18n="svc.3.p">CRM, tableaux de bord, marketplaces, plateformes SaaS : des outils à forte identité visuelle, pensés pour être adoptés dès le premier jour.</p>
+        <ul class="ticks">
+          <li data-i18n="svc.3.l1">Web apps &amp; PWA</li>
+          <li data-i18n="svc.3.l2">Espaces membres, abonnements, paiements</li>
+          <li data-i18n="svc.3.l3">UX soignée, mobile &amp; desktop</li>
+        </ul>
+        <div class="tags"><span>React</span><span>TypeScript</span><span>Supabase</span><span>JavaScript</span></div>
+      </article>
+    </div>
+    <div class="svc-mini">
+      <div class="mini reveal"><b data-i18n="svc.m1.t">CRM &amp; tableaux de bord</b><span data-i18n="svc.m1.p">Pilotez prospects, contrats et équipes en temps réel.</span></div>
+      <div class="mini reveal"><b data-i18n="svc.m2.t">Sites vitrines &amp; portfolios</b><span data-i18n="svc.m2.p">Élégants, rapides, multilingues — WordPress, Shopify ou sur-mesure.</span></div>
+      <div class="mini reveal"><b data-i18n="svc.m3.t">Audit &amp; conseil IA</b><span data-i18n="svc.m3.p">On identifie ce qui vous coûte du temps et ce que l'IA peut vraiment changer.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WORK ============ -->
+<section class="sec" id="realisations">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker mono">02 — <span data-i18n="work.k">Réalisations</span></p>
+      <h2 data-i18n="work.h">De vrais produits, conçus &amp; livrés.</h2>
+      <p class="sub" data-i18n="work.sub">Des projets en ligne et des produits en cours de finalisation — cliquez pour les explorer. Démonstrations détaillées sur simple demande.</p>
+    </div>
+    <div class="filters reveal" role="tablist" aria-label="Filtrer les projets">
+      <button class="on" data-f="all" data-i18n="work.f0">Tous</button>
+      <button data-f="ai" data-i18n="work.f1">IA</button>
+      <button data-f="app" data-i18n="work.f2">Web apps &amp; SaaS</button>
+      <button data-f="site" data-i18n="work.f3">Sites</button>
+    </div>
+    <div class="work-grid" id="work">
+
+      <article class="proj proj-wide reveal" data-cat="app">
+        <a class="shot" href="https://crmpower.netlify.app/" target="_blank" rel="noopener" aria-label="CRM Power — voir en ligne">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>crmpower.app</span></div>
+            <div class="ui ui-crm"><div class="sb"><i class="a"></i><i></i><i></i><i></i><i></i></div><div class="col"><div class="row"><div class="kc"><s>PROSPECTS</s><b>1 284</b></div><div class="kc"><s>CONTRATS</s><b class="acc">342</b></div><div class="kc"><s>RELANCES AUTO</s><b>96%</b></div></div><div class="row grow"><div class="panel"><s>PIPELINE</s><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i class="a" style="height:92%"></i><i style="height:74%"></i></div></div><div class="panel list"><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p><p><i></i><em>Nouveau</em></p><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p></div></div></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge live" data-i18n="st.live">En ligne</span><span class="mono pcat" data-i18n="cat.crm">CRM · Énergie</span></div>
+          <h3>CRM Power</h3>
+          <p data-i18n="p.crm">CRM pour courtiers en énergie : gestion centralisée des prospects, suivi des contrats, relances automatisées et tableau de bord analytique pour les équipes commerciales.</p>
+          <ul class="ticks sm"><li data-i18n="p.crm.l1">Relances automatisées</li><li data-i18n="p.crm.l2">Dashboard analytique</li><li data-i18n="p.crm.l3">Suivi des contrats</li></ul>
+          <div class="tags"><span>Web App</span><span>CRM</span><span>JavaScript</span></div>
+          <a class="plink" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> →</a>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cat="ai">
+        <a class="shot" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener" aria-label="IA Hub — voir la démo">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>iahub.app</span></div>
+            <div class="ui ui-ai"><div class="sb"><i class="a"></i><i></i><i></i></div><div class="col end"><div class="q">Generate a solar farm at sunset</div><div class="img"><div class="sun"></div><div class="panels"></div></div><div class="pills"><em>Chat</em><em>Research</em><em>Images</em><em>Docs</em></div></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat" data-i18n="cat.ai">Agent IA</span></div>
+          <h3>IA Hub</h3>
+          <p data-i18n="p.ai">Agent IA tout-en-un : chat, recherche approfondie, génération d'images et extraction de documents — propulsé par LLM et Supabase.</p>
+          <div class="tags"><span>React</span><span>Supabase</span><span>LLM</span></div>
+          <a class="plink" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cat="app">
+        <a class="shot" href="https://oumahh.netlify.app/" target="_blank" rel="noopener" aria-label="Oumahh — voir en ligne">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>oumahh.app</span></div>
+            <div class="ui ui-edu"><div class="phone"><s>LEÇON 4 / 12</s><b>Les bases</b><div class="prog"><i></i></div><p></p><p class="a"></p><p></p><p></p></div><div class="side"><div class="notif">🔔 Nouvelle leçon</div><div class="panel"><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:72%"></i><i class="a" style="height:88%"></i></div></div><em>PWA · offline</em></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge live" data-i18n="st.live">En ligne</span><span class="mono pcat">EdTech · PWA</span></div>
+          <h3>Oumahh</h3>
+          <p data-i18n="p.edu">Plateforme d'apprentissage moderne : PWA avec notifications push, navigation intuitive et contenu pédagogique structuré pas à pas.</p>
+          <div class="tags"><span>EdTech</span><span>PWA</span><span>Vite</span></div>
+          <a class="plink" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> →</a>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cat="app">
+        <a class="shot" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener" aria-label="FitTrack Pro — voir la démo">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>fittrack.pro</span></div>
+            <div class="ui ui-fit"><div class="ring"><b>72%</b></div><div class="col"><div class="kc"><s>CALORIES</s><b>1 840</b></div><div class="kc"><s>FASTING</s><b class="acc">14:32</b></div><div class="panel"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polyline points="0,70 40,62 80,64 120,48 160,44 200,32 240,26 300,8" fill="none" stroke="#00CAFE" stroke-width="3"/></svg></div></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat">Health · App</span></div>
+          <h3>FitTrack Pro</h3>
+          <p data-i18n="p.fit">Coach fitness &amp; nutrition : programmes d'entraînement, suivi nutritionnel, jeûne intermittent, records personnels et défis entre amis.</p>
+          <div class="tags"><span>React</span><span>TypeScript</span><span>Supabase</span></div>
+          <a class="plink" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cat="ai app">
+        <a class="shot" href="https://energymatch.netlify.app/" target="_blank" rel="noopener" aria-label="EnergiMatch — voir la démo">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>energimatch.app</span></div>
+            <div class="ui ui-match"><div class="panel"><s>ÉTAPE 3 / 4</s><div class="prog"><i></i></div><p class="a">Électricité</p><p>Gaz</p><p>Multi-sites</p></div><div class="col"><div class="panel brief"><s class="acc">BRIEF GÉNÉRÉ PAR IA</s><i></i><i></i><i></i></div><div class="panel list"><p><u></u>Courtier A<em>98%</em></p><p><u></u>Courtier B<em>91%</em></p><p><u></u>Courtier C<em>86%</em></p></div></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat">Marketplace</span></div>
+          <h3>EnergiMatch</h3>
+          <p data-i18n="p.match">Mise en relation clients ↔ courtiers en énergie : parcours de qualification intelligent, brief généré automatiquement et tableau de bord courtier en temps réel.</p>
+          <div class="tags"><span>Marketplace</span><span>IA</span><span>JavaScript</span></div>
+          <a class="plink" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cat="app">
+        <a class="shot" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener" aria-label="EnergyClub — voir la démo">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>energyclub.app</span></div>
+            <div class="ui ui-club"><div class="hero2"><b>Le club des pros<br>de l'énergie</b><em>Rejoindre</em></div><div class="row"><div class="plan"><s>MEMBRE</s><b>Essentiel</b></div><div class="plan a"><s>MEMBRE</s><b>Pro</b></div><div class="plan"><s>ÉQUIPE</s><b>Business</b></div></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat">SaaS · Communauté</span></div>
+          <h3>EnergyClub</h3>
+          <p data-i18n="p.club">Plateforme communautaire pour les professionnels de l'énergie : espace membres, contenus exclusifs, abonnements et paiements en ligne.</p>
+          <div class="tags"><span>React</span><span>SaaS</span><span data-i18n="tag.pay">Paiements</span></div>
+          <a class="plink" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cat="site">
+        <a class="shot" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener" aria-label="Portfolio Vicken — voir en ligne">
+          <div class="win"><div class="bar"><i></i><i></i><i></i><span>portfolio.site</span></div>
+            <div class="ui ui-site"><div class="nav2"><b>V.</b><span></span><span></span><span></span><em>FR / EN</em></div><div class="hero3"><div><i class="l1"></i><i class="l2"></i><i class="l3"></i><em></em></div><div class="pic"></div></div><div class="row"><p></p><p></p><p></p></div></div>
+          </div>
+        </a>
+        <div class="pmeta">
+          <div class="ptop"><span class="badge live" data-i18n="st.live">En ligne</span><span class="mono pcat" data-i18n="cat.site">Site vitrine</span></div>
+          <h3>Portfolio Vicken</h3>
+          <p data-i18n="p.site">Site vitrine élégant et multilingue (FR / EN) : présentation, réalisations et contact, avec une expérience fluide sur mobile comme sur PC.</p>
+          <div class="tags"><span>Portfolio</span><span data-i18n="tag.multi">Multilingue</span><span>Web Design</span></div>
+          <a class="plink" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUTOMATION DEMO ============ -->
+<section class="sec sec-demo" id="demo">
+  <div class="wrap demo-in">
+    <div class="demo-txt reveal">
+      <p class="kicker mono">03 — <span data-i18n="demo.k">En action</span></p>
+      <h2 data-i18n="demo.h">Une automatisation, concrètement.</h2>
+      <p class="sub" data-i18n="demo.sub">Un prospect remplit votre formulaire. En quelques secondes, sans personne derrière l'écran :</p>
+      <ol class="steps-list">
+        <li data-i18n="demo.l1">L'IA analyse et qualifie la demande</li>
+        <li data-i18n="demo.l2">Votre CRM est mis à jour (score, tags, responsable)</li>
+        <li data-i18n="demo.l3">Un e-mail personnalisé part immédiatement</li>
+        <li data-i18n="demo.l4">Votre équipe est notifiée, le reporting se met à jour</li>
+      </ol>
+      <a href="#contact" class="btn" data-i18n="demo.cta">Automatiser mes process</a>
+    </div>
+    <div class="demo-vis reveal" id="flow" aria-hidden="true">
+      <div class="node" style="--i:0"><span class="mono">TRIGGER</span><b data-i18n="fl.1">Nouveau prospect</b><em>Formulaire · CRM</em></div>
+      <div class="node" style="--i:1"><span class="mono">AI</span><b data-i18n="fl.2">L'IA qualifie</b><em>Claude / GPT</em></div>
+      <div class="node" style="--i:2"><span class="mono">ACTION</span><b data-i18n="fl.3">CRM mis à jour</b><em>Score · tags</em></div>
+      <div class="node" style="--i:3"><span class="mono">ACTION</span><b data-i18n="fl.4">E-mail personnalisé</b><em data-i18n="fl.4s">Rédigé par l'IA</em></div>
+      <div class="node" style="--i:4"><span class="mono">REPORT</span><b data-i18n="fl.5">Équipe notifiée</b><em>Slack · reporting</em></div>
+      <div class="flow-log mono">
+        <p><span class="acc">✓</span> <span data-i18n="fl.log1">prospect #1042 qualifié — score 87/100</span></p>
+        <p><span class="acc">✓</span> <span data-i18n="fl.log2">relance personnalisée envoyée</span></p>
+        <p><span class="acc">✓</span> <span data-i18n="fl.log3">CRM synchronisé · équipe notifiée</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker mono">04 — <span data-i18n="proc.k">Méthode</span></p>
+      <h2 data-i18n="proc.h">Du brief au décollage, en 4 étapes.</h2>
+      <p class="sub" data-i18n="proc.sub">Une méthode simple et transparente : vous savez toujours où en est votre projet.</p>
+    </div>
+    <div class="proc">
+      <div class="proc-line"><i id="procfill"></i></div>
+      <div class="pstep reveal"><span class="pnum">01</span><h3 data-i18n="proc.1.t">Écouter</h3><p data-i18n="proc.1.p">On comprend votre métier, vos irritants et ce qui vous coûte du temps — avant de parler technologie.</p></div>
+      <div class="pstep reveal"><span class="pnum">02</span><h3 data-i18n="proc.2.t">Concevoir</h3><p data-i18n="proc.2.p">La solution la plus simple qui fonctionne : ni usine à gaz, ni gadget. Chaque brique a une raison d'être.</p></div>
+      <div class="pstep reveal"><span class="pnum">03</span><h3 data-i18n="proc.3.t">Construire</h3><p data-i18n="proc.3.p">Développement, intégration à vos outils existants et tests en conditions réelles avec vos équipes.</p></div>
+      <div class="pstep reveal"><span class="pnum">04</span><h3 data-i18n="proc.4.t">Lancer</h3><p data-i18n="proc.4.p">Mise en ligne, prise en main, impact mesuré — heures gagnées, prospects traités — puis on itère.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY ============ -->
+<section class="sec" id="pourquoi">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <p class="kicker mono">05 — <span data-i18n="why.k">Pourquoi Build &amp; Launch</span></p>
+      <h2 data-i18n="why.h">Du code solide, pensé pour votre business.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why reveal"><span class="wi">◆</span><h3 data-i18n="why.1.t">Double culture tech &amp; business</h3><p data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
+      <div class="why reveal"><span class="wi">✦</span><h3 data-i18n="why.2.t">Expertise IA appliquée</h3><p data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
+      <div class="why reveal"><span class="wi">▲</span><h3 data-i18n="why.3.t">Simple &amp; efficace</h3><p data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
+      <div class="why reveal"><span class="wi">●</span><h3 data-i18n="why.4.t">Impact mesurable</h3><p data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
+      <div class="why reveal"><span class="wi">■</span><h3 data-i18n="why.5.t">Adopté dès le jour 1</h3><p data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
+      <div class="why reveal"><span class="wi">✱</span><h3 data-i18n="why.6.t">Réactivité garantie</h3><p data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="sec" id="faq">
+  <div class="wrap faq-in">
+    <div class="sec-head reveal">
+      <p class="kicker mono">06 — FAQ</p>
+      <h2 data-i18n="faq.h">Questions fréquentes.</h2>
+      <p class="sub" data-i18n="faq.sub">Une autre question ? Écrivez-nous, on répond rapidement.</p>
+    </div>
+    <div class="faq-list">
+      <details class="reveal"><summary data-i18n="faq.1.q">Quels types de projets prenez-vous en charge ?</summary><p data-i18n="faq.1.a">Applications et agents IA, automatisations de processus (n8n, Make, Zapier, Python), applications web et SaaS, CRM, tableaux de bord, ainsi que des sites vitrines. Du petit workflow ciblé au produit complet.</p></details>
+      <details class="reveal"><summary data-i18n="faq.2.q">Combien coûte un projet ?</summary><p data-i18n="faq.2.a">Chaque projet est chiffré sur-mesure, après un premier échange pour bien comprendre votre besoin. Vous recevez un devis clair, avec le périmètre et les livrables détaillés.</p></details>
+      <details class="reveal"><summary data-i18n="faq.3.q">Combien de temps faut-il pour livrer ?</summary><p data-i18n="faq.3.a">Cela dépend du périmètre : une automatisation ciblée va beaucoup plus vite qu'une application complète. Le planning est fixé avec vous dès le départ, avec des livraisons intermédiaires.</p></details>
+      <details class="reveal"><summary data-i18n="faq.4.q">Pouvez-vous travailler avec nos outils existants ?</summary><p data-i18n="faq.4.a">Oui, c'est même la priorité : on branche l'IA et les automatisations sur vos outils actuels (CRM, e-mails, tableurs, Slack, API…) plutôt que de tout remplacer.</p></details>
+      <details class="reveal"><summary data-i18n="faq.5.q">Nos données sont-elles en sécurité ?</summary><p data-i18n="faq.5.a">La confidentialité est prise en compte dès la conception : accès restreints, clés et secrets protégés, et choix des services selon vos contraintes.</p></details>
+      <details class="reveal"><summary data-i18n="faq.6.q">Et après la livraison ?</summary><p data-i18n="faq.6.a">Vous recevez un outil documenté et une prise en main. Un accompagnement pour faire évoluer la solution peut être mis en place selon vos besoins.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="sec" id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="contact-txt">
+        <p class="kicker mono">07 — Contact</p>
+        <h2><span data-i18n="ct.h1">Prêt à décoller ?</span><br><span class="grad" data-i18n="ct.h2">Parlons de votre projet.</span></h2>
+        <p class="sub" data-i18n="ct.sub">Un processus à automatiser, une idée d'outil, un projet IA ? Décrivez-le en quelques lignes : vous recevez une réponse rapide et un premier avis sur la meilleure approche.</p>
+        <ul class="ticks">
+          <li data-i18n="ct.l1">Réponse rapide garantie</li>
+          <li data-i18n="ct.l2">Devis clair et détaillé</li>
+          <li data-i18n="ct.l3">Projets en français ou en anglais</li>
+        </ul>
+      </div>
+      <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="merci.html">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Ne pas remplir <input name="bot-field"></label></p>
+        <div class="f2">
+          <label><span data-i18n="f.name">Nom</span><input name="name" required autocomplete="name"></label>
+          <label><span data-i18n="f.email">E-mail</span><input name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <label><span data-i18n="f.company">Entreprise (optionnel)</span><input name="company" autocomplete="organization"></label>
+        <fieldset class="chips">
+          <legend data-i18n="f.type">Type de projet</legend>
+          <label><input type="checkbox" name="type" value="IA"><span data-i18n="f.t1">Application IA</span></label>
+          <label><input type="checkbox" name="type" value="Automatisation"><span data-i18n="f.t2">Automatisation</span></label>
+          <label><input type="checkbox" name="type" value="Web app"><span data-i18n="f.t3">Web app / SaaS</span></label>
+          <label><input type="checkbox" name="type" value="Site"><span data-i18n="f.t4">Site vitrine</span></label>
+          <label><input type="checkbox" name="type" value="Audit"><span data-i18n="f.t5">Audit / conseil</span></label>
+        </fieldset>
+        <label><span data-i18n="f.msg">Votre projet en quelques lignes</span><textarea name="message" rows="5" required></textarea></label>
+        <button class="btn btn-full" type="submit"><span data-i18n="f.send">Envoyer ma demande</span> <span aria-hidden="true">🚀</span></button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <a href="#top" class="brand"><img src="assets/logo-mark.png" alt="" width="54" height="40"><span>Build <b>&amp;</b> Launch</span></a>
+    <p data-i18n="ft.tag">On construit. Vous décollez.</p>
+    <nav aria-label="Pied de page"><a href="#services" data-i18n="nav.services">Services</a><a href="#realisations" data-i18n="nav.work">Réalisations</a><a href="#process" data-i18n="nav.process">Méthode</a><a href="#contact">Contact</a></nav>
+    <small>© <span id="yr">2026</span> Build &amp; Launch</small>
+  </div>
+</footer>
+
+<script src="assets/main.js" defer></script>
+</body>
+</html>
