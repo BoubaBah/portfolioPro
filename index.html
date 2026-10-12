@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -11,21 +11,23 @@
 <meta property="og:description" content="Applications IA, automatisations et produits web sur-mesure — de l'idée au lancement.">
 <meta property="og:image" content="assets/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" href="assets/img/hero.jpg" as="image">
+<link rel="preload" href="assets/fonts/ArchivoDisplay-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" as="image" type="image/webp" imagesrcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" imagesizes="100vw" fetchpriority="high">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-16 focus:top-16 focus:z-[100] focus:rounded-3xl focus:bg-cobalt focus:px-20 focus:py-12 focus:text-pure-white" data-i18n="skip">Aller au contenu</a>
 
 <!-- ================= NAV ================= -->
+<div id="top-sentinel" aria-hidden="true"></div>
 <header id="nav" class="nav fixed inset-x-0 top-0 z-50">
   <div class="wrap flex h-[72px] items-center gap-24">
     <a href="#top" class="flex shrink-0 items-center gap-12" aria-label="Build & Launch — accueil">
-      <img src="assets/logo-mark.png" alt="" width="44" height="32" class="h-[30px] w-auto">
+      <img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto">
       <span class="text-body-lg font-w480 tracking-[0.01em] text-ivory-text">Build &amp; Launch</span>
     </a>
     <nav id="menu" class="flex lg:mx-auto lg:items-center lg:gap-4" aria-label="Navigation principale">
@@ -36,7 +38,7 @@
       <a href="#faq" class="navlink" data-i18n="nav.faq">FAQ</a>
     </nav>
     <div class="ml-auto flex items-center gap-8 lg:ml-0">
-      <button id="lang" type="button" class="navlink text-body-sm" aria-label="Switch to English">EN</button>
+      <button id="lang" type="button" class="navlink text-body-sm" aria-label="EN — English version">EN</button>
       <a href="#contact" class="btn-primary hidden h-[40px] px-20 sm:inline-flex" data-i18n="nav.cta">Démarrer un projet</a>
       <button id="burger" type="button" class="burger relative h-[44px] w-[44px] rounded-3xl-2 border border-ivory-text/30 lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     </div>
@@ -47,7 +49,10 @@
 
 <!-- ================= HERO ================= -->
 <section id="top" class="relative flex min-h-[680px] h-[100svh] items-center justify-center overflow-hidden">
-  <img src="assets/img/hero.jpg" alt="" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]" fetchpriority="high">
+  <picture>
+    <source type="image/webp" srcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw">
+    <img src="assets/img/hero-1600.jpg" alt="" width="1600" height="900" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]" fetchpriority="high">
+  </picture>
   <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(23_23_33/.55)_0%,rgb(23_23_33/.15)_35%,rgb(23_23_33/.25)_70%,#171721_100%)]"></div>
   <div class="hero-in relative z-10 flex w-full max-w-[980px] flex-col items-center px-24 pb-72 text-center">
     <span class="tag mb-24 bg-onyx-canvas/50 text-ivory-text backdrop-blur-[8px]" data-i18n="hero.eyebrow">Studio IA · Automatisation · Web</span>
@@ -74,7 +79,7 @@
         <div class="bar"><i></i><i></i><i></i><span>app.buildandlaunch</span></div>
         <div class="ui ui-ws">
           <div class="sb">
-            <div class="nm"><img src="assets/logo-mark.png" alt="">Workspace</div>
+            <div class="nm"><img src="assets/logo-mark-96.png" alt="" width="131" height="96" loading="lazy">Workspace</div>
             <a class="a" data-i18n="ws.nav1">Tableau de bord</a>
             <a data-i18n="ws.nav2">Automatisations</a>
             <a data-i18n="ws.nav3">Agents IA</a>
@@ -190,10 +195,10 @@
         <p class="lead mt-20" data-i18n="work.sub">Des projets en ligne et des produits en cours de finalisation. Démonstrations détaillées sur simple demande.</p>
       </div>
       <div class="flex flex-wrap gap-8" role="group" aria-label="Filtrer les projets">
-        <button class="filter on" data-f="all" data-i18n="work.f0">Tous</button>
-        <button class="filter" data-f="ai" data-i18n="work.f1">IA</button>
-        <button class="filter" data-f="app" data-i18n="work.f2">Web apps &amp; SaaS</button>
-        <button class="filter" data-f="site" data-i18n="work.f3">Sites</button>
+        <button type="button" class="filter on" aria-pressed="true" data-f="all" data-i18n="work.f0">Tous</button>
+        <button type="button" class="filter" aria-pressed="false" data-f="ai" data-i18n="work.f1">IA</button>
+        <button type="button" class="filter" aria-pressed="false" data-f="app" data-i18n="work.f2">Web apps &amp; SaaS</button>
+        <button type="button" class="filter" aria-pressed="false" data-f="site" data-i18n="work.f3">Sites</button>
       </div>
     </div>
 
@@ -373,29 +378,32 @@
 
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="relative overflow-hidden py-112 md:py-128">
-  <img src="assets/img/horizon.jpg" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-bottom">
+  <picture>
+    <source type="image/webp" srcset="assets/img/horizon-960.webp 960w, assets/img/horizon-1600.webp 1600w, assets/img/horizon-2400.webp 2400w" sizes="100vw">
+    <img src="assets/img/horizon-1600.jpg" alt="" width="1600" height="733" loading="lazy" decoding="async" class="absolute inset-0 h-full w-full object-cover object-bottom">
+  </picture>
   <div class="absolute inset-0 bg-[linear-gradient(180deg,#171721_0%,rgb(23_23_33/.45)_30%,rgb(23_23_33/.6)_75%,#171721_100%)]"></div>
   <div class="wrap relative">
     <div class="reveal mx-auto max-w-[920px] text-center">
       <h2 class="display text-heading md:text-heading-lg lg:text-display text-pure-white"><span data-i18n="ct.h1">Prêt à décoller ?</span><br><span data-i18n="ct.h2">Parlons de votre projet.</span></h2>
       <p class="mx-auto mt-24 max-w-[560px] text-body-lg font-w480 text-ivory-text" data-i18n="ct.sub">Un processus à automatiser, une idée d'outil, un projet IA ? Décrivez-le en quelques lignes : vous recevez une réponse rapide et un premier avis sur la meilleure approche.</p>
     </div>
-    <form class="reveal card mx-auto mt-56 grid max-w-[720px] gap-20 bg-graphite-card/90 backdrop-blur-[20px] md:p-40" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="merci.html">
+    <form class="reveal card mx-auto mt-56 grid max-w-[720px] gap-20 bg-graphite-card/95 md:p-40" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/merci.html">
       <input type="hidden" name="form-name" value="contact">
-      <p class="hidden"><label>Ne pas remplir <input name="bot-field"></label></p>
+      <p class="hidden"><label>Ne pas remplir <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <div class="grid gap-20 sm:grid-cols-2">
-        <label><span class="label" data-i18n="f.name">Nom</span><input class="field" name="name" required autocomplete="name"></label>
+        <label><span class="label" data-i18n="f.name">Nom</span><input class="field" type="text" name="name" required autocomplete="name"></label>
         <label><span class="label" data-i18n="f.email">E-mail</span><input class="field" id="contact-email" name="email" type="email" required autocomplete="email"></label>
       </div>
-      <label><span class="label" data-i18n="f.company">Entreprise (optionnel)</span><input class="field" name="company" autocomplete="organization"></label>
+      <label><span class="label" data-i18n="f.company">Entreprise (optionnel)</span><input class="field" type="text" name="company" autocomplete="organization"></label>
       <fieldset>
         <legend class="label" data-i18n="f.type">Type de projet</legend>
         <div class="flex flex-wrap gap-8">
-          <label class="chip"><input type="checkbox" name="type" value="IA"><span data-i18n="f.t1">Application IA</span></label>
-          <label class="chip"><input type="checkbox" name="type" value="Automatisation"><span data-i18n="f.t2">Automatisation</span></label>
-          <label class="chip"><input type="checkbox" name="type" value="Web app"><span data-i18n="f.t3">Web app / SaaS</span></label>
-          <label class="chip"><input type="checkbox" name="type" value="Site"><span data-i18n="f.t4">Site vitrine</span></label>
-          <label class="chip"><input type="checkbox" name="type" value="Audit"><span data-i18n="f.t5">Audit / conseil</span></label>
+          <label class="chip"><input type="checkbox" name="type[]" value="IA"><span data-i18n="f.t1">Application IA</span></label>
+          <label class="chip"><input type="checkbox" name="type[]" value="Automatisation"><span data-i18n="f.t2">Automatisation</span></label>
+          <label class="chip"><input type="checkbox" name="type[]" value="Web app"><span data-i18n="f.t3">Web app / SaaS</span></label>
+          <label class="chip"><input type="checkbox" name="type[]" value="Site"><span data-i18n="f.t4">Site vitrine</span></label>
+          <label class="chip"><input type="checkbox" name="type[]" value="Audit"><span data-i18n="f.t5">Audit / conseil</span></label>
         </div>
       </fieldset>
       <label><span class="label" data-i18n="f.msg">Votre projet en quelques lignes</span><textarea class="field" id="contact-msg" name="message" rows="5" required></textarea></label>
@@ -411,7 +419,7 @@
 <!-- ================= FOOTER ================= -->
 <footer class="border-t border-slate-border/25">
   <div class="wrap flex flex-col gap-32 py-56 md:flex-row md:items-center">
-    <a href="#top" class="flex items-center gap-12"><img src="assets/logo-mark.png" alt="" width="44" height="32" class="h-[30px] w-auto"><span class="text-body-lg font-w480">Build &amp; Launch</span></a>
+    <a href="#top" class="flex items-center gap-12"><img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto"><span class="text-body-lg font-w480">Build &amp; Launch</span></a>
     <p class="text-ash-text" data-i18n="ft.tag">On construit. Vous décollez.</p>
     <nav class="flex flex-wrap gap-x-24 gap-y-8 text-body-sm text-ash-text md:ml-auto" aria-label="Pied de page">
       <a class="hover:text-ivory-text" href="#services" data-i18n="nav.services">Services</a>

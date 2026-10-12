@@ -7,8 +7,8 @@
 
   /* ---------- nav ---------- */
   var nav = $('#nav'), burger = $('#burger'), menu = $('#menu');
-  function onScroll() { nav.classList.toggle('scrolled', scrollY > 24); }
-  onScroll(); addEventListener('scroll', onScroll, { passive: true });
+  // état « scrollé » sans écouteur de scroll (évite les recalculs de mise en page forcés)
+  new IntersectionObserver(function (es) { nav.classList.toggle('scrolled', !es[0].isIntersecting); }).observe($('#top-sentinel'));
   function closeMenu() { menu.classList.remove('open'); nav.classList.remove('menu-open'); burger.setAttribute('aria-expanded', 'false'); }
   burger.addEventListener('click', function () {
     var open = !menu.classList.contains('open');
@@ -38,11 +38,7 @@
   var revObs = new IntersectionObserver(function (es) {
     es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); revObs.unobserve(e.target); } });
   }, { threshold: .12, rootMargin: '0px 0px -40px 0px' });
-  $$('.reveal').forEach(function (el) {
-    var sib = $$(':scope > .reveal', el.parentElement).indexOf(el);
-    el.style.transitionDelay = Math.min(Math.max(sib, 0), 5) * 70 + 'ms';
-    revObs.observe(el);
-  });
+  $$('.reveal').forEach(function (el) { revObs.observe(el); });
 
   /* ---------- filtres projets ---------- */
   $$('.filter').forEach(function (b) {
@@ -170,8 +166,7 @@
     document.title = META[l].title;
     $('meta[name=description]').content = META[l].desc;
     btn.textContent = l === 'en' ? 'FR' : 'EN';
-    btn.setAttribute('aria-label', l === 'en' ? 'Passer en français' : 'Switch to English');
-    $('form[name=contact]').setAttribute('action', l === 'en' ? 'merci.html?lang=en' : 'merci.html');
+    btn.setAttribute('aria-label', l === 'en' ? 'FR — version française' : 'EN — English version');
     try { localStorage.setItem('bl-lang', l); } catch (e) {}
   }
   btn.addEventListener('click', function () { setLang(document.documentElement.lang === 'en' ? 'fr' : 'en'); });

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="utf-8">
@@ -6,15 +6,18 @@
 <title>Merci — Build &amp; Launch</title>
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#171721">
-<link rel="icon" type="image/png" href="assets/favicon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 <main class="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-24 text-center">
-  <img src="assets/img/hero.jpg" alt="" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]">
+  <picture>
+    <source type="image/webp" srcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw">
+    <img src="assets/img/hero-1600.jpg" alt="" width="1600" height="900" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]">
+  </picture>
   <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(23_23_33/.6),rgb(23_23_33/.35)_50%,#171721)]"></div>
   <div class="hero-in relative max-w-[560px]">
-    <img src="assets/logo-mark.png" alt="Build & Launch" class="mx-auto h-[48px] w-auto">
+    <img src="assets/logo-mark-96.png" alt="Build & Launch" width="131" height="96" class="mx-auto h-[48px] w-auto">
     <h1 id="t" class="display mt-32 text-heading md:text-heading-lg text-pure-white">Message bien reçu.</h1>
     <p id="p" class="mt-20 text-body-lg font-w480 text-ivory-text">Merci ! Votre demande est entre de bonnes mains. Vous recevrez une réponse très rapidement.</p>
     <a id="b" class="btn-ghost mt-40" href="index.html">Retour au site</a>

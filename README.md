@@ -17,9 +17,13 @@ merci.html            confirmation après envoi du formulaire
 src/input.css         SOURCE des styles : Tailwind v4 + @theme (tokens du DESIGN.md)
 assets/styles.css     CSS compilé (généré — ne pas modifier à la main)
 assets/main.js        interactions + traductions anglaises (objet EN)
-assets/fonts/         Inter (substitut d'« arcadia ») et Archivo étendu (substitut d'« arcadiaDisplay »)
-assets/img/           paysages « heure bleue » du hero et du contact (images originales générées)
-assets/logo*.png      logo détouré, symbole BL, favicon, image de partage
+assets/fonts/         Inter (substitut d'« arcadia ») + Archivo étendu figé en 480 / 112 %
+                      (substitut d'« arcadiaDisplay »), auto-hébergées
+assets/img/           paysages « heure bleue » : WebP 960 / 1600 / 2400 px + JPG 1600 de repli,
+                      miniatures *-thumb.webp pour les maquettes
+assets/logo-mark-96.png, favicon-64.png, apple-touch-icon.png, og-image.jpg
+brand/                logos haute définition (non chargés par le site)
+netlify.toml          cache des polices / images et en-têtes de sécurité
 DESIGN.md             référence de style
 ```
 
@@ -50,6 +54,20 @@ Si vous obtenez les polices d'origine (arcadia / arcadiaDisplay), déclarez-les 
 
 Sur un autre hébergeur, relier le formulaire à un service comme Formspree
 (attribut `action` du `<form name="contact">`).
+
+## Performance (mesurée avec Lighthouse)
+Mobile et ordinateur : 99–100 en performance, accessibilité, bonnes pratiques et SEO.
+Page d'accueil ≈ 120 Ko au premier chargement sur mobile, aucun décalage de mise en page,
+défilement à 60 images/s. Pour garder ces résultats :
+- **Remplacer une image de fond** : fournir les mêmes variantes (`nom-960.webp`,
+  `nom-1600.webp`, `nom-2400.webp`, `nom-1600.jpg`), par exemple avec squoosh.app.
+- **Police des titres** : figée en graisse 480 / largeur 112 % pour peser 14 Ko. Pour d'autres
+  graisses, reprendre la version variable d'Archivo (Google Fonts).
+
+## Avant la mise en ligne
+- Remplacer `content="assets/og-image.jpg"` (balise `og:image` dans `index.html`) par l'URL
+  **absolue** du site (ex. `https://votre-domaine.fr/assets/og-image.jpg`) : LinkedIn, WhatsApp
+  ou Facebook n'affichent pas l'aperçu avec un chemin relatif.
 
 ## Modifier le contenu
 - Textes français : directement dans `index.html`.
