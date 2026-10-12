@@ -40,13 +40,12 @@
   <div class="wrap flex h-[72px] items-center gap-24">
     <a href="#top" class="flex shrink-0 items-center gap-12" aria-label="Build & Launch — accueil">
       <img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto">
-      <span class="text-body-lg font-w480 tracking-[0.01em] text-ivory-text">Build &amp; Launch</span>
+      <span class="brand-word text-body-lg font-w480 tracking-[0.01em]">Build &amp; Launch</span>
     </a>
     <nav id="menu" class="flex lg:mx-auto lg:items-center lg:gap-4" aria-label="Navigation principale">
-      <a href="#services" class="navlink" data-i18n="nav.services">Services</a>
+      <a href="#expertise" class="navlink" data-i18n="nav.exp">Expertise</a>
       <a href="#realisations" class="navlink" data-i18n="nav.work">Réalisations</a>
       <a href="#process" class="navlink" data-i18n="nav.process">Méthode</a>
-      <a href="#pourquoi" class="navlink" data-i18n="nav.why">Pourquoi nous</a>
       <a href="#faq" class="navlink" data-i18n="nav.faq">FAQ</a>
       <a href="#contact" class="btn-primary menu-cta lg:hidden" data-i18n="nav.cta">Démarrer un projet</a>
     </nav>
@@ -61,8 +60,9 @@
 <main id="main">
 
 <!-- ================= HERO ================= -->
-<section id="top" class="hero">
-  <div class="hero-pin">
+<section id="top" class="hero scene">
+  <span id="besoins" class="scene-anchor" aria-hidden="true"></span>
+  <div class="hero-pin scene-pin">
     <div class="hero-bg">
       <picture>
         <source type="image/webp" srcset="assets/img/hero-960.webp 960w, assets/img/hero-1600.webp 1600w, assets/img/hero-2400.webp 2400w" sizes="100vw">
@@ -87,27 +87,61 @@
         <button type="button" class="vid-link magnet" data-play-video><span class="vid-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span><span data-i18n="hero.video">Voir la vidéo · 45 s</span></button>
       </div>
     </div>
-    <div class="stage" role="group" aria-labelledby="stage-label">
-      <span id="stage-label" class="sr-only" data-i18n="stg.label">Projets à la une</span>
-      <div class="stage-in">
-<!-- STAGE:START -->
-<button type="button" class="stage-win stage-item" data-open="crm" aria-haspopup="dialog" style="--acc:#A78BFA"><span class="sr-only" data-i18n="pj.crm.open">Découvrir le projet Nexus CRM</span>
-<span class="stage-screen"><span class="bar" aria-hidden="true"><i></i><i></i><i></i><span>nexus-crm.app</span></span>
-<img src="assets/projects/crm/pipeline-1600.webp" srcset="assets/projects/crm/pipeline-480.webp 480w, assets/projects/crm/pipeline-1024.webp 1024w, assets/projects/crm/pipeline-1600.webp 1600w" sizes="(min-width: 1280px) 1080px, 92vw" width="1600" height="1000" alt="" fetchpriority="low" decoding="async">
-</span><span class="stage-chip sc-win" style="--c:#A78BFA" aria-hidden="true"><i></i><span><b>Nexus CRM</b><em data-i18n="pj.crm.hero">Agent IA vocal : 3 relances prêtes</em></span></span></button>
-<button type="button" class="stage-ph stage-ph-l stage-item" data-open="edu" aria-haspopup="dialog" style="--acc:#D9A03A"><span class="sr-only" data-i18n="pj.edu.open">Découvrir le projet Oumma Learn</span><span class="stage-phone"><img src="assets/projects/edu/alphabet-m-640.webp" srcset="assets/projects/edu/alphabet-m-320.webp 320w, assets/projects/edu/alphabet-m-640.webp 640w" sizes="(min-width: 1024px) 210px, 30vw" width="640" height="1385" alt="" loading="lazy" fetchpriority="low" decoding="async"></span><span class="stage-chip sc-l" style="--c:#D9A03A" aria-hidden="true"><i></i><span><b>Oumma Learn</b><em data-i18n="pj.edu.hero">Nouvelle leçon : l’alphabet arabe</em></span></span></button>
-<button type="button" class="stage-ph stage-ph-r stage-item" data-open="fit" aria-haspopup="dialog" style="--acc:#14B8A6"><span class="sr-only" data-i18n="pj.fit.open">Découvrir le projet FitTrack Pro</span><span class="stage-phone"><img src="assets/projects/fit/home-m-640.webp" srcset="assets/projects/fit/home-m-320.webp 320w, assets/projects/fit/home-m-640.webp 640w" sizes="(min-width: 1024px) 210px, 30vw" width="640" height="1385" alt="" loading="lazy" fetchpriority="low" decoding="async"></span><span class="stage-chip sc-r" style="--c:#14B8A6" aria-hidden="true"><i></i><span><b>FitTrack Pro</b><em data-i18n="pj.fit.hero">Objectif du jour atteint à 72 %</em></span></span></button>
-<!-- STAGE:END -->
+    <div class="needs">
+      <div class="needs-in">
+        <div class="needs-head">
+          <p class="kicker" data-i18n="need.k">Ce que vous cherchez</p>
+          <h2 class="needs-title" data-i18n="need.h">Un besoin. Une solution <span class="whitespace-nowrap">sur-mesure</span>.</h2>
+        </div>
+        <div class="needs-grid">
+          <svg class="needs-path" aria-hidden="true"><defs><linearGradient id="np-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0A7CFF"/><stop offset="1" stop-color="#2BC8FF"/></linearGradient></defs><path/><path/><path/><circle class="np-dot" r="5"/></svg>
+        <article class="need" style="--c:#3D9BFF">
+          <div class="need-txt">
+            <p class="need-k"><span class="need-num">01</span><span data-i18n="need.1.k">Gagner du temps</span></p>
+            <h3 class="need-t" data-i18n="need.1.t">Automatiser ce qui se répète</h3>
+            <p class="need-d" data-i18n="need.1.d">Relances, saisie, reporting, qualification de prospects : vos tâches répétitives tournent toutes seules.</p>
+            <button type="button" class="need-ex" data-open="gift" aria-haspopup="dialog"><span data-i18n="need.ex">Exemple</span> · Gratifia <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="need-vis vis-flow" aria-hidden="true"><span class="vf-node"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg><em data-i18n="need.1.v1">Formulaire</em></span><i class="vf-link"></i><span class="vf-node"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg><em data-i18n="need.1.v2">IA</em></span><i class="vf-link"></i><span class="vf-node"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><em data-i18n="need.1.v3">E-mail</em></span><span class="vis-ok">✓ <span data-i18n="need.1.ok">Relance envoyée</span></span></div>
+        </article>
+        <article class="need" style="--c:#A78BFA">
+          <div class="need-txt">
+            <p class="need-k"><span class="need-num">02</span><span data-i18n="need.2.k">Exploiter l’IA</span></p>
+            <h3 class="need-t" data-i18n="need.2.t">Un assistant IA qui connaît votre métier</h3>
+            <p class="need-d" data-i18n="need.2.d">Il répond, recherche, rédige et qualifie à partir de vos documents et de vos outils.</p>
+            <button type="button" class="need-ex" data-open="ai" aria-haspopup="dialog"><span data-i18n="need.ex">Exemple</span> · IA Hub <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="need-vis vis-chat" aria-hidden="true"><span class="vc-q" data-i18n="need.2.q">Quels clients relancer ?</span><span class="vc-a"><span class="vc-dots"><i></i><i></i><i></i></span><span class="vc-lines"><i></i><i></i><i></i></span></span><span class="vis-ok">✓ <span data-i18n="need.2.ok">3 e-mails prêts</span></span></div>
+        </article>
+        <article class="need" style="--c:#2DD4BF">
+          <div class="need-txt">
+            <p class="need-k"><span class="need-num">03</span><span data-i18n="need.3.k">Mieux piloter</span></p>
+            <h3 class="need-t" data-i18n="need.3.t">Un outil fait pour votre activité</h3>
+            <p class="need-d" data-i18n="need.3.d">CRM, tableau de bord, espace client : toute votre activité au même endroit, en temps réel.</p>
+            <button type="button" class="need-ex" data-open="crm" aria-haspopup="dialog"><span data-i18n="need.ex">Exemple</span> · Nexus CRM <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="need-vis vis-dash" aria-hidden="true"><span class="vd-kpi"><em data-i18n="need.3.kpi">Pipeline</em><b>+18 %</b></span><span class="vd-bars"><i style="--h:38%"></i><i style="--h:56%"></i><i style="--h:44%"></i><i style="--h:70%"></i><i style="--h:62%"></i><i style="--h:88%"></i></span></div>
+        </article>
+        <article class="need" style="--c:#F5B83D">
+          <div class="need-txt">
+            <p class="need-k"><span class="need-num">04</span><span data-i18n="need.4.k">Se lancer</span></p>
+            <h3 class="need-t" data-i18n="need.4.t">Lancer votre produit ou votre site</h3>
+            <p class="need-d" data-i18n="need.4.d">Application, plateforme SaaS ou site vitrine : de l’idée à la mise en ligne, sans jargon.</p>
+            <button type="button" class="need-ex" data-open="edu" aria-haspopup="dialog"><span data-i18n="need.ex">Exemple</span> · Oumma Learn <span aria-hidden="true">→</span></button>
+          </div>
+          <div class="need-vis vis-launch" aria-hidden="true"><span class="vl-win"><span class="vl-bar"><i></i><i></i><i></i></span><span class="vl-prog"><i></i></span><span class="vl-lines"><i></i><i></i></span></span><span class="vl-rocket"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M15 4c3 0 5 2 5 5 0 4-4 8-9 10l-6-6C7 8 11 4 15 4z"/><circle cx="14.5" cy="9.5" r="1.6"/></svg></span><span class="vis-ok"><i class="vl-dot"></i><span data-i18n="need.4.ok">En ligne</span></span></div>
+        </article>
+        </div>
       </div>
     </div>
-    <a href="#apercu" class="hero-cue"><span data-i18n="hero.scroll">Découvrir</span><i aria-hidden="true"></i></a>
+    <a href="#besoins" class="hero-cue"><span data-i18n="hero.scroll">Découvrir</span><i aria-hidden="true"></i></a>
   </div>
 </section>
 
-<!-- ================= MANIFESTE + CHIFFRES ================= -->
-<section id="apercu" class="section">
+<!-- ================= EXPERTISE ================= -->
+<section id="expertise" class="section">
   <div class="wrap">
-    <p class="kicker reveal" data-i18n="man.k">Le studio</p>
+    <p class="kicker reveal" data-i18n="man.k">Notre expertise</p>
     <p class="manifesto mt-24" data-scrub data-i18n="man.t">Nous concevons des applications IA, des automatisations et des produits web sur-mesure. Des outils que vos équipes adoptent dès le premier jour — et qui font gagner du temps, chaque jour.</p>
     <dl class="stats mt-72 grid grid-cols-1 gap-32 border-t border-slate-border/40 pt-40 sm:grid-cols-3">
       <div class="reveal flex flex-col-reverse"><dt class="mt-12 text-body text-ash-text" data-i18n="st.1">produits conçus et livrés</dt><dd class="stat-n display"><span data-count data-count-projects data-to="9">9</span></dd></div>
@@ -124,27 +158,6 @@
     <ul class="marquee-track">
       <li>OpenAI</li><li>Claude</li><li>n8n</li><li>Make</li><li>Zapier</li><li>Python</li><li>React</li><li>TypeScript</li><li>Supabase</li><li>PHP · MySQL</li><li>WordPress</li><li>Shopify</li>
     </ul>
-  </div>
-</section>
-
-<!-- ================= VIDÉO ================= -->
-<section id="video" class="section">
-  <div class="wrap">
-    <div class="reveal max-w-[720px]">
-      <p class="kicker" data-i18n="vid.k">En vidéo</p>
-      <h2 class="h-section mt-16" data-i18n="vid.h">Le studio en 45 secondes.</h2>
-      <p class="lead mt-20" data-i18n="vid.sub">Ce que nous construisons et comment nous travaillons, en un coup d'œil.</p>
-    </div>
-    <div class="vid-card card mt-56 p-12 md:p-24">
-      <div class="vid">
-        <video id="studio-video" preload="none" playsinline controls width="1920" height="1080" data-lang="fr" aria-describedby="vid-desc">
-          <source src="assets/video/bl-studio-fr.mp4" type="video/mp4">
-          <source src="assets/video/bl-studio-fr.webm" type="video/webm">
-        </video>
-        <button type="button" class="vid-play" data-play-video hidden><span class="vid-btn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span data-i18n="vid.play">Lire la vidéo · 0:45</span></span></button>
-      </div>
-      <p id="vid-desc" class="sr-only" data-i18n="vid.desc">Vidéo de présentation de Build &amp; Launch : services, démonstrations d'applications IA et d'automatisations, réalisations et méthode. Musique, sans voix.</p>
-    </div>
   </div>
 </section>
 
@@ -201,15 +214,52 @@
   </div>
 </section>
 
-<!-- ================= WORK ================= -->
-<section id="realisations" class="section pt-0 md:pt-0">
+<!-- ================= WHY ================= -->
+<section id="pourquoi" class="section pt-0 md:pt-0">
   <div class="wrap">
-    <div class="reveal flex flex-col gap-32 md:flex-row md:items-end md:justify-between">
-      <div class="max-w-[640px]">
+    <div class="reveal max-w-[720px]">
+      <p class="kicker" data-i18n="why.k">Ce que nous apportons</p>
+      <h2 class="h-section mt-16" data-i18n="why.h">Du code solide, pensé pour votre activité.</h2>
+    </div>
+    <div class="mt-56 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.1.t">Double culture tech &amp; business</p><p class="mt-12 text-ash-text" data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.2.t">Expertise IA appliquée</p><p class="mt-12 text-ash-text" data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.3.t">Simple &amp; efficace</p><p class="mt-12 text-ash-text" data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.4.t">Impact mesurable</p><p class="mt-12 text-ash-text" data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.5.t">Adopté dès le premier jour</p><p class="mt-12 text-ash-text" data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
+      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.6.t">Réactivité garantie</p><p class="mt-12 text-ash-text" data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="realisations" class="work-sec">
+  <div class="scene scene-work">
+    <div class="scene-pin">
+      <div class="work-glow" aria-hidden="true"><i></i><i></i></div>
+      <div class="scene-copy">
         <p class="kicker" data-i18n="work.k">Réalisations</p>
-        <h2 class="h-section mt-16" data-i18n="work.h">De vrais produits, conçus et livrés.</h2>
-        <p class="lead mt-20" data-i18n="work.sub">Des projets en ligne et des produits en cours de finalisation. Démonstrations détaillées sur simple demande.</p>
+        <h2 class="h-section work-title mt-16" data-i18n="work.h">De vrais produits, conçus et livrés.</h2>
+        <p class="lead mx-auto mt-20 max-w-[600px]" data-i18n="work.sub">Des projets en ligne et des produits en cours de finalisation. Démonstrations détaillées sur simple demande.</p>
       </div>
+      <div class="stage" role="group" aria-labelledby="stage-label">
+      <span id="stage-label" class="sr-only" data-i18n="stg.label">Projets à la une</span>
+        <div class="stage-in">
+<!-- STAGE:START -->
+<button type="button" class="stage-win stage-item" data-open="crm" aria-haspopup="dialog" style="--acc:#A78BFA"><span class="sr-only" data-i18n="pj.crm.open">Découvrir le projet Nexus CRM</span>
+<span class="stage-screen"><span class="bar" aria-hidden="true"><i></i><i></i><i></i><span>nexus-crm.app</span></span>
+<img src="assets/projects/crm/pipeline-1600.webp" srcset="assets/projects/crm/pipeline-480.webp 480w, assets/projects/crm/pipeline-1024.webp 1024w, assets/projects/crm/pipeline-1600.webp 1600w" sizes="(min-width: 1280px) 1080px, 92vw" width="1600" height="1000" alt="" fetchpriority="low" decoding="async">
+</span><span class="stage-chip sc-win" style="--c:#A78BFA" aria-hidden="true"><i></i><span><b>Nexus CRM</b><em data-i18n="pj.crm.hero">Agent IA vocal : 3 relances prêtes</em></span></span></button>
+<button type="button" class="stage-ph stage-ph-l stage-item" data-open="edu" aria-haspopup="dialog" style="--acc:#D9A03A"><span class="sr-only" data-i18n="pj.edu.open">Découvrir le projet Oumma Learn</span><span class="stage-phone"><img src="assets/projects/edu/alphabet-m-640.webp" srcset="assets/projects/edu/alphabet-m-320.webp 320w, assets/projects/edu/alphabet-m-640.webp 640w" sizes="(min-width: 1024px) 210px, 30vw" width="640" height="1385" alt="" loading="lazy" fetchpriority="low" decoding="async"></span><span class="stage-chip sc-l" style="--c:#D9A03A" aria-hidden="true"><i></i><span><b>Oumma Learn</b><em data-i18n="pj.edu.hero">Nouvelle leçon : l’alphabet arabe</em></span></span></button>
+<button type="button" class="stage-ph stage-ph-r stage-item" data-open="fit" aria-haspopup="dialog" style="--acc:#14B8A6"><span class="sr-only" data-i18n="pj.fit.open">Découvrir le projet FitTrack Pro</span><span class="stage-phone"><img src="assets/projects/fit/home-m-640.webp" srcset="assets/projects/fit/home-m-320.webp 320w, assets/projects/fit/home-m-640.webp 640w" sizes="(min-width: 1024px) 210px, 30vw" width="640" height="1385" alt="" loading="lazy" fetchpriority="low" decoding="async"></span><span class="stage-chip sc-r" style="--c:#14B8A6" aria-hidden="true"><i></i><span><b>FitTrack Pro</b><em data-i18n="pj.fit.hero">Objectif du jour atteint à 72 %</em></span></span></button>
+<!-- STAGE:END -->
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="reveal flex flex-col gap-24 md:flex-row md:items-center md:justify-between">
+      <p class="kicker" data-i18n="work.all">Tous les projets</p>
       <div class="flex flex-wrap gap-8" role="group" aria-label="Filtrer les projets">
         <button type="button" class="filter on" aria-pressed="true" data-f="all" data-i18n="work.f0">Tous</button>
         <button type="button" class="filter" aria-pressed="false" data-f="ai" data-i18n="work.f1">IA</button>
@@ -218,7 +268,7 @@
       </div>
     </div>
 
-    <div id="work" class="work mt-56">
+    <div id="work" class="work mt-40">
 <!-- PROJECTS:START -->
 <article class="proj p-crm is-feat has-phone" data-project="crm" data-cat="app ai" data-anim="rise" style="--acc:#A78BFA">
 <div class="pm" aria-hidden="true"><div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>nexus-crm.app</span></div><div class="pm-view"><img src="assets/projects/crm/pipeline-1024.webp" srcset="assets/projects/crm/pipeline-480.webp 480w, assets/projects/crm/pipeline-1024.webp 1024w, assets/projects/crm/pipeline-1600.webp 1600w" sizes="(min-width: 1024px) 680px, (min-width: 768px) 90vw, 92vw" width="1024" height="640" alt="" class="pm-cover" loading="lazy" decoding="async"></div></div><div class="pm-phone"><img src="assets/projects/crm/dashboard-m-320.webp" srcset="assets/projects/crm/dashboard-m-320.webp 320w, assets/projects/crm/dashboard-m-640.webp 640w" sizes="(min-width: 1024px) 170px, 26vw" width="320" height="693" alt="" loading="lazy" decoding="async"></div></div>
@@ -363,6 +413,27 @@
   </div>
 </section>
 
+<!-- ================= VIDÉO ================= -->
+<section id="video" class="section">
+  <div class="wrap">
+    <div class="reveal max-w-[720px]">
+      <p class="kicker" data-i18n="vid.k">En vidéo</p>
+      <h2 class="h-section mt-16" data-i18n="vid.h">Le studio en 45 secondes.</h2>
+      <p class="lead mt-20" data-i18n="vid.sub">Ce que nous construisons et comment nous travaillons, en un coup d'œil.</p>
+    </div>
+    <div class="vid-card card mt-56 p-12 md:p-24">
+      <div class="vid">
+        <video id="studio-video" preload="none" playsinline controls width="1920" height="1080" data-lang="fr" aria-describedby="vid-desc">
+          <source src="assets/video/bl-studio-fr.mp4" type="video/mp4">
+          <source src="assets/video/bl-studio-fr.webm" type="video/webm">
+        </video>
+        <button type="button" class="vid-play" data-play-video hidden><span class="vid-btn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span data-i18n="vid.play">Lire la vidéo · 0:45</span></span></button>
+      </div>
+      <p id="vid-desc" class="sr-only" data-i18n="vid.desc">Vidéo de présentation de Build &amp; Launch : services, démonstrations d'applications IA et d'automatisations, réalisations et méthode. Musique, sans voix.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROCESS ================= -->
 <section id="process" class="section">
   <div class="wrap">
@@ -377,24 +448,6 @@
       <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">02</p><h3 class="h-card mt-16" data-i18n="proc.2.t">Concevoir</h3><p class="mt-12 text-ash-text" data-i18n="proc.2.p">La solution la plus simple qui fonctionne : ni usine à gaz, ni gadget. Chaque brique a une raison d'être.</p></div>
       <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">03</p><h3 class="h-card mt-16" data-i18n="proc.3.t">Construire</h3><p class="mt-12 text-ash-text" data-i18n="proc.3.p">Développement, intégration à vos outils existants et tests en conditions réelles avec vos équipes.</p></div>
       <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">04</p><h3 class="h-card mt-16" data-i18n="proc.4.t">Lancer</h3><p class="mt-12 text-ash-text" data-i18n="proc.4.p">Mise en ligne, prise en main, impact mesuré — heures gagnées, prospects traités — puis on itère.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WHY ================= -->
-<section id="pourquoi" class="section pt-0 md:pt-0">
-  <div class="wrap">
-    <div class="reveal max-w-[720px]">
-      <p class="kicker" data-i18n="why.k">Pourquoi Build &amp; Launch</p>
-      <h2 class="h-section mt-16" data-i18n="why.h">Du code solide, pensé pour votre activité.</h2>
-    </div>
-    <div class="mt-56 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.1.t">Double culture tech &amp; business</p><p class="mt-12 text-ash-text" data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
-      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.2.t">Expertise IA appliquée</p><p class="mt-12 text-ash-text" data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
-      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.3.t">Simple &amp; efficace</p><p class="mt-12 text-ash-text" data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
-      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.4.t">Impact mesurable</p><p class="mt-12 text-ash-text" data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
-      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.5.t">Adopté dès le premier jour</p><p class="mt-12 text-ash-text" data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
-      <div class="reveal rv-tilt card spot tilt why"><p class="text-subheading font-w480" data-i18n="why.6.t">Réactivité garantie</p><p class="mt-12 text-ash-text" data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
     </div>
   </div>
 </section>
@@ -466,10 +519,10 @@
 <footer class="border-t border-slate-border/25">
   <div class="ft-word wrap" aria-hidden="true"><span>Build</span><span>&amp;</span><span>Launch</span></div>
   <div class="wrap flex flex-col gap-32 py-56 md:flex-row md:items-center">
-    <a href="#top" class="flex items-center gap-12"><img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto"><span class="text-body-lg font-w480">Build &amp; Launch</span></a>
+    <a href="#top" class="flex items-center gap-12"><img src="assets/logo-mark-96.png" alt="" width="131" height="96" class="h-[30px] w-auto"><span class="brand-word text-body-lg font-w480">Build &amp; Launch</span></a>
     <p class="text-ash-text" data-i18n="ft.tag">On construit. Vous décollez.</p>
     <nav class="flex flex-wrap gap-x-24 gap-y-8 text-body-sm text-ash-text md:ml-auto" aria-label="Pied de page">
-      <a class="hover:text-ivory-text" href="#services" data-i18n="nav.services">Services</a>
+      <a class="hover:text-ivory-text" href="#expertise" data-i18n="nav.exp">Expertise</a>
       <a class="hover:text-ivory-text" href="#realisations" data-i18n="nav.work">Réalisations</a>
       <a class="hover:text-ivory-text" href="#process" data-i18n="nav.process">Méthode</a>
       <a class="hover:text-ivory-text" href="#contact">Contact</a>

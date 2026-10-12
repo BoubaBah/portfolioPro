@@ -63,10 +63,18 @@ Sur un autre hébergeur, relier le formulaire à un service comme Formspree
 (attribut `action` du `<form name="contact">`).
 
 ## Animations
-- **Hero** : le décor apparaît en zoom arrière, le titre sort ligne par ligne ; au défilement,
-  le décor zoome et s'assombrit, le texte s'efface et la fenêtre du projet vedette monte en se
-  redressant, rejointe par deux téléphones ; chaque projet affiche sa propre notification et
-  ouvre sa fiche au clic. Mêmes effets sur mobile.
+Ordre de la page : **besoins** (dans le hero) → **expertise** (studio, chiffres, services,
+outils, ce que nous apportons) → **réalisations** → démonstration, vidéo, méthode, FAQ, contact.
+- **Hero / besoins** : le décor apparaît en zoom arrière, le titre sort ligne par ligne ; au
+  défilement, la section reste à l'écran, le décor zoome et s'assombrit, le texte s'efface et
+  les quatre besoins arrivent un à un en zigzag (1 en haut à gauche, 2 à droite…), en 3D, reliés
+  par une ligne bleue qui se dessine. Chaque besoin joue sa petite animation et propose un
+  exemple qui ouvre la fiche du projet. Sur mobile, les cartes s'empilent et la scène les suit.
+  Textes des besoins : directement dans `index.html` (section `#top`, clés `need.*`).
+- **Réalisations** : même principe — la fenêtre du projet vedette monte en se redressant,
+  rejointe par deux téléphones ; chaque projet affiche sa notification et ouvre sa fiche au clic.
+- **« Build & Launch »** : le bleu du logo monte dans le nom en descendant la page et redescend
+  en remontant ; le grand logotype du pied de page se remplit à son arrivée.
 - **Page** : défilement doux à la souris (Lenis), titres révélés mot à mot, texte du studio qui
   s'allume au défilement, compteurs, défilé des outils, défilé d'écrans qui accélère avec le
   défilement, carte vidéo qui s'ouvre, parallaxe du décor de contact, ligne de progression

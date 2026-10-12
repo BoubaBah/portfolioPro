@@ -56,41 +56,127 @@
     onFrame.push(function (y) { bar.style.transform = 'scaleX(' + clamp(y / docH, 0, 1).toFixed(4) + ')'; });
   }
 
-  /* ---------- hero : le décor zoome, le produit monte ---------- */
+  /* ---------- « Build & Launch » : le bleu du logo monte en descendant ---------- */
+  var words = $$('.brand-word'), ftw = $$('.ft-word span'), F = {};
+  if (!reduce) {
+    onMeasure.push(function () { var f = $('.ft-word'); F.top = f ? absTop(f) : 0; F.h = f ? f.offsetHeight : 1; F.p = -1; F.q = -1; });
+    onFrame.push(function (y) {
+      var p = clamp(y / docH, 0, 1);
+      if (Math.abs(p - F.p) > .001) { F.p = p; words.forEach(function (w) { w.style.backgroundPosition = '50% ' + (p * 100).toFixed(2) + '%'; }); }
+      var q = outCubic(clamp((y + vh - F.top) / (F.h + vh * .55), 0, 1));
+      if (Math.abs(q - F.q) > .001) { F.q = q; ftw.forEach(function (w, i) { w.style.backgroundPosition = '50% ' + (clamp(q * 1.15 - i * .07, 0, 1) * 100).toFixed(2) + '%'; }); }
+    });
+  }
+
+  /* ---------- scène 1 — hero : le décor zoome, les besoins arrivent un à un ---------- */
   var hero = $('#top');
   if (hero && !reduce) {
-    var pin = $('.hero-pin', hero), bg = $('.hero-bg', hero), shade = $('.hero-shade', hero),
-      copy = $('.hero-copy', hero), stage = $('.stage', hero), phones = $$('.stage-ph', hero),
-      chips = $$('.stage-chip', hero), cue = $('.hero-cue', hero), H = { p: -1 };
+    var hpin = $('.scene-pin', hero), bg = $('.hero-bg', hero), shade = $('.hero-shade', hero),
+      copy = $('.hero-copy', hero), board = $('.needs', hero), track = $('.needs-in', hero), grid = $('.needs-grid', hero),
+      needs = $$('.need', hero), npaths = $$('.needs-path path', hero), nsvg = $('.needs-path', hero), ndot = $('.np-dot', hero),
+      cue = $('.hero-cue', hero), H = { p: -1, len: [] };
     html.classList.add('hero-live');
+    // chaque carte a sa fenêtre de temps ; la ligne vers la carte suivante se dessine juste avant
+    var win = function (i) { var a = .12 + i * .16; return [a, a + .2]; };
+    npaths.forEach(function (pa) { pa.setAttribute('pathLength', '1'); });
+    // relie deux cartes : à côté (courbe horizontale) ou l'une sous l'autre (courbe verticale)
+    var link = function (a, b) {
+      var x1, y1, x2, y2, d;
+      if (b.y >= a.y + a.h - 8) {
+        x1 = a.x + a.w / 2; y1 = a.y + a.h; x2 = b.x + b.w / 2; y2 = b.y; d = (y2 - y1) / 2 + 24;
+        return 'M' + x1 + ' ' + y1 + 'C' + x1 + ' ' + (y1 + d) + ' ' + x2 + ' ' + (y2 - d) + ' ' + x2 + ' ' + y2;
+      }
+      var r = b.x > a.x;
+      x1 = r ? a.x + a.w : a.x; y1 = a.y + a.h * .3; x2 = r ? b.x : b.x + b.w; y2 = b.y + b.h * .3; d = (x2 - x1) / 2;
+      return 'M' + x1 + ' ' + y1 + 'C' + (x1 + d) + ' ' + y1 + ' ' + (x2 - d) + ' ' + y2 + ' ' + x2 + ' ' + y2;
+    };
     onMeasure.push(function () {
-      var h = pin.offsetHeight;
+      var h = hpin.offsetHeight;
       H.top = absTop(hero); H.dist = Math.max(1, hero.offsetHeight - h); H.h = h;
       var copyBottom = copy.offsetTop + copy.offsetHeight;
-      var peek = clamp(h - copyBottom - 16, 0, h * .2);
-      H.y0 = h - stage.offsetTop - peek;
-      H.zoom = innerWidth < 768 ? .1 : .05;
+      var peek = clamp(h - copyBottom - 12, 0, h * .16);
+      H.y0 = h - board.offsetTop - peek;
+      H.over = Math.max(0, board.offsetTop + board.offsetHeight + 24 - h);
+      H.side = innerWidth < 768 ? 28 : 70;
+      var rects = needs.map(function (n) { return { x: n.offsetLeft, y: n.offsetTop, w: n.offsetWidth, h: n.offsetHeight }; });
+      nsvg.setAttribute('viewBox', '0 0 ' + grid.offsetWidth + ' ' + grid.offsetHeight);
+      npaths.forEach(function (pa, i) {
+        if (!rects[i + 1]) return;
+        pa.setAttribute('d', link(rects[i], rects[i + 1]));
+        H.len[i] = pa.getTotalLength();
+      });
       H.p = -1;
     });
     onFrame.push(function (y) {
       var p = clamp((y - H.top) / H.dist, 0, 1);
       if (p === H.p) return;
       H.p = p;
-      // le texte s'efface en remontant
-      var c = outCubic(range(p, 0, .32));
+      // le titre s'efface en remontant
+      var c = outCubic(range(p, 0, .1));
       copy.style.opacity = (1 - c).toFixed(3);
       copy.style.transform = 'translate3d(0,' + (-c * H.h * .12).toFixed(1) + 'px,0) scale(' + (1 - c * .06).toFixed(4) + ')';
       copy.style.pointerEvents = c > .4 ? 'none' : '';
-      // le décor zoome et s'assombrit
+      // le décor zoome et s'assombrit pour laisser la place aux besoins
       var b = inOut(p);
       bg.style.transform = 'scale(' + (1 + .32 * b).toFixed(4) + ') translate3d(0,' + (-3 * b).toFixed(2) + '%,0)';
-      shade.style.setProperty('--dark', (range(p, .12, .85) * .78).toFixed(3));
-      // le produit monte, se redresse puis s'approche
-      var s = outCubic(range(p, .02, .66)), z = inOut(range(p, .7, 1));
-      stage.style.transform = 'perspective(1600px) translate3d(0,' + (H.y0 * (1 - s)).toFixed(1) + 'px,0) rotateX(' + (28 * (1 - s)).toFixed(2) + 'deg) scale(' + (.86 + .14 * s + H.zoom * z).toFixed(4) + ')';
-      // les téléphones arrivent par les côtés
+      shade.style.setProperty('--dark', (range(p, .04, .4) * .8).toFixed(3));
+      // le tableau des besoins monte et se redresse, puis suit les cartes vers le bas
+      var s = outCubic(range(p, .05, .26)), z = inOut(range(p, .86, 1));
+      board.style.transform = 'perspective(1600px) translate3d(0,' + (H.y0 * (1 - s)).toFixed(1) + 'px,0) rotateX(' + (18 * (1 - s)).toFixed(2) + 'deg) scale(' + (.92 + .08 * s + .03 * z).toFixed(4) + ')';
+      track.style.transform = 'translate3d(0,' + (-H.over * inOut(range(p, .24, .84))).toFixed(1) + 'px,0)';
+      // chaque besoin arrive de son côté : 1 à gauche, 2 à droite…
+      needs.forEach(function (n, i) {
+        var w = win(i), e = outCubic(range(p, w[0], w[1])), d = i % 2 ? 1 : -1;
+        n.style.opacity = e.toFixed(3);
+        n.style.visibility = e <= 0 ? 'hidden' : '';
+        n.style.transform = 'perspective(1200px) translate3d(' + (d * (1 - e) * H.side).toFixed(1) + 'px,' + ((1 - e) * 90).toFixed(1) + 'px,0) rotateX(' + (22 * (1 - e)).toFixed(2) + 'deg) scale(' + (.9 + .1 * e).toFixed(4) + ')';
+        var on = e > .92;
+        if (on !== n.classList.contains('on')) n.classList.toggle('on', on);
+      });
+      // la ligne se dessine d'une carte à l'autre, un point lumineux à sa tête
+      var head = null;
+      npaths.forEach(function (pa, i) {
+        var w = win(i + 1), k = range(p, w[0] - .07, w[0] + .05);
+        pa.style.strokeDashoffset = (1 - k).toFixed(4);
+        if (k > 0 && k < 1) head = pa.getPointAtLength(H.len[i] * k);
+      });
+      if (head) { ndot.setAttribute('cx', head.x.toFixed(1)); ndot.setAttribute('cy', head.y.toFixed(1)); }
+      ndot.style.opacity = head ? 1 : 0;
+      if (cue) cue.style.opacity = (1 - range(p, 0, .05)).toFixed(3);
+    });
+  }
+
+  /* ---------- scène 2 — projets : la fenêtre monte, les téléphones arrivent ---------- */
+  var sw = $('.scene-work');
+  if (sw && !reduce) {
+    var wpin = $('.scene-pin', sw), wcopy = $('.scene-copy', sw), stage = $('.stage', sw), phones = $$('.stage-ph', sw),
+      chips = $$('.stage-chip', sw), glows = $$('.work-glow i', sw), W = { p: -1 };
+    onMeasure.push(function () {
+      var h = wpin.offsetHeight;
+      W.top = absTop(sw); W.dist = Math.max(1, sw.offsetHeight - h); W.h = h;
+      var copyBottom = wcopy.offsetTop + wcopy.offsetHeight;
+      var peek = clamp(h - copyBottom + 40, 0, h * .24);
+      W.y0 = h - stage.offsetTop - peek;
+      W.zoom = innerWidth < 768 ? .1 : .05;
+      W.p = -1;
+    });
+    onFrame.push(function (y) {
+      var raw = (y - W.top) / W.dist;
+      if (raw < -1.2 || raw > 1.2) return; // hors champ : rien à recalculer
+      var p = clamp(raw, 0, 1);
+      if (p === W.p) return;
+      W.p = p;
+      var c = outCubic(range(p, 0, .3));
+      wcopy.style.opacity = (1 - c).toFixed(3);
+      wcopy.style.transform = 'translate3d(0,' + (-c * W.h * .1).toFixed(1) + 'px,0) scale(' + (1 - c * .05).toFixed(4) + ')';
+      glows.forEach(function (g, i) {
+        g.style.transform = 'scale(' + (.55 + .6 * outCubic(range(p, 0, .7)) + i * .1).toFixed(4) + ')';
+        g.style.opacity = (.35 + .65 * range(p, 0, .5)).toFixed(3);
+      });
+      var s = outCubic(range(p, .02, .62)), z = inOut(range(p, .7, 1));
+      stage.style.transform = 'perspective(1600px) translate3d(0,' + (W.y0 * (1 - s)).toFixed(1) + 'px,0) rotateX(' + (28 * (1 - s)).toFixed(2) + 'deg) scale(' + (.86 + .14 * s + W.zoom * z).toFixed(4) + ')';
       phones.forEach(function (ph, i) {
-        var e = outBack(range(p, .3 + i * .06, .66 + i * .06)), d = i ? 1 : -1;
+        var e = outBack(range(p, .28 + i * .06, .62 + i * .06)), d = i ? 1 : -1;
         ph.style.opacity = clamp(e * 1.5, 0, 1).toFixed(3);
         // invisible = ni cliquable ni atteignable au clavier
         ph.style.visibility = e <= 0 ? 'hidden' : '';
@@ -99,11 +185,10 @@
       });
       // chaque notification apparaît juste après son projet (fenêtre, puis téléphones)
       chips.forEach(function (ch, i) {
-        var e = outCubic(range(p, .4 + i * .12, .58 + i * .12));
+        var e = outCubic(range(p, .38 + i * .12, .56 + i * .12));
         ch.style.opacity = e.toFixed(3);
         ch.style.transform = 'translate3d(0,' + ((1 - e) * 28).toFixed(1) + 'px,0) scale(' + (.88 + .12 * e).toFixed(4) + ')';
       });
-      if (cue) cue.style.opacity = (1 - range(p, 0, .06)).toFixed(3);
     });
   }
 
