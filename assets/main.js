@@ -81,13 +81,51 @@
 
   $('#yr').textContent = new Date().getFullYear();
 
+  /* ---------- vidéo de présentation ----------
+     MP4 (H.264) + WebM (VP9) en secours. Rien n'est téléchargé avant le clic sur lecture ;
+     l'image d'aperçu est chargée à l'approche de la section, dans la langue affichée. */
+  var video = $('#studio-video'), overlay = $('.vid-play');
+  var vLang = 'fr', needsLoad = false, posterOn = false;
+  function setPoster() { video.poster = 'assets/video/poster-' + vLang + '.webp'; posterOn = true; }
+  function vidLang(l) {
+    if (!video || l === vLang) return;
+    if (!video.paused || video.currentTime > 0) return; // ne pas couper une lecture en cours
+    vLang = l;
+    $$('source', video).forEach(function (so) { so.src = 'assets/video/bl-studio-' + l + (so.type === 'video/webm' ? '.webm' : '.mp4'); });
+    needsLoad = true; // le lecteur sera rechargé au moment de la lecture seulement
+    if (posterOn) setPoster();
+  }
+  function playVideo() {
+    if (!video) return;
+    if (!posterOn) setPoster();
+    overlay.hidden = true; video.controls = true;
+    if (needsLoad) { needsLoad = false; video.load(); }
+    var pr = video.play(); if (pr && pr.catch) pr.catch(function () {});
+    video.focus({ preventScroll: true });
+  }
+  if (video) {
+    video.controls = false; overlay.hidden = false; // lecteur épuré jusqu'au premier clic
+    overlay.addEventListener('click', playVideo);
+    video.addEventListener('play', function () { overlay.hidden = true; video.controls = true; });
+    document.addEventListener('langchange', function (e) { vidLang(e.detail); });
+    new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { if (!posterOn) setPoster(); o.disconnect(); } }, { rootMargin: '600px 0px' }).observe(video);
+    $$('.vid-link[data-play-video]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        $('#video').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+        setTimeout(playVideo, reduce ? 0 : 650);
+      });
+    });
+  }
+
   /* ---------- i18n (FR dans le HTML, EN ici) ---------- */
   var EN = {
     'skip': 'Skip to content',
     'nav.services': 'Services', 'nav.work': 'Work', 'nav.process': 'Process', 'nav.why': 'Why us', 'nav.faq': 'FAQ', 'nav.cta': 'Start a project',
     'hero.eyebrow': 'AI · Automation · Web studio', 'hero.t1': 'Your ideas,', 'hero.t2': 'built and launched.',
     'hero.lead': 'Custom AI apps, automations and web products — to save your team time and get your business off the ground.',
-    'hero.label': 'Your email', 'hero.ph': 'Your work email', 'hero.btn': 'Start a project', 'hero.note': 'Fast reply · Clear quote · English or French', 'hero.scroll': 'Discover',
+    'hero.label': 'Your email', 'hero.video': 'Watch the video · 45 s',
+    'vid.k': 'Video', 'vid.h': 'The studio in 45 seconds.', 'vid.sub': 'What we build and how we work, at a glance.', 'vid.play': 'Play video · 0:45',
+    'vid.desc': 'Build & Launch presentation video: services, demos of AI apps and automations, work and process. Music, no voice-over.', 'hero.ph': 'Your work email', 'hero.btn': 'Start a project', 'hero.note': 'Fast reply · Clear quote · English or French', 'hero.scroll': 'Discover',
     'ws.nav1': 'Dashboard', 'ws.nav2': 'Automations', 'ws.nav3': 'AI agents', 'ws.nav4': 'Leads', 'ws.nav5': 'Reports',
     'ws.k1': 'Qualified leads', 'ws.k1s': 'this quarter', 'ws.k2': 'Automated tasks', 'ws.k2s': 'since go-live', 'ws.k3': 'Response time', 'ws.k3s': 'to new leads',
     'ws.chart': 'Automated activity', 'ws.auto': 'Active automations', 'ws.a1': 'Lead qualification · AI', 'ws.a2': 'Personalized email follow-ups', 'ws.a3': 'CRM sync',

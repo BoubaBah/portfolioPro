@@ -23,6 +23,7 @@ assets/fonts/         Inter (substitut d'« arcadia ») + Archivo étendu figé 
 assets/img/           paysages « heure bleue » : WebP 960 / 1600 / 2400 px + JPG 1600 de repli,
                       miniatures *-thumb.webp pour les maquettes
 assets/logo-mark-96.png, favicon-64.png, apple-touch-icon.png, og-image.jpg
+assets/video/         vidéo de présentation 45 s (FR / EN) en MP4 + WebM, images d'aperçu
 brand/                logos haute définition (non chargés par le site)
 netlify.toml          cache des polices / images et en-têtes de sécurité
 DESIGN.md             référence de style
@@ -64,6 +65,12 @@ défilement à 60 images/s. Pour garder ces résultats :
   `nom-1600.webp`, `nom-2400.webp`, `nom-1600.jpg`), par exemple avec squoosh.app.
 - **Police des titres** : figée en graisse 480 / largeur 112 % pour peser 14 Ko. Pour d'autres
   graisses, reprendre la version variable d'Archivo (Google Fonts).
+
+## Vidéo de présentation
+Section « Le studio en 45 secondes » + lien « Voir la vidéo » dans le haut de page.
+Version française ou anglaise selon la langue affichée ; rien n'est téléchargé avant le
+clic sur lecture. Édition Build & Launch : aucun nom ni parcours, uniquement le studio.
+Sources de l'animation : dépôt NewPortfolio, dossier `video/source-buildlaunch/`.
 
 ## Avant la mise en ligne
 - Remplacer `content="assets/og-image.jpg"` (balise `og:image` dans `index.html`) par l'URL

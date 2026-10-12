@@ -78,6 +78,7 @@
       <button type="submit" data-i18n="hero.btn">Démarrer un projet</button>
     </form>
     <p class="mt-16 text-body-sm text-ash-text" data-i18n="hero.note">Réponse rapide · Devis clair · Français ou anglais</p>
+    <button type="button" class="vid-link mt-24" data-play-video><span class="vid-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="12" height="12"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></span><span data-i18n="hero.video">Voir la vidéo · 45 s</span></button>
   </div>
   <a href="#apercu" class="absolute bottom-32 left-1/2 z-10 -translate-x-1/2 text-caption tracking-[0.12em] text-ash-text uppercase hover:text-ivory-text" data-i18n="hero.scroll">Découvrir</a>
 </section>
@@ -140,6 +141,27 @@
     <ul class="flex flex-wrap justify-center gap-x-32 gap-y-12 text-body-lg font-w480 text-ivory-text/80 md:justify-start">
       <li>OpenAI</li><li>Claude</li><li>n8n</li><li>Make</li><li>Zapier</li><li>Python</li><li>React</li><li>TypeScript</li><li>Supabase</li><li>PHP · MySQL</li><li>WordPress</li><li>Shopify</li>
     </ul>
+  </div>
+</section>
+
+<!-- ================= VIDÉO ================= -->
+<section id="video" class="section">
+  <div class="wrap">
+    <div class="reveal max-w-[720px]">
+      <p class="kicker" data-i18n="vid.k">En vidéo</p>
+      <h2 class="h-section mt-16" data-i18n="vid.h">Le studio en 45 secondes.</h2>
+      <p class="lead mt-20" data-i18n="vid.sub">Ce que nous construisons et comment nous travaillons, en un coup d'œil.</p>
+    </div>
+    <div class="reveal card mt-56 p-12 md:p-24">
+      <div class="vid">
+        <video id="studio-video" preload="none" playsinline controls width="1920" height="1080" data-lang="fr" aria-describedby="vid-desc">
+          <source src="assets/video/bl-studio-fr.mp4" type="video/mp4">
+          <source src="assets/video/bl-studio-fr.webm" type="video/webm">
+        </video>
+        <button type="button" class="vid-play" data-play-video hidden><span class="vid-btn"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg><span data-i18n="vid.play">Lire la vidéo · 0:45</span></span></button>
+      </div>
+      <p id="vid-desc" class="sr-only" data-i18n="vid.desc">Vidéo de présentation de Build &amp; Launch : services, démonstrations d'applications IA et d'automatisations, réalisations et méthode. Musique, sans voix.</p>
+    </div>
   </div>
 </section>
 
