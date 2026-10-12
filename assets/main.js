@@ -143,7 +143,7 @@
     'stg.label': 'Featured projects',
     'man.k': 'Our expertise', 'man.t': 'We design custom AI apps, automations and web products. Tools your team adopts from day one — and that save time, every day.',
     'vid.k': 'Video', 'vid.h': 'The studio in 45 seconds.', 'vid.sub': 'What we build and how we work, at a glance.', 'vid.play': 'Play video · 0:45',
-    'vid.desc': 'Build & Launch presentation video: services, demos of AI apps and automations, work and process. Music, no voice-over.', 'hero.ph': 'Your work email', 'hero.btn': 'Start a project', 'hero.note': 'Fast reply · Clear quote · English or French', 'hero.scroll': 'Discover',
+    'vid.desc': 'Build & Launch presentation video: services, AI apps, automations, then real screens of Energy Connect, FitTrack Pro, Vicken Mian and Oumma Learn. Music, no voice-over.', 'hero.ph': 'Your work email', 'hero.btn': 'Start a project', 'hero.note': 'Fast reply · Clear quote · English or French', 'hero.scroll': 'Discover',
     'st.1': 'products designed and delivered', 'st.2': 'areas of expertise: AI, automation, web', 'st.3': 'automations that never stop',
     'tools.k': 'Tools we master',
     'svc.k': 'Services', 'svc.h': 'What we build for you.', 'svc.sub': 'Three core areas of expertise, one goal: save you time and money — measurably.',
