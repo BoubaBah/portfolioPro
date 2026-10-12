@@ -25,7 +25,7 @@
       challenge: 'Le défi', solution: 'La solution', features: 'Fonctionnalités clés', journey: 'Parcours utilisateur',
       goals: 'Pensé pour', built: 'Ce que nous avons conçu', live: 'Voir en ligne', demo: 'Voir la démo',
       similar: 'Un projet similaire ? Parlons-en', close: 'Fermer', prev: 'Projet précédent', next: 'Projet suivant',
-      statusLive: 'En ligne', statusDev: 'En développement',
+      statusLive: 'En ligne', statusDev: 'Démo sur demande',
       prefill: 'Bonjour, je souhaiterais un projet similaire à {name}. '
     },
     en: {
@@ -34,7 +34,7 @@
       challenge: 'The challenge', solution: 'The solution', features: 'Key features', journey: 'User journey',
       goals: 'Designed for', built: 'What we built', live: 'View live', demo: 'View demo',
       similar: 'Want something similar? Let’s talk', close: 'Close', prev: 'Previous project', next: 'Next project',
-      statusLive: 'Live', statusDev: 'In development',
+      statusLive: 'Live', statusDev: 'Demo on request',
       prefill: 'Hello, I’d like a project similar to {name}. '
     }
   };

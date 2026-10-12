@@ -69,7 +69,9 @@ outils, ce que nous apportons) → **réalisations** → démonstration, vidéo,
   défilement, la section reste à l'écran, le décor zoome et s'assombrit, le texte s'efface et
   les quatre besoins arrivent un à un en zigzag (1 en haut à gauche, 2 à droite…), en 3D, reliés
   par une ligne bleue qui se dessine. Chaque besoin joue sa petite animation et propose un
-  exemple qui ouvre la fiche du projet. Sur mobile, les cartes s'empilent et la scène les suit.
+  ou deux exemples qui ouvrent la fiche du projet. Chaque carte explique le besoin en mots
+  simples, avec trois exemples concrets et ce que le client y gagne. Sur ordinateur, une étape
+  par carte ; sur mobile, les cartes s'empilent et s'animent en entrant à l'écran.
   Textes des besoins : directement dans `index.html` (section `#top`, clés `need.*`).
 - **Réalisations** : même principe — la fenêtre du projet vedette monte en se redressant,
   rejointe par deux téléphones ; chaque projet affiche sa notification et ouvre sa fiche au clic.
@@ -121,11 +123,13 @@ Sources de l'animation : dépôt NewPortfolio, dossier `video/source-buildlaunch
 - **Retirer un projet** : supprimer son entrée dans `src/projects.mjs` et son dossier dans
   `src/projects/`, puis `npm run build` (les images devenues inutiles sont supprimées).
 - **Projet vedette / hero** : `featured: true` (grande carte + fenêtre du hero),
-  `heroPhone: true` sur deux projets pour les téléphones du hero. Les trois projets du hero
+  `heroPhone: 1` (gauche) et `heroPhone: 2` (droite) pour les téléphones de la scène des
+  projets (aujourd'hui : Energy Connect, Vicken Mian, FitTrack Pro). Les trois projets du hero
   ouvrent leur fiche au clic ; le champ `hero` (FR/EN) donne la notification affichée à côté
   de chacun quand il apparaît.
-- **Lien « Voir en ligne »** : champ `url`, facultatif. Sans adresse, la carte et la fiche
-  n'affichent pas de lien (c'est le cas de Gratifia et d'Expulse Express pour l'instant).
+- **Lien « Voir en ligne »** : champ `url`, facultatif. Avec une adresse, le projet est
+  « En ligne » avec un lien ; sans, il est « Démo sur demande », sans lien. Aujourd'hui, seuls
+  les projets mis en avant en ont un : Energy Connect, FitTrack Pro, Vicken Mian, Oumma Learn.
 - Les captures montrent les produits avec des données de démonstration : n'y mettez jamais
   de code, d'architecture, d'identifiants, de vraies données clients ni de détails
   d'hébergement (évitez par exemple les pages de connexion ou de contact).

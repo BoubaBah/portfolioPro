@@ -93,7 +93,7 @@ for (const p of projects) {
   for (const n of names) await image(p.id, n);
   data.order.push(p.id);
   data.items[p.id] = {
-    name: p.name, mono: p.mono, acc: p.acc, anim: p.anim, live: !!p.live, url: p.url || null, host: p.host, type: p.contactType,
+    name: p.name, mono: p.mono, acc: p.acc, anim: p.anim, live: !!p.url, url: p.url || null, host: p.host, type: p.contactType,
     gallery: images.gallery.map(([n, fr, en]) => {
       const im = IMG[p.id][n];
       return { src: base(p.id, n), kind: im.kind, w: im.w, ratio: im.ratio, fr, en };
@@ -112,9 +112,10 @@ function card(p, i) {
   const { id, images } = p, fr = p.fr, feat = !!p.featured;
   const cover = IMG[id][images.cover], mob = images.mobile && IMG[id][images.mobile], full = images.scroll && IMG[id][images.scroll];
   const sizes = feat ? '(min-width: 1024px) 680px, (min-width: 768px) 90vw, 92vw' : '(min-width: 1200px) 560px, (min-width: 768px) 46vw, 92vw';
-  const live = p.live
+  // avec une adresse publique : « En ligne » + lien ; sans : « Démo sur demande »
+  const live = p.url
     ? '<span class="tag tag-live" data-i18n="st.live">En ligne</span>'
-    : '<span class="tag" data-i18n="st.dev">En développement</span>';
+    : '<span class="tag" data-i18n="st.req">Démo sur demande</span>';
   const media = [
     `<div class="pm" aria-hidden="true">`,
     `<div class="pm-win"><div class="bar"><i></i><i></i><i></i><span>${esc(p.host)}</span></div>`,
@@ -129,7 +130,7 @@ function card(p, i) {
     ? `<ul class="proj-points">${fr.points.map((t, k) => `<li class="tick" data-i18n="pj.${id}.l${k + 1}">${esc(t)}</li>`).join('')}</ul>`
     : '';
   const cta = `<div class="proj-actions"><span class="proj-cta" aria-hidden="true"><span data-i18n="cta.case">Découvrir le projet</span><span class="arr">→</span></span>` +
-    (p.url ? `<a class="ext" href="${esc(p.url)}" target="_blank" rel="noopener"><span data-i18n="${p.live ? 'cta.live' : 'cta.demo'}">${p.live ? 'Voir en ligne' : 'Voir la démo'}</span> <span aria-hidden="true">↗</span></a>` : '') +
+    (p.url ? `<a class="ext" href="${esc(p.url)}" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a>` : '') +
     `</div>`;
   return [
     `<article class="proj p-${id}${feat ? ' is-feat' : ''}${mob ? ' has-phone' : ''}${full ? ' has-scroll' : ''}" data-project="${id}" data-cat="${esc(p.filter)}" data-anim="${p.anim}" style="--acc:${p.acc}">`,
@@ -150,7 +151,7 @@ const cardsHtml = projects.map(card).join('\n\n');
    Le projet vedette dans une fenêtre, deux projets sur téléphone : chacun ouvre
    sa fiche au clic et porte sa propre notification (champ « hero »). */
 const featured = projects.find((p) => p.featured) || projects[0];
-const phones = projects.filter((p) => p.heroPhone && p.images.mobile && p !== featured).slice(0, 2);
+const phones = projects.filter((p) => p.heroPhone && p.images.mobile && p !== featured).sort((a, b) => +a.heroPhone - +b.heroPhone).slice(0, 2);
 const fCover = IMG[featured.id][featured.images.cover];
 const heroChip = (p, cls) => p.hero
   ? `<span class="stage-chip ${cls}" style="--c:${p.acc}" aria-hidden="true"><i></i><span><b>${esc(p.name)}</b><em data-i18n="pj.${p.id}.hero">${esc(p.hero.fr)}</em></span></span>`

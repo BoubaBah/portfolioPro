@@ -92,11 +92,23 @@
     };
     onMeasure.push(function () {
       var h = hpin.offsetHeight;
-      H.top = absTop(hero); H.dist = Math.max(1, hero.offsetHeight - h); H.h = h;
+      // mobile : cartes empilées, la scène défile en continu ; ordinateur : une étape par carte
+      H.flow = innerWidth < 768;
       var copyBottom = copy.offsetTop + copy.offsetHeight;
       var peek = clamp(h - copyBottom - 12, 0, h * .16);
       H.y0 = h - board.offsetTop - peek;
       H.over = Math.max(0, board.offsetTop + board.offsetHeight + 24 - h);
+      // sur mobile, la longueur de la scène suit la hauteur des cartes (défilement au rythme du doigt)
+      hero.style.height = H.flow ? Math.round(h + (H.over + h * .35) / .86) + 'px' : '';
+      H.top = absTop(hero); H.dist = Math.max(1, hero.offsetHeight - h); H.h = h;
+      // décalage voulu quand chaque carte arrive : la carte entière à l'écran, sous la barre de navigation
+      var base = board.offsetTop + grid.offsetTop, prev = 0;
+      H.base = base; H.tops = needs.map(function (n) { return n.offsetTop; });
+      H.shift = needs.map(function (n) {
+        var top = base + n.offsetTop, want = Math.min(top + n.offsetHeight - (h - 20), top - 84);
+        prev = Math.max(prev, clamp(want, 0, H.over));
+        return prev;
+      });
       H.side = innerWidth < 768 ? 28 : 70;
       var rects = needs.map(function (n) { return { x: n.offsetLeft, y: n.offsetTop, w: n.offsetWidth, h: n.offsetHeight }; });
       nsvg.setAttribute('viewBox', '0 0 ' + grid.offsetWidth + ' ' + grid.offsetHeight);
@@ -123,10 +135,27 @@
       // le tableau des besoins monte et se redresse, puis suit les cartes vers le bas
       var s = outCubic(range(p, .05, .26)), z = inOut(range(p, .86, 1));
       board.style.transform = 'perspective(1600px) translate3d(0,' + (H.y0 * (1 - s)).toFixed(1) + 'px,0) rotateX(' + (18 * (1 - s)).toFixed(2) + 'deg) scale(' + (.92 + .08 * s + .03 * z).toFixed(4) + ')';
-      track.style.transform = 'translate3d(0,' + (-H.over * inOut(range(p, .24, .84))).toFixed(1) + 'px,0)';
+      // le tableau glisse vers le haut pour accompagner chaque nouvelle carte
+      var sh = 0, k, es = [];
+      if (H.flow) {
+        sh = H.over * range(p, .1, .97);
+        // chaque carte s'anime en entrant par le bas de l'écran
+        for (k = 0; k < needs.length; k++) {
+          var vt = H.y0 * (1 - s) + H.base + H.tops[k] - sh;
+          es[k] = outCubic(clamp((H.h - vt) / (H.h * .3), 0, 1));
+        }
+      } else {
+        for (k = 0; k < needs.length; k++) {
+          var wk = win(k), from = k ? H.shift[k - 1] : 0;
+          sh = from + (H.shift[k] - from) * inOut(range(p, wk[0] - .05, wk[1] - .02));
+          if (p < wk[1] - .02) break;
+        }
+        for (k = 0; k < needs.length; k++) es[k] = outCubic(range(p, win(k)[0], win(k)[1]));
+      }
+      track.style.transform = 'translate3d(0,' + (-sh).toFixed(1) + 'px,0)';
       // chaque besoin arrive de son côté : 1 à gauche, 2 à droite…
       needs.forEach(function (n, i) {
-        var w = win(i), e = outCubic(range(p, w[0], w[1])), d = i % 2 ? 1 : -1;
+        var e = es[i], d = i % 2 ? 1 : -1;
         n.style.opacity = e.toFixed(3);
         n.style.visibility = e <= 0 ? 'hidden' : '';
         n.style.transform = 'perspective(1200px) translate3d(' + (d * (1 - e) * H.side).toFixed(1) + 'px,' + ((1 - e) * 90).toFixed(1) + 'px,0) rotateX(' + (22 * (1 - e)).toFixed(2) + 'deg) scale(' + (.9 + .1 * e).toFixed(4) + ')';
@@ -136,7 +165,7 @@
       // la ligne se dessine d'une carte à l'autre, un point lumineux à sa tête
       var head = null;
       npaths.forEach(function (pa, i) {
-        var w = win(i + 1), k = range(p, w[0] - .07, w[0] + .05);
+        var w = win(i + 1), k = H.flow ? range(es[i + 1], 0, .6) : range(p, w[0] - .07, w[0] + .05);
         pa.style.strokeDashoffset = (1 - k).toFixed(4);
         if (k > 0 && k < 1) head = pa.getPointAtLength(H.len[i] * k);
       });
@@ -157,7 +186,7 @@
       var copyBottom = wcopy.offsetTop + wcopy.offsetHeight;
       var peek = clamp(h - copyBottom + 40, 0, h * .24);
       W.y0 = h - stage.offsetTop - peek;
-      W.zoom = innerWidth < 768 ? .1 : .05;
+      W.zoom = innerWidth < 768 ? .03 : .05;
       W.p = -1;
     });
     onFrame.push(function (y) {
