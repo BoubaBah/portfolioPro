@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Build &amp; Launch — Applications IA, automatisation &amp; produits web</title>
 <meta name="description" content="Build & Launch conçoit et lance vos applications IA, vos automatisations et vos produits web sur-mesure : agents LLM, RAG, n8n, Make, CRM, SaaS. De l'idée au lancement.">
-<meta name="theme-color" content="#04070F">
+<meta name="theme-color" content="#171721">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Build & Launch — On construit. Vous décollez.">
 <meta property="og:description" content="Applications IA, automatisations et produits web sur-mesure — de l'idée au lancement.">
@@ -13,400 +13,415 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" href="assets/fonts/PlusJakartaSans-latin-5.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/fonts.css">
+<link rel="preload" href="assets/fonts/Inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/Archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/img/hero.jpg" as="image">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-<canvas id="stars" aria-hidden="true"></canvas>
-<a class="skip" href="#main" data-i18n="skip">Aller au contenu</a>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-16 focus:top-16 focus:z-[100] focus:rounded-3xl focus:bg-cobalt focus:px-20 focus:py-12 focus:text-pure-white" data-i18n="skip">Aller au contenu</a>
 
-<!-- ============ NAV ============ -->
-<header class="nav" id="nav">
-  <div class="wrap nav-in">
-    <a href="#top" class="brand" aria-label="Build & Launch — accueil">
-      <img src="assets/logo-mark.png" alt="" width="54" height="40">
-      <span>Build <b>&amp;</b> Launch</span>
+<!-- ================= NAV ================= -->
+<header id="nav" class="nav fixed inset-x-0 top-0 z-50">
+  <div class="wrap flex h-[72px] items-center gap-24">
+    <a href="#top" class="flex shrink-0 items-center gap-12" aria-label="Build & Launch — accueil">
+      <img src="assets/logo-mark.png" alt="" width="44" height="32" class="h-[30px] w-auto">
+      <span class="text-body-lg font-w480 tracking-[0.01em] text-ivory-text">Build &amp; Launch</span>
     </a>
-    <nav class="menu" id="menu" aria-label="Navigation principale">
-      <a href="#services" data-i18n="nav.services">Services</a>
-      <a href="#realisations" data-i18n="nav.work">Réalisations</a>
-      <a href="#process" data-i18n="nav.process">Méthode</a>
-      <a href="#pourquoi" data-i18n="nav.why">Pourquoi nous</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+    <nav id="menu" class="flex lg:mx-auto lg:items-center lg:gap-4" aria-label="Navigation principale">
+      <a href="#services" class="navlink" data-i18n="nav.services">Services</a>
+      <a href="#realisations" class="navlink" data-i18n="nav.work">Réalisations</a>
+      <a href="#process" class="navlink" data-i18n="nav.process">Méthode</a>
+      <a href="#pourquoi" class="navlink" data-i18n="nav.why">Pourquoi nous</a>
+      <a href="#faq" class="navlink" data-i18n="nav.faq">FAQ</a>
     </nav>
-    <div class="nav-r">
-      <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
-      <a href="#contact" class="btn btn-sm" data-i18n="nav.cta">Démarrer un projet</a>
-      <button class="burger" id="burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <div class="ml-auto flex items-center gap-8 lg:ml-0">
+      <button id="lang" type="button" class="navlink text-body-sm" aria-label="Switch to English">EN</button>
+      <a href="#contact" class="btn-primary hidden h-[40px] px-20 sm:inline-flex" data-i18n="nav.cta">Démarrer un projet</a>
+      <button id="burger" type="button" class="burger relative h-[44px] w-[44px] rounded-3xl-2 border border-ivory-text/30 lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
     </div>
   </div>
 </header>
 
 <main id="main">
-<!-- ============ HERO ============ -->
-<section class="hero" id="top">
-  <div class="wrap hero-in">
-    <div class="hero-txt">
-      <p class="eyebrow reveal"><span class="dot"></span><span data-i18n="hero.eyebrow">Studio IA · Automatisation · Web</span></p>
-      <h1 class="reveal">
-        <span data-i18n="hero.t1">Vos idées,</span><br>
-        <span class="grad" data-i18n="hero.t2">construites et lancées.</span>
-      </h1>
-      <p class="lead reveal" data-i18n="hero.lead">Applications IA, automatisations et produits web sur-mesure — conçus pour faire gagner du temps à vos équipes et décoller votre activité.</p>
-      <div class="cta-row reveal">
-        <a href="#contact" class="btn" data-i18n="hero.cta1">Parlons de votre projet</a>
-        <a href="#realisations" class="btn btn-ghost" data-i18n="hero.cta2">Voir les réalisations</a>
-      </div>
-      <ul class="hero-stats reveal">
-        <li><b data-count="7">7</b><span data-i18n="hero.s1">produits conçus</span></li>
-        <li><b>3</b><span data-i18n="hero.s2">expertises clés</span></li>
-        <li><b>24/7</b><span data-i18n="hero.s3">automatisations actives</span></li>
-      </ul>
-    </div>
 
-    <!-- hero visual: mission control -->
-    <div class="hero-vis reveal" aria-hidden="true">
-      <svg class="trail" viewBox="0 0 600 600" preserveAspectRatio="none">
-        <defs><linearGradient id="tg" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#2F5BFF" stop-opacity="0"/><stop offset=".5" stop-color="#0A84FF"/><stop offset="1" stop-color="#00CAFE"/></linearGradient></defs>
-        <path d="M-20 560 C 180 520, 380 380, 560 60" stroke="url(#tg)" stroke-width="3" fill="none" class="trail-path"/>
-      </svg>
-      <div class="hv-card hv-chat">
-        <div class="hv-head"><i></i><i></i><i></i><span>assistant-ia</span></div>
-        <div class="bubble u" data-i18n="hv.q">Résume ce contrat et liste les échéances.</div>
-        <div class="bubble a"><span class="mono acc">IA</span> <span data-i18n="hv.a">3 ans · révision au 1er janvier · préavis 3 mois · prochaine échéance →</span> <b class="acc" data-i18n="hv.d">15 mars</b></div>
-      </div>
-      <div class="hv-card hv-flow">
-        <div class="hv-title mono" data-i18n="hv.flow">workflow · nouveau lead</div>
-        <div class="flow-row">
-          <span class="fn on">⚡</span><span class="fl"></span><span class="fn">✦</span><span class="fl"></span><span class="fn">▤</span><span class="fl"></span><span class="fn">✉</span>
-        </div>
-        <div class="hv-log mono"><span class="acc">✓</span> <span data-i18n="hv.log">lead qualifié · CRM à jour · e-mail envoyé</span></div>
-      </div>
-      <div class="hv-card hv-kpi">
-        <span class="mono" data-i18n="hv.kpi">tâches manuelles</span>
-        <b class="grad">−80%</b>
-        <div class="spark"><i style="height:90%"></i><i style="height:75%"></i><i style="height:60%"></i><i style="height:42%"></i><i style="height:30%"></i><i style="height:18%"></i></div>
-        <small data-i18n="hv.kpinote">exemple d'objectif</small>
-      </div>
-      <img class="hv-rocket" src="assets/logo-mark.png" alt="">
-    </div>
+<!-- ================= HERO ================= -->
+<section id="top" class="relative flex min-h-[680px] h-[100svh] items-center justify-center overflow-hidden">
+  <img src="assets/img/hero.jpg" alt="" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]" fetchpriority="high">
+  <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(23_23_33/.55)_0%,rgb(23_23_33/.15)_35%,rgb(23_23_33/.25)_70%,#171721_100%)]"></div>
+  <div class="hero-in relative z-10 flex w-full max-w-[980px] flex-col items-center px-24 pb-72 text-center">
+    <span class="tag mb-24 bg-onyx-canvas/50 text-ivory-text backdrop-blur-[8px]" data-i18n="hero.eyebrow">Studio IA · Automatisation · Web</span>
+    <h1 class="h-hero">
+      <span data-i18n="hero.t1">Vos idées,</span><br>
+      <span data-i18n="hero.t2">construites et lancées.</span>
+    </h1>
+    <p class="mt-24 max-w-[540px] text-body-lg font-w480 text-ivory-text" data-i18n="hero.lead">Applications IA, automatisations et produits web sur-mesure — pour faire gagner du temps à vos équipes et faire décoller votre activité.</p>
+    <form id="quick" class="capture mt-40" action="#contact">
+      <label for="quick-email" class="sr-only" data-i18n="hero.label">Votre e-mail</label>
+      <input id="quick-email" name="email" type="email" required autocomplete="email" placeholder="Votre e-mail professionnel" data-i18n-ph="hero.ph">
+      <button type="submit" data-i18n="hero.btn">Démarrer un projet</button>
+    </form>
+    <p class="mt-16 text-body-sm text-ash-text" data-i18n="hero.note">Réponse rapide · Devis clair · Français ou anglais</p>
   </div>
-
-  <div class="marquee" aria-label="Technologies">
-    <div class="marquee-in">
-      <span>OpenAI</span><span>Claude</span><span>RAG</span><span>n8n</span><span>Make</span><span>Zapier</span><span>Python</span><span>React</span><span>TypeScript</span><span>Supabase</span><span>Vite</span><span>PHP · MySQL</span><span>API REST</span><span>WordPress</span><span>Shopify</span><span>Webflow</span>
-      <span aria-hidden="true">OpenAI</span><span aria-hidden="true">Claude</span><span aria-hidden="true">RAG</span><span aria-hidden="true">n8n</span><span aria-hidden="true">Make</span><span aria-hidden="true">Zapier</span><span aria-hidden="true">Python</span><span aria-hidden="true">React</span><span aria-hidden="true">TypeScript</span><span aria-hidden="true">Supabase</span><span aria-hidden="true">Vite</span><span aria-hidden="true">PHP · MySQL</span><span aria-hidden="true">API REST</span><span aria-hidden="true">WordPress</span><span aria-hidden="true">Shopify</span><span aria-hidden="true">Webflow</span>
-    </div>
-  </div>
+  <a href="#apercu" class="absolute bottom-32 left-1/2 z-10 -translate-x-1/2 text-caption tracking-[0.12em] text-ash-text uppercase hover:text-ivory-text" data-i18n="hero.scroll">Découvrir</a>
 </section>
 
-<!-- ============ SERVICES ============ -->
-<section class="sec" id="services">
+<!-- ================= PRODUCT SHOT ================= -->
+<section id="apercu" class="relative pb-72">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker mono">01 — <span data-i18n="svc.k">Services</span></p>
-      <h2 data-i18n="svc.h">Ce qu'on construit pour vous.</h2>
-      <p class="sub" data-i18n="svc.sub">Trois expertises au cœur, pensées pour un seul objectif : vous faire gagner du temps et de l'argent, de façon mesurable.</p>
-    </div>
-    <div class="svc-grid">
-      <article class="svc svc-main reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 8v4l3 2"/><circle cx="19" cy="5" r="2"/></svg></div>
-        <h3 data-i18n="svc.1.t">Applications IA &amp; agents LLM</h3>
-        <p data-i18n="svc.1.p">Assistants, chatbots et agents IA branchés sur vos données et vos outils : ils répondent, recherchent, extraient et agissent à votre place.</p>
-        <ul class="ticks">
-          <li data-i18n="svc.1.l1">Chatbots &amp; assistants métier</li>
-          <li data-i18n="svc.1.l2">RAG : l'IA qui connaît vos documents</li>
-          <li data-i18n="svc.1.l3">Extraction &amp; génération de contenu</li>
-        </ul>
-        <div class="tags"><span>OpenAI</span><span>Claude</span><span>RAG</span><span>Prompt Engineering</span></div>
-      </article>
-      <article class="svc svc-main reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 12h16M4 17h7"/><circle cx="18" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg></div>
-        <h3 data-i18n="svc.2.t">Automatisation de processus</h3>
-        <p data-i18n="svc.2.p">Vos tâches répétitives tournent toutes seules : relances, reporting, qualification de prospects, synchronisation d'outils. Vos équipes récupèrent des heures chaque semaine.</p>
-        <ul class="ticks">
-          <li data-i18n="svc.2.l1">Workflows n8n, Make, Zapier</li>
-          <li data-i18n="svc.2.l2">Intégrations API &amp; scripts sur-mesure</li>
-          <li data-i18n="svc.2.l3">IA intégrée dans vos process</li>
-        </ul>
-        <div class="tags"><span>n8n</span><span>Make</span><span>Python</span><span>API REST</span></div>
-      </article>
-      <article class="svc svc-main reveal">
-        <div class="svc-ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h4"/></svg></div>
-        <h3 data-i18n="svc.3.t">Applications web &amp; SaaS</h3>
-        <p data-i18n="svc.3.p">CRM, tableaux de bord, marketplaces, plateformes SaaS : des outils à forte identité visuelle, pensés pour être adoptés dès le premier jour.</p>
-        <ul class="ticks">
-          <li data-i18n="svc.3.l1">Web apps &amp; PWA</li>
-          <li data-i18n="svc.3.l2">Espaces membres, abonnements, paiements</li>
-          <li data-i18n="svc.3.l3">UX soignée, mobile &amp; desktop</li>
-        </ul>
-        <div class="tags"><span>React</span><span>TypeScript</span><span>Supabase</span><span>JavaScript</span></div>
-      </article>
-    </div>
-    <div class="svc-mini">
-      <div class="mini reveal"><b data-i18n="svc.m1.t">CRM &amp; tableaux de bord</b><span data-i18n="svc.m1.p">Pilotez prospects, contrats et équipes en temps réel.</span></div>
-      <div class="mini reveal"><b data-i18n="svc.m2.t">Sites vitrines &amp; portfolios</b><span data-i18n="svc.m2.p">Élégants, rapides, multilingues — WordPress, Shopify ou sur-mesure.</span></div>
-      <div class="mini reveal"><b data-i18n="svc.m3.t">Audit &amp; conseil IA</b><span data-i18n="svc.m3.p">On identifie ce qui vous coûte du temps et ce que l'IA peut vraiment changer.</span></div>
-    </div>
+    <figure class="reveal card p-12 md:p-24">
+      <div class="shot" aria-hidden="true">
+        <div class="bar"><i></i><i></i><i></i><span>app.buildandlaunch</span></div>
+        <div class="ui ui-ws">
+          <div class="sb">
+            <div class="nm"><img src="assets/logo-mark.png" alt="">Workspace</div>
+            <a class="a" data-i18n="ws.nav1">Tableau de bord</a>
+            <a data-i18n="ws.nav2">Automatisations</a>
+            <a data-i18n="ws.nav3">Agents IA</a>
+            <a data-i18n="ws.nav4">Prospects</a>
+            <a data-i18n="ws.nav5">Rapports</a>
+          </div>
+          <div class="col">
+            <div class="row">
+              <div class="kc"><s data-i18n="ws.k1">Leads qualifiés</s><b>1 284</b><small data-i18n="ws.k1s">ce trimestre</small></div>
+              <div class="kc"><s data-i18n="ws.k2">Tâches automatisées</s><b>9 870</b><small data-i18n="ws.k2s">depuis la mise en ligne</small></div>
+              <div class="kc"><s data-i18n="ws.k3">Temps de réponse</s><b>&lt; 2 min</b><small data-i18n="ws.k3s">aux nouveaux prospects</small></div>
+            </div>
+            <div class="row grow">
+              <div class="panel chart"><s data-i18n="ws.chart">Activité automatisée</s>
+                <svg viewBox="0 0 400 140" preserveAspectRatio="none"><path d="M0 120 C 40 112, 60 100, 90 96 S 150 70, 190 74 S 250 46, 290 40 S 360 18, 400 10" fill="none" stroke="#ededf3" stroke-width="2"/><path d="M0 120 C 40 112, 60 100, 90 96 S 150 70, 190 74 S 250 46, 290 40 S 360 18, 400 10 L400 140 L0 140Z" fill="#ededf3" opacity=".06"/><path d="M0 130 C 60 126, 120 118, 180 116 S 300 104, 400 96" fill="none" stroke="#70707d" stroke-width="1.5" stroke-dasharray="4 5"/></svg>
+              </div>
+              <div class="col" style="flex:.85">
+                <div class="panel auto" style="flex:none"><s data-i18n="ws.auto">Automatisations actives</s>
+                  <p><span data-i18n="ws.a1">Qualification des leads · IA</span><i class="sw"></i></p>
+                  <p><span data-i18n="ws.a2">Relances e-mail personnalisées</span><i class="sw"></i></p>
+                  <p><span data-i18n="ws.a3">Synchronisation CRM</span><i class="sw"></i></p>
+                </div>
+                <div class="panel chat">
+                  <div class="m u" data-i18n="ws.q">Quels prospects relancer aujourd'hui ?</div>
+                  <div class="m a" data-i18n="ws.a">3 prospects chauds : brief prêt, e-mails rédigés. Je les envoie ?</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <figcaption class="mt-16 text-center text-caption text-ash-text" data-i18n="ws.caption">Exemple d'espace de travail : agents IA, automatisations et tableau de bord réunis.</figcaption>
+    </figure>
+
+    <dl class="reveal mt-56 grid grid-cols-1 gap-32 border-t border-slate-border/40 pt-40 sm:grid-cols-3">
+      <div class="flex flex-col-reverse"><dt class="mt-8 text-body text-ash-text" data-i18n="st.1">produits conçus et livrés</dt><dd class="display text-heading-lg text-ivory-text">7</dd></div>
+      <div class="flex flex-col-reverse"><dt class="mt-8 text-body text-ash-text" data-i18n="st.2">expertises : IA, automatisation, web</dt><dd class="display text-heading-lg text-ivory-text">3</dd></div>
+      <div class="flex flex-col-reverse"><dt class="mt-8 text-body text-ash-text" data-i18n="st.3">des automatisations qui ne s'arrêtent jamais</dt><dd class="display text-heading-lg text-ivory-text">24/7</dd></div>
+    </dl>
   </div>
 </section>
 
-<!-- ============ WORK ============ -->
-<section class="sec" id="realisations">
+<!-- ================= TOOLS ================= -->
+<section class="border-y border-slate-border/25 py-40">
+  <div class="wrap flex flex-col items-center gap-24 md:flex-row md:gap-40">
+    <p class="shrink-0 text-body-sm text-ash-text" data-i18n="tools.k">Les outils que nous maîtrisons</p>
+    <ul class="flex flex-wrap justify-center gap-x-32 gap-y-12 text-body-lg font-w480 text-ivory-text/80 md:justify-start">
+      <li>OpenAI</li><li>Claude</li><li>n8n</li><li>Make</li><li>Zapier</li><li>Python</li><li>React</li><li>TypeScript</li><li>Supabase</li><li>PHP · MySQL</li><li>WordPress</li><li>Shopify</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="section">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker mono">02 — <span data-i18n="work.k">Réalisations</span></p>
-      <h2 data-i18n="work.h">De vrais produits, conçus &amp; livrés.</h2>
-      <p class="sub" data-i18n="work.sub">Des projets en ligne et des produits en cours de finalisation — cliquez pour les explorer. Démonstrations détaillées sur simple demande.</p>
+    <div class="reveal max-w-[720px]">
+      <p class="kicker" data-i18n="svc.k">Services</p>
+      <h2 class="h-section mt-16" data-i18n="svc.h">Ce qu'on construit pour vous.</h2>
+      <p class="lead mt-20" data-i18n="svc.sub">Trois expertises au cœur, un seul objectif : vous faire gagner du temps et de l'argent, de façon mesurable.</p>
     </div>
-    <div class="filters reveal" role="tablist" aria-label="Filtrer les projets">
-      <button class="on" data-f="all" data-i18n="work.f0">Tous</button>
-      <button data-f="ai" data-i18n="work.f1">IA</button>
-      <button data-f="app" data-i18n="work.f2">Web apps &amp; SaaS</button>
-      <button data-f="site" data-i18n="work.f3">Sites</button>
+
+    <div class="mt-56 grid gap-12 md:grid-cols-3">
+      <article class="reveal card flex flex-col">
+        <svg class="h-[28px] w-[28px] stroke-ivory-text" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 8v4l3 2"/><circle cx="19" cy="5" r="2"/></svg>
+        <h3 class="h-card mt-32" data-i18n="svc.1.t">Applications IA &amp; agents LLM</h3>
+        <p class="mt-12 text-ash-text" data-i18n="svc.1.p">Assistants, chatbots et agents IA branchés sur vos données et vos outils : ils répondent, recherchent, extraient et agissent à votre place.</p>
+        <ul class="mt-24 space-y-12">
+          <li class="tick" data-i18n="svc.1.l1">Chatbots &amp; assistants métier</li>
+          <li class="tick" data-i18n="svc.1.l2">RAG : l'IA qui connaît vos documents</li>
+          <li class="tick" data-i18n="svc.1.l3">Extraction &amp; génération de contenu</li>
+        </ul>
+        <div class="mt-auto flex flex-wrap gap-8 pt-32"><span class="tag">OpenAI</span><span class="tag">Claude</span><span class="tag">RAG</span><span class="tag">Prompt engineering</span></div>
+      </article>
+      <article class="reveal card flex flex-col">
+        <svg class="h-[28px] w-[28px] stroke-ivory-text" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M4 12h16M4 17h7"/><circle cx="18" cy="7" r="2"/><circle cx="15" cy="17" r="2"/></svg>
+        <h3 class="h-card mt-32" data-i18n="svc.2.t">Automatisation de processus</h3>
+        <p class="mt-12 text-ash-text" data-i18n="svc.2.p">Vos tâches répétitives tournent toutes seules : relances, reporting, qualification de prospects, synchronisation d'outils. Vos équipes récupèrent des heures chaque semaine.</p>
+        <ul class="mt-24 space-y-12">
+          <li class="tick" data-i18n="svc.2.l1">Workflows n8n, Make, Zapier</li>
+          <li class="tick" data-i18n="svc.2.l2">Intégrations API &amp; scripts sur-mesure</li>
+          <li class="tick" data-i18n="svc.2.l3">IA intégrée dans vos process</li>
+        </ul>
+        <div class="mt-auto flex flex-wrap gap-8 pt-32"><span class="tag">n8n</span><span class="tag">Make</span><span class="tag">Python</span><span class="tag">API REST</span></div>
+      </article>
+      <article class="reveal card flex flex-col">
+        <svg class="h-[28px] w-[28px] stroke-ivory-text" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h4"/></svg>
+        <h3 class="h-card mt-32" data-i18n="svc.3.t">Applications web &amp; SaaS</h3>
+        <p class="mt-12 text-ash-text" data-i18n="svc.3.p">CRM, tableaux de bord, marketplaces, plateformes SaaS : des outils à forte identité, pensés pour être adoptés dès le premier jour.</p>
+        <ul class="mt-24 space-y-12">
+          <li class="tick" data-i18n="svc.3.l1">Web apps &amp; PWA</li>
+          <li class="tick" data-i18n="svc.3.l2">Espaces membres, abonnements, paiements</li>
+          <li class="tick" data-i18n="svc.3.l3">UX soignée, mobile &amp; desktop</li>
+        </ul>
+        <div class="mt-auto flex flex-wrap gap-8 pt-32"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Supabase</span><span class="tag">JavaScript</span></div>
+      </article>
     </div>
-    <div class="work-grid" id="work">
 
-      <article class="proj proj-wide reveal" data-cat="app">
-        <a class="shot" href="https://crmpower.netlify.app/" target="_blank" rel="noopener" aria-label="CRM Power — voir en ligne">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>crmpower.app</span></div>
-            <div class="ui ui-crm"><div class="sb"><i class="a"></i><i></i><i></i><i></i><i></i></div><div class="col"><div class="row"><div class="kc"><s>PROSPECTS</s><b>1 284</b></div><div class="kc"><s>CONTRATS</s><b class="acc">342</b></div><div class="kc"><s>RELANCES AUTO</s><b>96%</b></div></div><div class="row grow"><div class="panel"><s>PIPELINE</s><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i class="a" style="height:92%"></i><i style="height:74%"></i></div></div><div class="panel list"><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p><p><i></i><em>Nouveau</em></p><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p></div></div></div></div>
-          </div>
-        </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge live" data-i18n="st.live">En ligne</span><span class="mono pcat" data-i18n="cat.crm">CRM · Énergie</span></div>
-          <h3>CRM Power</h3>
-          <p data-i18n="p.crm">CRM pour courtiers en énergie : gestion centralisée des prospects, suivi des contrats, relances automatisées et tableau de bord analytique pour les équipes commerciales.</p>
-          <ul class="ticks sm"><li data-i18n="p.crm.l1">Relances automatisées</li><li data-i18n="p.crm.l2">Dashboard analytique</li><li data-i18n="p.crm.l3">Suivi des contrats</li></ul>
-          <div class="tags"><span>Web App</span><span>CRM</span><span>JavaScript</span></div>
-          <a class="plink" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> →</a>
+    <div class="mt-12 grid gap-12 md:grid-cols-3">
+      <div class="reveal rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m1.t">CRM &amp; tableaux de bord</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m1.p">Pilotez prospects, contrats et équipes en temps réel.</p></div>
+      <div class="reveal rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m2.t">Sites vitrines &amp; portfolios</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m2.p">Élégants, rapides, multilingues — WordPress, Shopify ou sur-mesure.</p></div>
+      <div class="reveal rounded-xl border border-slate-border/30 px-32 py-24"><p class="text-body-lg font-w480" data-i18n="svc.m3.t">Audit &amp; conseil IA</p><p class="mt-8 text-body-sm text-ash-text" data-i18n="svc.m3.p">On identifie ce qui vous coûte du temps et ce que l'IA peut vraiment changer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="realisations" class="section pt-0 md:pt-0">
+  <div class="wrap">
+    <div class="reveal flex flex-col gap-32 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-[640px]">
+        <p class="kicker" data-i18n="work.k">Réalisations</p>
+        <h2 class="h-section mt-16" data-i18n="work.h">De vrais produits, conçus et livrés.</h2>
+        <p class="lead mt-20" data-i18n="work.sub">Des projets en ligne et des produits en cours de finalisation. Démonstrations détaillées sur simple demande.</p>
+      </div>
+      <div class="flex flex-wrap gap-8" role="group" aria-label="Filtrer les projets">
+        <button class="filter on" data-f="all" data-i18n="work.f0">Tous</button>
+        <button class="filter" data-f="ai" data-i18n="work.f1">IA</button>
+        <button class="filter" data-f="app" data-i18n="work.f2">Web apps &amp; SaaS</button>
+        <button class="filter" data-f="site" data-i18n="work.f3">Sites</button>
+      </div>
+    </div>
+
+    <div id="work" class="mt-56 grid gap-12 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Featured -->
+      <article class="proj reveal card grid items-center gap-32 p-24 md:col-span-2 md:p-40 lg:col-span-3 lg:grid-cols-[1fr_1.35fr] lg:gap-56" data-cat="app">
+        <div class="order-2 lg:order-1">
+          <div class="flex flex-wrap items-center gap-8"><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.crm">CRM · Énergie</span></div>
+          <h3 class="display mt-20 text-heading-sm md:text-heading">CRM Power</h3>
+          <p class="mt-12 text-ash-text" data-i18n="p.crm">CRM pour courtiers en énergie : gestion centralisée des prospects, suivi des contrats, relances automatisées et tableau de bord analytique pour les équipes commerciales.</p>
+          <ul class="mt-24 space-y-12"><li class="tick" data-i18n="p.crm.l1">Relances automatisées</li><li class="tick" data-i18n="p.crm.l2">Tableau de bord analytique</li><li class="tick" data-i18n="p.crm.l3">Suivi des contrats</li></ul>
+          <div class="mt-32 flex flex-wrap items-center gap-8"><a class="btn-ghost-sm" href="https://crmpower.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a><span class="tag">Web app</span><span class="tag">JavaScript</span></div>
         </div>
+        <a class="shot order-1 block lg:order-2" href="https://crmpower.netlify.app/" target="_blank" rel="noopener" aria-label="CRM Power" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>crmpower.app</span></div>
+          <div class="ui ui-crm"><div class="sb"><i class="a"></i><i></i><i></i><i></i><i></i></div><div class="col"><div class="row"><div class="kc"><s>Prospects</s><b>1 284</b></div><div class="kc"><s>Contrats</s><b>342</b></div><div class="kc"><s>Relances auto</s><b>96%</b></div></div><div class="row grow"><div class="panel"><s>Pipeline</s><div class="bars"><i style="height:40%"></i><i style="height:62%"></i><i style="height:48%"></i><i style="height:80%"></i><i style="height:66%"></i><i class="a" style="height:92%"></i><i style="height:74%"></i></div></div><div class="panel list"><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p><p><i></i><em>Nouveau</em></p><p><i></i><em>Signé</em></p><p><i></i><em>Relancé</em></p></div></div></div></div>
+        </a>
       </article>
 
-      <article class="proj reveal" data-cat="ai">
-        <a class="shot" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener" aria-label="IA Hub — voir la démo">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>iahub.app</span></div>
-            <div class="ui ui-ai"><div class="sb"><i class="a"></i><i></i><i></i></div><div class="col end"><div class="q">Generate a solar farm at sunset</div><div class="img"><div class="sun"></div><div class="panels"></div></div><div class="pills"><em>Chat</em><em>Research</em><em>Images</em><em>Docs</em></div></div></div>
-          </div>
+      <article class="proj reveal card flex flex-col p-24" data-cat="ai">
+        <a class="shot block" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener" aria-label="IA Hub" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>iahub.app</span></div>
+          <div class="ui ui-ai"><div class="sb"><i class="a"></i><i></i><i></i></div><div class="col end"><div class="q">Generate misty mountains at blue hour</div><div class="img"></div><div class="pills"><em>Chat</em><em>Research</em><em>Images</em><em>Docs</em></div></div></div>
         </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat" data-i18n="cat.ai">Agent IA</span></div>
-          <h3>IA Hub</h3>
-          <p data-i18n="p.ai">Agent IA tout-en-un : chat, recherche approfondie, génération d'images et extraction de documents — propulsé par LLM et Supabase.</p>
-          <div class="tags"><span>React</span><span>Supabase</span><span>LLM</span></div>
-          <a class="plink" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
-        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.ai">Agent IA</span></div>
+        <h3 class="h-card mt-16">IA Hub</h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.ai">Agent IA tout-en-un : chat, recherche approfondie, génération d'images et extraction de documents — propulsé par LLM et Supabase.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://iahubprojet.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">React</span><span class="tag">LLM</span></div>
       </article>
 
-      <article class="proj reveal" data-cat="app">
-        <a class="shot" href="https://oumahh.netlify.app/" target="_blank" rel="noopener" aria-label="Oumahh — voir en ligne">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>oumahh.app</span></div>
-            <div class="ui ui-edu"><div class="phone"><s>LEÇON 4 / 12</s><b>Les bases</b><div class="prog"><i></i></div><p></p><p class="a"></p><p></p><p></p></div><div class="side"><div class="notif">🔔 Nouvelle leçon</div><div class="panel"><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:72%"></i><i class="a" style="height:88%"></i></div></div><em>PWA · offline</em></div></div>
-          </div>
+      <article class="proj reveal card flex flex-col p-24" data-cat="app">
+        <a class="shot block" href="https://oumahh.netlify.app/" target="_blank" rel="noopener" aria-label="Oumahh" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>oumahh.app</span></div>
+          <div class="ui ui-edu"><div class="phone"><s>Leçon 4 / 12</s><b>Les bases</b><div class="prog"><i></i></div><p></p><p class="a"></p><p></p><p></p></div><div class="side"><div class="notif">Nouvelle leçon disponible</div><div class="panel"><div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i style="height:60%"></i><i style="height:72%"></i><i class="a" style="height:88%"></i></div></div><em>PWA · offline</em></div></div>
         </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge live" data-i18n="st.live">En ligne</span><span class="mono pcat">EdTech · PWA</span></div>
-          <h3>Oumahh</h3>
-          <p data-i18n="p.edu">Plateforme d'apprentissage moderne : PWA avec notifications push, navigation intuitive et contenu pédagogique structuré pas à pas.</p>
-          <div class="tags"><span>EdTech</span><span>PWA</span><span>Vite</span></div>
-          <a class="plink" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> →</a>
-        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text">EdTech · PWA</span></div>
+        <h3 class="h-card mt-16">Oumahh</h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.edu">Plateforme d'apprentissage moderne : PWA avec notifications push, navigation intuitive et contenu pédagogique structuré pas à pas.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://oumahh.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a><span class="tag">PWA</span><span class="tag">Vite</span></div>
       </article>
 
-      <article class="proj reveal" data-cat="app">
-        <a class="shot" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener" aria-label="FitTrack Pro — voir la démo">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>fittrack.pro</span></div>
-            <div class="ui ui-fit"><div class="ring"><b>72%</b></div><div class="col"><div class="kc"><s>CALORIES</s><b>1 840</b></div><div class="kc"><s>FASTING</s><b class="acc">14:32</b></div><div class="panel"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polyline points="0,70 40,62 80,64 120,48 160,44 200,32 240,26 300,8" fill="none" stroke="#00CAFE" stroke-width="3"/></svg></div></div></div>
-          </div>
+      <article class="proj reveal card flex flex-col p-24" data-cat="app">
+        <a class="shot block" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener" aria-label="FitTrack Pro" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>fittrack.pro</span></div>
+          <div class="ui ui-fit"><div class="ring"><b>72%</b></div><div class="col"><div class="kc"><s>Calories</s><b>1 840</b></div><div class="kc"><s>Jeûne</s><b>14:32</b></div><div class="panel"><svg viewBox="0 0 300 80" preserveAspectRatio="none"><polyline points="0,70 40,62 80,64 120,48 160,44 200,32 240,26 300,8" fill="none" stroke="#ededf3" stroke-width="2"/></svg></div></div></div>
         </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat">Health · App</span></div>
-          <h3>FitTrack Pro</h3>
-          <p data-i18n="p.fit">Coach fitness &amp; nutrition : programmes d'entraînement, suivi nutritionnel, jeûne intermittent, records personnels et défis entre amis.</p>
-          <div class="tags"><span>React</span><span>TypeScript</span><span>Supabase</span></div>
-          <a class="plink" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
-        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text">Health · App</span></div>
+        <h3 class="h-card mt-16">FitTrack Pro</h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.fit">Coach fitness &amp; nutrition : programmes d'entraînement, suivi nutritionnel, jeûne intermittent, records personnels et défis entre amis.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://fit-trackp.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">React</span><span class="tag">Supabase</span></div>
       </article>
 
-      <article class="proj reveal" data-cat="ai app">
-        <a class="shot" href="https://energymatch.netlify.app/" target="_blank" rel="noopener" aria-label="EnergiMatch — voir la démo">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>energimatch.app</span></div>
-            <div class="ui ui-match"><div class="panel"><s>ÉTAPE 3 / 4</s><div class="prog"><i></i></div><p class="a">Électricité</p><p>Gaz</p><p>Multi-sites</p></div><div class="col"><div class="panel brief"><s class="acc">BRIEF GÉNÉRÉ PAR IA</s><i></i><i></i><i></i></div><div class="panel list"><p><u></u>Courtier A<em>98%</em></p><p><u></u>Courtier B<em>91%</em></p><p><u></u>Courtier C<em>86%</em></p></div></div></div>
-          </div>
+      <article class="proj reveal card flex flex-col p-24" data-cat="ai app">
+        <a class="shot block" href="https://energymatch.netlify.app/" target="_blank" rel="noopener" aria-label="EnergiMatch" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>energimatch.app</span></div>
+          <div class="ui ui-match"><div class="panel"><s>Étape 3 / 4</s><div class="prog"><i></i></div><p class="a">Électricité</p><p>Gaz</p><p>Multi-sites</p></div><div class="col"><div class="panel brief"><s>Brief généré par IA</s><i></i><i></i><i></i></div><div class="panel list"><p><u></u>Courtier A<em>98%</em></p><p><u></u>Courtier B<em>91%</em></p><p><u></u>Courtier C<em>86%</em></p></div></div></div>
         </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat">Marketplace</span></div>
-          <h3>EnergiMatch</h3>
-          <p data-i18n="p.match">Mise en relation clients ↔ courtiers en énergie : parcours de qualification intelligent, brief généré automatiquement et tableau de bord courtier en temps réel.</p>
-          <div class="tags"><span>Marketplace</span><span>IA</span><span>JavaScript</span></div>
-          <a class="plink" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
-        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text">Marketplace · IA</span></div>
+        <h3 class="h-card mt-16">EnergiMatch</h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.match">Mise en relation clients ↔ courtiers en énergie : parcours de qualification intelligent, brief généré automatiquement et tableau de bord courtier en temps réel.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://energymatch.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">JavaScript</span></div>
       </article>
 
-      <article class="proj reveal" data-cat="app">
-        <a class="shot" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener" aria-label="EnergyClub — voir la démo">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>energyclub.app</span></div>
-            <div class="ui ui-club"><div class="hero2"><b>Le club des pros<br>de l'énergie</b><em>Rejoindre</em></div><div class="row"><div class="plan"><s>MEMBRE</s><b>Essentiel</b></div><div class="plan a"><s>MEMBRE</s><b>Pro</b></div><div class="plan"><s>ÉQUIPE</s><b>Business</b></div></div></div>
-          </div>
+      <article class="proj reveal card flex flex-col p-24" data-cat="app">
+        <a class="shot block" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener" aria-label="EnergyClub" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>energyclub.app</span></div>
+          <div class="ui ui-club"><div class="hero2"><b>Le club des pros<br>de l'énergie</b><em>Rejoindre</em></div><div class="row"><div class="plan"><s>Membre</s><b>Essentiel</b></div><div class="plan a"><s>Membre</s><b>Pro</b></div><div class="plan"><s>Équipe</s><b>Business</b></div></div></div>
         </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge dev" data-i18n="st.dev">En développement</span><span class="mono pcat">SaaS · Communauté</span></div>
-          <h3>EnergyClub</h3>
-          <p data-i18n="p.club">Plateforme communautaire pour les professionnels de l'énergie : espace membres, contenus exclusifs, abonnements et paiements en ligne.</p>
-          <div class="tags"><span>React</span><span>SaaS</span><span data-i18n="tag.pay">Paiements</span></div>
-          <a class="plink" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> →</a>
-        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag" data-i18n="st.dev">En développement</span><span class="text-caption text-ash-text" data-i18n="cat.club">SaaS · Communauté</span></div>
+        <h3 class="h-card mt-16">EnergyClub</h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.club">Plateforme communautaire pour les professionnels de l'énergie : espace membres, contenus exclusifs, abonnements et paiements en ligne.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://projet-energy-teams.netlify.app/" target="_blank" rel="noopener"><span data-i18n="cta.demo">Voir la démo</span> <span aria-hidden="true">↗</span></a><span class="tag">React</span><span class="tag">SaaS</span></div>
       </article>
 
-      <article class="proj reveal" data-cat="site">
-        <a class="shot" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener" aria-label="Portfolio Vicken — voir en ligne">
-          <div class="win"><div class="bar"><i></i><i></i><i></i><span>portfolio.site</span></div>
-            <div class="ui ui-site"><div class="nav2"><b>V.</b><span></span><span></span><span></span><em>FR / EN</em></div><div class="hero3"><div><i class="l1"></i><i class="l2"></i><i class="l3"></i><em></em></div><div class="pic"></div></div><div class="row"><p></p><p></p><p></p></div></div>
-          </div>
+      <article class="proj reveal card flex flex-col p-24" data-cat="site">
+        <a class="shot block" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener" aria-label="Portfolio Vicken" tabindex="-1">
+          <div class="bar"><i></i><i></i><i></i><span>portfolio.site</span></div>
+          <div class="ui ui-site"><div class="nav2"><b>V.</b><span></span><span></span><span></span><em>FR / EN</em></div><div class="hero3"><div><i class="l1"></i><i class="l2"></i><i class="l3"></i><u></u></div><div class="pic"></div></div><div class="row"><p></p><p></p><p></p></div></div>
         </a>
-        <div class="pmeta">
-          <div class="ptop"><span class="badge live" data-i18n="st.live">En ligne</span><span class="mono pcat" data-i18n="cat.site">Site vitrine</span></div>
-          <h3>Portfolio Vicken</h3>
-          <p data-i18n="p.site">Site vitrine élégant et multilingue (FR / EN) : présentation, réalisations et contact, avec une expérience fluide sur mobile comme sur PC.</p>
-          <div class="tags"><span>Portfolio</span><span data-i18n="tag.multi">Multilingue</span><span>Web Design</span></div>
-          <a class="plink" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> →</a>
-        </div>
+        <div class="mt-24 flex flex-wrap items-center gap-8"><span class="tag tag-live" data-i18n="st.live">En ligne</span><span class="text-caption text-ash-text" data-i18n="cat.site">Site vitrine</span></div>
+        <h3 class="h-card mt-16">Portfolio Vicken</h3>
+        <p class="mt-12 text-ash-text" data-i18n="p.site">Site vitrine élégant et multilingue (FR / EN) : présentation, réalisations et contact, avec une expérience fluide sur mobile comme sur ordinateur.</p>
+        <div class="mt-auto flex flex-wrap items-center gap-8 pt-24"><a class="btn-ghost-sm" href="https://portfoliovicken.netlify.app/en" target="_blank" rel="noopener"><span data-i18n="cta.live">Voir en ligne</span> <span aria-hidden="true">↗</span></a><span class="tag" data-i18n="tag.multi">Multilingue</span></div>
       </article>
 
     </div>
   </div>
 </section>
 
-<!-- ============ AUTOMATION DEMO ============ -->
-<section class="sec sec-demo" id="demo">
-  <div class="wrap demo-in">
-    <div class="demo-txt reveal">
-      <p class="kicker mono">03 — <span data-i18n="demo.k">En action</span></p>
-      <h2 data-i18n="demo.h">Une automatisation, concrètement.</h2>
-      <p class="sub" data-i18n="demo.sub">Un prospect remplit votre formulaire. En quelques secondes, sans personne derrière l'écran :</p>
-      <ol class="steps-list">
-        <li data-i18n="demo.l1">L'IA analyse et qualifie la demande</li>
-        <li data-i18n="demo.l2">Votre CRM est mis à jour (score, tags, responsable)</li>
-        <li data-i18n="demo.l3">Un e-mail personnalisé part immédiatement</li>
-        <li data-i18n="demo.l4">Votre équipe est notifiée, le reporting se met à jour</li>
+<!-- ================= DEMO ================= -->
+<section id="demo" class="section bg-graphite-card/40">
+  <div class="wrap grid items-center gap-56 lg:grid-cols-[.9fr_1.1fr]">
+    <div class="reveal">
+      <p class="kicker" data-i18n="demo.k">En action</p>
+      <h2 class="h-section mt-16" data-i18n="demo.h">Une automatisation, concrètement.</h2>
+      <p class="lead mt-20" data-i18n="demo.sub">Un prospect remplit votre formulaire. En quelques secondes, sans personne derrière l'écran :</p>
+      <ol class="mt-32 space-y-16">
+        <li class="flex gap-16"><span class="w-[28px] shrink-0 text-body-sm text-ash-text">01</span><span data-i18n="demo.l1">L'IA analyse et qualifie la demande</span></li>
+        <li class="flex gap-16"><span class="w-[28px] shrink-0 text-body-sm text-ash-text">02</span><span data-i18n="demo.l2">Votre CRM est mis à jour (score, tags, responsable)</span></li>
+        <li class="flex gap-16"><span class="w-[28px] shrink-0 text-body-sm text-ash-text">03</span><span data-i18n="demo.l3">Un e-mail personnalisé part immédiatement</span></li>
+        <li class="flex gap-16"><span class="w-[28px] shrink-0 text-body-sm text-ash-text">04</span><span data-i18n="demo.l4">Votre équipe est notifiée, le reporting se met à jour</span></li>
       </ol>
-      <a href="#contact" class="btn" data-i18n="demo.cta">Automatiser mes process</a>
+      <a href="#contact" class="btn-ghost mt-40" data-i18n="demo.cta">Automatiser mes process</a>
     </div>
-    <div class="demo-vis reveal" id="flow" aria-hidden="true">
-      <div class="node" style="--i:0"><span class="mono">TRIGGER</span><b data-i18n="fl.1">Nouveau prospect</b><em>Formulaire · CRM</em></div>
-      <div class="node" style="--i:1"><span class="mono">AI</span><b data-i18n="fl.2">L'IA qualifie</b><em>Claude / GPT</em></div>
-      <div class="node" style="--i:2"><span class="mono">ACTION</span><b data-i18n="fl.3">CRM mis à jour</b><em>Score · tags</em></div>
-      <div class="node" style="--i:3"><span class="mono">ACTION</span><b data-i18n="fl.4">E-mail personnalisé</b><em data-i18n="fl.4s">Rédigé par l'IA</em></div>
-      <div class="node" style="--i:4"><span class="mono">REPORT</span><b data-i18n="fl.5">Équipe notifiée</b><em>Slack · reporting</em></div>
-      <div class="flow-log mono">
-        <p><span class="acc">✓</span> <span data-i18n="fl.log1">prospect #1042 qualifié — score 87/100</span></p>
-        <p><span class="acc">✓</span> <span data-i18n="fl.log2">relance personnalisée envoyée</span></p>
-        <p><span class="acc">✓</span> <span data-i18n="fl.log3">CRM synchronisé · équipe notifiée</span></p>
+    <div id="flow" class="reveal card p-24 md:p-32" aria-hidden="true">
+      <div class="grid gap-12 sm:grid-cols-2">
+        <div class="node relative rounded-xl border border-slate-border/40 bg-obsidian-button/40 p-20"><i class="ok absolute right-16 top-16 grid h-[22px] w-[22px] place-items-center rounded-full bg-ivory-text text-caption not-italic text-onyx-canvas">✓</i><p class="text-caption uppercase tracking-[0.12em] text-ash-text">Trigger</p><p class="mt-8 text-body-lg font-w480" data-i18n="fl.1">Nouveau prospect</p><p class="mt-4 text-body-sm text-ash-text" data-i18n="fl.1s">Formulaire · CRM</p></div>
+        <div class="node relative rounded-xl border border-slate-border/40 bg-obsidian-button/40 p-20 sm:mt-40"><i class="ok absolute right-16 top-16 grid h-[22px] w-[22px] place-items-center rounded-full bg-ivory-text text-caption not-italic text-onyx-canvas">✓</i><p class="text-caption uppercase tracking-[0.12em] text-ash-text">IA</p><p class="mt-8 text-body-lg font-w480" data-i18n="fl.2">L'IA qualifie</p><p class="mt-4 text-body-sm text-ash-text">Claude / GPT</p></div>
+        <div class="node relative rounded-xl border border-slate-border/40 bg-obsidian-button/40 p-20"><i class="ok absolute right-16 top-16 grid h-[22px] w-[22px] place-items-center rounded-full bg-ivory-text text-caption not-italic text-onyx-canvas">✓</i><p class="text-caption uppercase tracking-[0.12em] text-ash-text">Action</p><p class="mt-8 text-body-lg font-w480" data-i18n="fl.3">CRM mis à jour</p><p class="mt-4 text-body-sm text-ash-text" data-i18n="fl.3s">Score · tags · responsable</p></div>
+        <div class="node relative rounded-xl border border-slate-border/40 bg-obsidian-button/40 p-20 sm:mt-40"><i class="ok absolute right-16 top-16 grid h-[22px] w-[22px] place-items-center rounded-full bg-ivory-text text-caption not-italic text-onyx-canvas">✓</i><p class="text-caption uppercase tracking-[0.12em] text-ash-text">Action</p><p class="mt-8 text-body-lg font-w480" data-i18n="fl.4">E-mail personnalisé</p><p class="mt-4 text-body-sm text-ash-text" data-i18n="fl.4s">Rédigé par l'IA</p></div>
+        <div class="node relative rounded-xl border border-slate-border/40 bg-obsidian-button/40 p-20 sm:col-span-2 sm:w-[calc(50%-6px)]"><i class="ok absolute right-16 top-16 grid h-[22px] w-[22px] place-items-center rounded-full bg-ivory-text text-caption not-italic text-onyx-canvas">✓</i><p class="text-caption uppercase tracking-[0.12em] text-ash-text">Rapport</p><p class="mt-8 text-body-lg font-w480" data-i18n="fl.5">Équipe notifiée</p><p class="mt-4 text-body-sm text-ash-text">Slack · reporting</p></div>
+      </div>
+      <div class="flog mt-24 space-y-8 border-t border-slate-border/30 pt-20 text-body-sm text-ash-text">
+        <p>✓ <span data-i18n="fl.log1">prospect #1042 qualifié — score 87/100</span></p>
+        <p>✓ <span data-i18n="fl.log2">relance personnalisée envoyée</span></p>
+        <p>✓ <span data-i18n="fl.log3">CRM synchronisé · équipe notifiée</span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ PROCESS ============ -->
-<section class="sec" id="process">
+<!-- ================= PROCESS ================= -->
+<section id="process" class="section">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker mono">04 — <span data-i18n="proc.k">Méthode</span></p>
-      <h2 data-i18n="proc.h">Du brief au décollage, en 4 étapes.</h2>
-      <p class="sub" data-i18n="proc.sub">Une méthode simple et transparente : vous savez toujours où en est votre projet.</p>
+    <div class="reveal max-w-[720px]">
+      <p class="kicker" data-i18n="proc.k">Méthode</p>
+      <h2 class="h-section mt-16" data-i18n="proc.h">Du brief au décollage, en quatre étapes.</h2>
+      <p class="lead mt-20" data-i18n="proc.sub">Une méthode simple et transparente : vous savez toujours où en est votre projet.</p>
     </div>
-    <div class="proc">
-      <div class="proc-line"><i id="procfill"></i></div>
-      <div class="pstep reveal"><span class="pnum">01</span><h3 data-i18n="proc.1.t">Écouter</h3><p data-i18n="proc.1.p">On comprend votre métier, vos irritants et ce qui vous coûte du temps — avant de parler technologie.</p></div>
-      <div class="pstep reveal"><span class="pnum">02</span><h3 data-i18n="proc.2.t">Concevoir</h3><p data-i18n="proc.2.p">La solution la plus simple qui fonctionne : ni usine à gaz, ni gadget. Chaque brique a une raison d'être.</p></div>
-      <div class="pstep reveal"><span class="pnum">03</span><h3 data-i18n="proc.3.t">Construire</h3><p data-i18n="proc.3.p">Développement, intégration à vos outils existants et tests en conditions réelles avec vos équipes.</p></div>
-      <div class="pstep reveal"><span class="pnum">04</span><h3 data-i18n="proc.4.t">Lancer</h3><p data-i18n="proc.4.p">Mise en ligne, prise en main, impact mesuré — heures gagnées, prospects traités — puis on itère.</p></div>
+    <div class="proc relative mt-56 grid gap-40 md:grid-cols-4 md:gap-24">
+      <div class="absolute inset-x-0 top-0 hidden h-px bg-slate-border/40 md:block"><div id="procfill" class="proc-fill h-full w-0 bg-ivory-text"></div></div>
+      <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">01</p><h3 class="h-card mt-16" data-i18n="proc.1.t">Écouter</h3><p class="mt-12 text-ash-text" data-i18n="proc.1.p">On comprend votre métier, vos irritants et ce qui vous coûte du temps — avant de parler technologie.</p></div>
+      <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">02</p><h3 class="h-card mt-16" data-i18n="proc.2.t">Concevoir</h3><p class="mt-12 text-ash-text" data-i18n="proc.2.p">La solution la plus simple qui fonctionne : ni usine à gaz, ni gadget. Chaque brique a une raison d'être.</p></div>
+      <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">03</p><h3 class="h-card mt-16" data-i18n="proc.3.t">Construire</h3><p class="mt-12 text-ash-text" data-i18n="proc.3.p">Développement, intégration à vos outils existants et tests en conditions réelles avec vos équipes.</p></div>
+      <div class="reveal border-t border-slate-border/40 pt-24 md:border-0 md:pt-32"><p class="text-body-sm text-ash-text">04</p><h3 class="h-card mt-16" data-i18n="proc.4.t">Lancer</h3><p class="mt-12 text-ash-text" data-i18n="proc.4.p">Mise en ligne, prise en main, impact mesuré — heures gagnées, prospects traités — puis on itère.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ WHY ============ -->
-<section class="sec" id="pourquoi">
+<!-- ================= WHY ================= -->
+<section id="pourquoi" class="section pt-0 md:pt-0">
   <div class="wrap">
-    <div class="sec-head reveal">
-      <p class="kicker mono">05 — <span data-i18n="why.k">Pourquoi Build &amp; Launch</span></p>
-      <h2 data-i18n="why.h">Du code solide, pensé pour votre business.</h2>
+    <div class="reveal max-w-[720px]">
+      <p class="kicker" data-i18n="why.k">Pourquoi Build &amp; Launch</p>
+      <h2 class="h-section mt-16" data-i18n="why.h">Du code solide, pensé pour votre activité.</h2>
     </div>
-    <div class="why-grid">
-      <div class="why reveal"><span class="wi">◆</span><h3 data-i18n="why.1.t">Double culture tech &amp; business</h3><p data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
-      <div class="why reveal"><span class="wi">✦</span><h3 data-i18n="why.2.t">Expertise IA appliquée</h3><p data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
-      <div class="why reveal"><span class="wi">▲</span><h3 data-i18n="why.3.t">Simple &amp; efficace</h3><p data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
-      <div class="why reveal"><span class="wi">●</span><h3 data-i18n="why.4.t">Impact mesurable</h3><p data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
-      <div class="why reveal"><span class="wi">■</span><h3 data-i18n="why.5.t">Adopté dès le jour 1</h3><p data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
-      <div class="why reveal"><span class="wi">✱</span><h3 data-i18n="why.6.t">Réactivité garantie</h3><p data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
+    <div class="mt-56 grid gap-12 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.1.t">Double culture tech &amp; business</p><p class="mt-12 text-ash-text" data-i18n="why.1.p">On comprend vos enjeux métier autant que le code. Résultat : des outils utiles, pas des démos.</p></div>
+      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.2.t">Expertise IA appliquée</p><p class="mt-12 text-ash-text" data-i18n="why.2.p">LLM, RAG, agents, prompt engineering : l'IA mise en production en entreprise, pas seulement en théorie.</p></div>
+      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.3.t">Simple &amp; efficace</p><p class="mt-12 text-ash-text" data-i18n="why.3.p">La solution la plus simple qui marche. Moins de complexité, moins de maintenance, plus de résultats.</p></div>
+      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.4.t">Impact mesurable</p><p class="mt-12 text-ash-text" data-i18n="why.4.p">Heures gagnées, prospects traités, erreurs évitées : on définit ensemble ce qui compte, et on le mesure.</p></div>
+      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.5.t">Adopté dès le premier jour</p><p class="mt-12 text-ash-text" data-i18n="why.5.p">Des interfaces soignées et intuitives que vos équipes ont envie d'utiliser.</p></div>
+      <div class="reveal card"><p class="text-subheading font-w480" data-i18n="why.6.t">Réactivité garantie</p><p class="mt-12 text-ash-text" data-i18n="why.6.p">Communication claire, réponses rapides, points d'avancement réguliers. Vous n'êtes jamais dans le flou.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="sec" id="faq">
-  <div class="wrap faq-in">
-    <div class="sec-head reveal">
-      <p class="kicker mono">06 — FAQ</p>
-      <h2 data-i18n="faq.h">Questions fréquentes.</h2>
-      <p class="sub" data-i18n="faq.sub">Une autre question ? Écrivez-nous, on répond rapidement.</p>
+<!-- ================= FAQ ================= -->
+<section id="faq" class="section pt-0 md:pt-0">
+  <div class="wrap grid gap-40 lg:grid-cols-[.8fr_1.2fr] lg:gap-72">
+    <div class="reveal">
+      <p class="kicker">FAQ</p>
+      <h2 class="h-section mt-16" data-i18n="faq.h">Questions fréquentes.</h2>
+      <p class="lead mt-20" data-i18n="faq.sub">Une autre question ? Écrivez-nous, on répond rapidement.</p>
     </div>
-    <div class="faq-list">
-      <details class="reveal"><summary data-i18n="faq.1.q">Quels types de projets prenez-vous en charge ?</summary><p data-i18n="faq.1.a">Applications et agents IA, automatisations de processus (n8n, Make, Zapier, Python), applications web et SaaS, CRM, tableaux de bord, ainsi que des sites vitrines. Du petit workflow ciblé au produit complet.</p></details>
-      <details class="reveal"><summary data-i18n="faq.2.q">Combien coûte un projet ?</summary><p data-i18n="faq.2.a">Chaque projet est chiffré sur-mesure, après un premier échange pour bien comprendre votre besoin. Vous recevez un devis clair, avec le périmètre et les livrables détaillés.</p></details>
-      <details class="reveal"><summary data-i18n="faq.3.q">Combien de temps faut-il pour livrer ?</summary><p data-i18n="faq.3.a">Cela dépend du périmètre : une automatisation ciblée va beaucoup plus vite qu'une application complète. Le planning est fixé avec vous dès le départ, avec des livraisons intermédiaires.</p></details>
-      <details class="reveal"><summary data-i18n="faq.4.q">Pouvez-vous travailler avec nos outils existants ?</summary><p data-i18n="faq.4.a">Oui, c'est même la priorité : on branche l'IA et les automatisations sur vos outils actuels (CRM, e-mails, tableurs, Slack, API…) plutôt que de tout remplacer.</p></details>
-      <details class="reveal"><summary data-i18n="faq.5.q">Nos données sont-elles en sécurité ?</summary><p data-i18n="faq.5.a">La confidentialité est prise en compte dès la conception : accès restreints, clés et secrets protégés, et choix des services selon vos contraintes.</p></details>
-      <details class="reveal"><summary data-i18n="faq.6.q">Et après la livraison ?</summary><p data-i18n="faq.6.a">Vous recevez un outil documenté et une prise en main. Un accompagnement pour faire évoluer la solution peut être mis en place selon vos besoins.</p></details>
+    <div class="reveal border-t border-slate-border/40">
+      <details class="faq group border-b border-slate-border/40"><summary class="flex items-center justify-between gap-24 py-24 text-body-lg font-w480"><span data-i18n="faq.1.q">Quels types de projets prenez-vous en charge ?</span><span class="plus grid h-[32px] w-[32px] shrink-0 place-items-center rounded-full border border-ivory-text/40 text-ivory-text" aria-hidden="true">+</span></summary><p class="pb-24 pr-56 text-ash-text" data-i18n="faq.1.a">Applications et agents IA, automatisations de processus (n8n, Make, Zapier, Python), applications web et SaaS, CRM, tableaux de bord, ainsi que des sites vitrines. Du petit workflow ciblé au produit complet.</p></details>
+      <details class="faq group border-b border-slate-border/40"><summary class="flex items-center justify-between gap-24 py-24 text-body-lg font-w480"><span data-i18n="faq.2.q">Combien coûte un projet ?</span><span class="plus grid h-[32px] w-[32px] shrink-0 place-items-center rounded-full border border-ivory-text/40 text-ivory-text" aria-hidden="true">+</span></summary><p class="pb-24 pr-56 text-ash-text" data-i18n="faq.2.a">Chaque projet est chiffré sur-mesure, après un premier échange pour bien comprendre votre besoin. Vous recevez un devis clair, avec le périmètre et les livrables détaillés.</p></details>
+      <details class="faq group border-b border-slate-border/40"><summary class="flex items-center justify-between gap-24 py-24 text-body-lg font-w480"><span data-i18n="faq.3.q">Combien de temps faut-il pour livrer ?</span><span class="plus grid h-[32px] w-[32px] shrink-0 place-items-center rounded-full border border-ivory-text/40 text-ivory-text" aria-hidden="true">+</span></summary><p class="pb-24 pr-56 text-ash-text" data-i18n="faq.3.a">Cela dépend du périmètre : une automatisation ciblée va beaucoup plus vite qu'une application complète. Le planning est fixé avec vous dès le départ, avec des livraisons intermédiaires.</p></details>
+      <details class="faq group border-b border-slate-border/40"><summary class="flex items-center justify-between gap-24 py-24 text-body-lg font-w480"><span data-i18n="faq.4.q">Pouvez-vous travailler avec nos outils existants ?</span><span class="plus grid h-[32px] w-[32px] shrink-0 place-items-center rounded-full border border-ivory-text/40 text-ivory-text" aria-hidden="true">+</span></summary><p class="pb-24 pr-56 text-ash-text" data-i18n="faq.4.a">Oui, c'est même la priorité : on branche l'IA et les automatisations sur vos outils actuels (CRM, e-mails, tableurs, Slack, API…) plutôt que de tout remplacer.</p></details>
+      <details class="faq group border-b border-slate-border/40"><summary class="flex items-center justify-between gap-24 py-24 text-body-lg font-w480"><span data-i18n="faq.5.q">Nos données sont-elles en sécurité ?</span><span class="plus grid h-[32px] w-[32px] shrink-0 place-items-center rounded-full border border-ivory-text/40 text-ivory-text" aria-hidden="true">+</span></summary><p class="pb-24 pr-56 text-ash-text" data-i18n="faq.5.a">La confidentialité est prise en compte dès la conception : accès restreints, clés et secrets protégés, et choix des services selon vos contraintes.</p></details>
+      <details class="faq group border-b border-slate-border/40"><summary class="flex items-center justify-between gap-24 py-24 text-body-lg font-w480"><span data-i18n="faq.6.q">Et après la livraison ?</span><span class="plus grid h-[32px] w-[32px] shrink-0 place-items-center rounded-full border border-ivory-text/40 text-ivory-text" aria-hidden="true">+</span></summary><p class="pb-24 pr-56 text-ash-text" data-i18n="faq.6.a">Vous recevez un outil documenté et une prise en main. Un accompagnement pour faire évoluer la solution peut être mis en place selon vos besoins.</p></details>
     </div>
   </div>
 </section>
 
-<!-- ============ CONTACT ============ -->
-<section class="sec" id="contact">
-  <div class="wrap">
-    <div class="contact reveal">
-      <div class="contact-txt">
-        <p class="kicker mono">07 — Contact</p>
-        <h2><span data-i18n="ct.h1">Prêt à décoller ?</span><br><span class="grad" data-i18n="ct.h2">Parlons de votre projet.</span></h2>
-        <p class="sub" data-i18n="ct.sub">Un processus à automatiser, une idée d'outil, un projet IA ? Décrivez-le en quelques lignes : vous recevez une réponse rapide et un premier avis sur la meilleure approche.</p>
-        <ul class="ticks">
-          <li data-i18n="ct.l1">Réponse rapide garantie</li>
-          <li data-i18n="ct.l2">Devis clair et détaillé</li>
-          <li data-i18n="ct.l3">Projets en français ou en anglais</li>
-        </ul>
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="relative overflow-hidden py-112 md:py-128">
+  <img src="assets/img/horizon.jpg" alt="" loading="lazy" class="absolute inset-0 h-full w-full object-cover object-bottom">
+  <div class="absolute inset-0 bg-[linear-gradient(180deg,#171721_0%,rgb(23_23_33/.45)_30%,rgb(23_23_33/.6)_75%,#171721_100%)]"></div>
+  <div class="wrap relative">
+    <div class="reveal mx-auto max-w-[920px] text-center">
+      <h2 class="display text-heading md:text-heading-lg lg:text-display text-pure-white"><span data-i18n="ct.h1">Prêt à décoller ?</span><br><span data-i18n="ct.h2">Parlons de votre projet.</span></h2>
+      <p class="mx-auto mt-24 max-w-[560px] text-body-lg font-w480 text-ivory-text" data-i18n="ct.sub">Un processus à automatiser, une idée d'outil, un projet IA ? Décrivez-le en quelques lignes : vous recevez une réponse rapide et un premier avis sur la meilleure approche.</p>
+    </div>
+    <form class="reveal card mx-auto mt-56 grid max-w-[720px] gap-20 bg-graphite-card/90 backdrop-blur-[20px] md:p-40" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="merci.html">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hidden"><label>Ne pas remplir <input name="bot-field"></label></p>
+      <div class="grid gap-20 sm:grid-cols-2">
+        <label><span class="label" data-i18n="f.name">Nom</span><input class="field" name="name" required autocomplete="name"></label>
+        <label><span class="label" data-i18n="f.email">E-mail</span><input class="field" id="contact-email" name="email" type="email" required autocomplete="email"></label>
       </div>
-      <form class="form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="merci.html">
-        <input type="hidden" name="form-name" value="contact">
-        <p class="hp"><label>Ne pas remplir <input name="bot-field"></label></p>
-        <div class="f2">
-          <label><span data-i18n="f.name">Nom</span><input name="name" required autocomplete="name"></label>
-          <label><span data-i18n="f.email">E-mail</span><input name="email" type="email" required autocomplete="email"></label>
+      <label><span class="label" data-i18n="f.company">Entreprise (optionnel)</span><input class="field" name="company" autocomplete="organization"></label>
+      <fieldset>
+        <legend class="label" data-i18n="f.type">Type de projet</legend>
+        <div class="flex flex-wrap gap-8">
+          <label class="chip"><input type="checkbox" name="type" value="IA"><span data-i18n="f.t1">Application IA</span></label>
+          <label class="chip"><input type="checkbox" name="type" value="Automatisation"><span data-i18n="f.t2">Automatisation</span></label>
+          <label class="chip"><input type="checkbox" name="type" value="Web app"><span data-i18n="f.t3">Web app / SaaS</span></label>
+          <label class="chip"><input type="checkbox" name="type" value="Site"><span data-i18n="f.t4">Site vitrine</span></label>
+          <label class="chip"><input type="checkbox" name="type" value="Audit"><span data-i18n="f.t5">Audit / conseil</span></label>
         </div>
-        <label><span data-i18n="f.company">Entreprise (optionnel)</span><input name="company" autocomplete="organization"></label>
-        <fieldset class="chips">
-          <legend data-i18n="f.type">Type de projet</legend>
-          <label><input type="checkbox" name="type" value="IA"><span data-i18n="f.t1">Application IA</span></label>
-          <label><input type="checkbox" name="type" value="Automatisation"><span data-i18n="f.t2">Automatisation</span></label>
-          <label><input type="checkbox" name="type" value="Web app"><span data-i18n="f.t3">Web app / SaaS</span></label>
-          <label><input type="checkbox" name="type" value="Site"><span data-i18n="f.t4">Site vitrine</span></label>
-          <label><input type="checkbox" name="type" value="Audit"><span data-i18n="f.t5">Audit / conseil</span></label>
-        </fieldset>
-        <label><span data-i18n="f.msg">Votre projet en quelques lignes</span><textarea name="message" rows="5" required></textarea></label>
-        <button class="btn btn-full" type="submit"><span data-i18n="f.send">Envoyer ma demande</span> <span aria-hidden="true">🚀</span></button>
-      </form>
-    </div>
+      </fieldset>
+      <label><span class="label" data-i18n="f.msg">Votre projet en quelques lignes</span><textarea class="field" id="contact-msg" name="message" rows="5" required></textarea></label>
+      <div class="flex flex-col items-center gap-16 pt-8 sm:flex-row sm:justify-between">
+        <p class="text-body-sm text-ash-text" data-i18n="f.note">Réponse rapide garantie · Devis clair et détaillé</p>
+        <button class="btn-primary w-full sm:w-auto" type="submit" data-i18n="f.send">Envoyer ma demande</button>
+      </div>
+    </form>
   </div>
 </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap foot-in">
-    <a href="#top" class="brand"><img src="assets/logo-mark.png" alt="" width="54" height="40"><span>Build <b>&amp;</b> Launch</span></a>
-    <p data-i18n="ft.tag">On construit. Vous décollez.</p>
-    <nav aria-label="Pied de page"><a href="#services" data-i18n="nav.services">Services</a><a href="#realisations" data-i18n="nav.work">Réalisations</a><a href="#process" data-i18n="nav.process">Méthode</a><a href="#contact">Contact</a></nav>
-    <small>© <span id="yr">2026</span> Build &amp; Launch</small>
+<!-- ================= FOOTER ================= -->
+<footer class="border-t border-slate-border/25">
+  <div class="wrap flex flex-col gap-32 py-56 md:flex-row md:items-center">
+    <a href="#top" class="flex items-center gap-12"><img src="assets/logo-mark.png" alt="" width="44" height="32" class="h-[30px] w-auto"><span class="text-body-lg font-w480">Build &amp; Launch</span></a>
+    <p class="text-ash-text" data-i18n="ft.tag">On construit. Vous décollez.</p>
+    <nav class="flex flex-wrap gap-x-24 gap-y-8 text-body-sm text-ash-text md:ml-auto" aria-label="Pied de page">
+      <a class="hover:text-ivory-text" href="#services" data-i18n="nav.services">Services</a>
+      <a class="hover:text-ivory-text" href="#realisations" data-i18n="nav.work">Réalisations</a>
+      <a class="hover:text-ivory-text" href="#process" data-i18n="nav.process">Méthode</a>
+      <a class="hover:text-ivory-text" href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="border-t border-slate-border/25">
+    <p class="wrap py-24 text-caption font-w480 tracking-[0.01em] text-ash-text">© <span id="yr">2026</span> Build &amp; Launch — <span data-i18n="ft.disc">Studio IA, automatisation &amp; web. Les visuels d'interface illustrent les projets ; démonstrations complètes sur demande.</span></p>
   </div>
 </footer>
 

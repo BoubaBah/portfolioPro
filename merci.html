@@ -5,31 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Merci — Build &amp; Launch</title>
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#171721">
 <link rel="icon" type="image/png" href="assets/favicon.png">
-<link rel="stylesheet" href="assets/fonts.css">
 <link rel="stylesheet" href="assets/styles.css">
-<style>
-  .thanks{min-height:100vh;display:grid;place-items:center;text-align:center;padding:24px}
-  .thanks img{width:150px;margin:0 auto 32px;filter:drop-shadow(0 10px 40px rgba(0,202,254,.35));animation:float 6s ease-in-out infinite}
-  .thanks p{color:var(--muted);max-width:480px;margin:0 auto 32px}
-</style>
 </head>
 <body>
-<div class="thanks">
-  <div>
-    <img src="assets/logo-mark.png" alt="Build & Launch">
-    <h2 id="t">Message bien reçu 🚀</h2>
-    <p id="p">Merci ! Votre demande est entre de bonnes mains. Vous recevrez une réponse très rapidement.</p>
-    <a class="btn" href="index.html" id="b">Retour au site</a>
+<main class="relative flex min-h-[100svh] items-center justify-center overflow-hidden px-24 text-center">
+  <img src="assets/img/hero.jpg" alt="" class="hero-img absolute inset-0 h-full w-full object-cover object-[60%_center]">
+  <div class="absolute inset-0 bg-[linear-gradient(180deg,rgb(23_23_33/.6),rgb(23_23_33/.35)_50%,#171721)]"></div>
+  <div class="hero-in relative max-w-[560px]">
+    <img src="assets/logo-mark.png" alt="Build & Launch" class="mx-auto h-[48px] w-auto">
+    <h1 id="t" class="display mt-32 text-heading md:text-heading-lg text-pure-white">Message bien reçu.</h1>
+    <p id="p" class="mt-20 text-body-lg font-w480 text-ivory-text">Merci ! Votre demande est entre de bonnes mains. Vous recevrez une réponse très rapidement.</p>
+    <a id="b" class="btn-ghost mt-40" href="index.html">Retour au site</a>
   </div>
-</div>
+</main>
 <script>
   var l = new URLSearchParams(location.search).get('lang');
   if (!l) { try { l = localStorage.getItem('bl-lang'); } catch (e) {} }
   if (l === 'en') {
     document.documentElement.lang = 'en';
     document.title = 'Thank you — Build & Launch';
-    document.getElementById('t').textContent = 'Message received 🚀';
+    document.getElementById('t').textContent = 'Message received.';
     document.getElementById('p').textContent = 'Thank you! Your request is in good hands. You will hear back very soon.';
     document.getElementById('b').textContent = 'Back to the website';
   }
